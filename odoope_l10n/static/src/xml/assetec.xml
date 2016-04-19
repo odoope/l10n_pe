@@ -1,0 +1,34 @@
+<template>
+<!-- vim:fdl=1:
+-->
+<t t-name="UserMenu">
+    <span class="oe_user_menu oe_topbar_item oe_dropdown_toggle oe_dropdown_arrow">
+        <img class="oe_topbar_avatar" t-att-data-default-src="_s + '/web/static/src/img/user_menu_avatar.png'"/>
+        <span class="oe_topbar_name"/>
+        <ul class="oe_dropdown_menu">
+            <li><a href="#" data-menu="settings">Preferences</a></li>
+            <li><a href="#" data-menu="about">About OpenERP</a></li>
+            <li><a href="#" data-menu="help">Help</a></li>
+            <li><a href="#" data-menu="logout">Log out</a></li>
+        </ul>
+    </span>
+</t>
+
+<t t-name="UserMenu.about">
+
+    <div class="oe_about">
+      <a class="oe_activate_debug_mode oe_right" href="?debug" style="background-color: white; padding:2px 6px; border-radius: 10px;">Activate the developer mode</a>
+      <img class="oe_logo" src="/web/static/src/img/logo2.png"/>
+      <h3>Version <t t-esc="version_info.server_version"/></h3>
+
+      <div class="oe_bottom">
+        <p>Copyright © 2013-HOY Assetec S.A.C. Todos los Derechos Reservados.<br />
+           <!-- OpenERP is a trademark of the <a target="_blank" href="http://openerp.com/" style="text-decoration: underline;">OpenERP SA Company</a>.</p>
+        <p>Licenced under the terms of <a target="_blank" href="http://www.gnu.org/licenses/agpl.html" style="text-decoration: underline;">GNU Affero General Public License</a></p> -->
+        <p>Para más informacion visita <a target="_blank" href="http://assetec.org/" style="text-decoration: underline;">Assetec.org</a></p>
+      </div>
+    </div>
+
+</t>
+
+</templates>
