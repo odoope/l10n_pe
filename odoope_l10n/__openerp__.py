@@ -21,6 +21,9 @@
     'account_tax.xml',
     'accounts_wizard.xml',
 	],
+  'images': [
+        'static/description/plan_contable_banner.png',
+    ],
   'demo_xml': [ ],
   'init_xml' : [ ],
   'update_xml' : [ ],
