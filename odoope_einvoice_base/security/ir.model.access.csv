@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_einvoice_catalog_01,einvoice.catalog.01,model_einvoice_catalog_01,account.group_account_manager,1,1,1,1
+access_einvoice_catalog_06,einvoice.catalog.06,model_einvoice_catalog_06,account.group_account_manager,1,1,1,1
+access_einvoice_catalog_07,einvoice.catalog.07,model_einvoice_catalog_07,account.group_account_manager,1,1,1,1
+access_einvoice_catalog_08,einvoice.catalog.08,model_einvoice_catalog_08,account.group_account_manager,1,1,1,1
+access_einvoice_catalog_09,einvoice.catalog.09,model_einvoice_catalog_09,account.group_account_manager,1,1,1,1
+access_einvoice_catalog_10,einvoice.catalog.10,model_einvoice_catalog_10,account.group_account_manager,1,1,1,1
+access_einvoice_catalog_16,einvoice.catalog.16,model_einvoice_catalog_16,account.group_account_manager,1,1,1,1

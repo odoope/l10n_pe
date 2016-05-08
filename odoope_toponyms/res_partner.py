@@ -38,7 +38,6 @@ class res_partner(osv.osv):
         'state_id': fields.many2one('res.country.state', 'Departamento'),
         'province_id': fields.many2one('res.country.state', 'Provincia'),
         'district_id': fields.many2one('res.country.state', 'Distrito'),
-        'registration_name': fields.char('Razón social', size=128, select=True),
         }
     
     # Onchange para actualizar el codigo de distrito

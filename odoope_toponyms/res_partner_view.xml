@@ -9,9 +9,6 @@
 			<field name='arch' type='xml'>
                 <field name="country_id" position="replace">
                 </field>
-                <field name="category_id" position="before">
-                    <field name="registration_name" placeholder="Razón social" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)]}"/> 
-                </field>
                 <field name="street2" position="replace">
                     <field name="street2" attrs="{'readonly': [('use_parent_address','=',True)]}" placeholder="Urbanización o Zona"/>
                 </field>

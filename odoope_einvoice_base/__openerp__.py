@@ -20,35 +20,30 @@
 ###############################################################################
 
 {
-    'name' : 'Toponimos de Peru',
-    'version' : '1.0.1',
+    'name' : 'Factura electronica - Base',
+    'version' : '1.0',
     'author' : 'Odoo Peru',
-    'category' : 'Localisation/America',
-    'summary': 'Departamentos, Provincias y distritos del Peru.',
+    'category' : 'Accounting & Finance',
+    'summary': 'Tablas y requisitos mínimos para la factura electrónica.',
     'license': 'AGPL-3',
     'contributors': [
         'Leonidas Pezo <leonidas@odooperu.pe>',
     ],
     'description' : """
-Localizacion Peruana.
+Factura electronica - Base.
 ====================================
 
-Clientes y Proveedores:
+Tablas:
 --------------------------------------------
-    * Tabla de Ubigeos
-    * Departamentos, provincias y distritos de todo el Perú
-
-Reportes incluidos:
---------------------------------------------------
-    * 
+    * Tablas requeridas por la Factura electrónica
 
     """,
     'website': 'http://odooperu.pe/page/contabilidad',
-    'depends' : ['account'],
+    'depends' : ['account','account_accountant'],
     'data': [
-        'res_partner_view.xml',
-        'res_country_view.xml',
-        'res_country_data.xml',
+        'views/einvoice_view.xml',
+        'data/einvoice_data.xml',
+        'security/ir.model.access.csv'
     ],
     'qweb' : [
 
@@ -60,7 +55,7 @@ Reportes incluidos:
         #'test/account_test_users.yml',
     ],
     'images': [
-        'static/description/ubigeos_banner.png',
+        'static/description/banner.png',
     ],
     'installable': True,
     'auto_install': False,

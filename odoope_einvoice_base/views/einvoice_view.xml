@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>	
+
+    <!-- Codigo de Tipo de documento -->	
+	    <record id="view_catalog_01_tree" model="ir.ui.view">
+            <field name="name">Codigo de Tipo de documento</field>
+            <field name="model">einvoice.catalog.01</field>
+            <field name="arch" type="xml">
+                <tree string="Codigo de Tipo de documento">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+	    </record>        
+	    <record id="view_catalog_01_form" model="ir.ui.view">
+            <field name="name">Codigo de Tipo de documento</field>
+            <field name="model">einvoice.catalog.01</field>            
+            <field name="arch" type="xml">
+                <form string="Codigo de Tipo de documento">
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                        </group>
+                    </group>                    
+                </form>	
+            </field>
+	    </record>        
+	    <record model="ir.actions.act_window" id="catalog_01_action">
+		    <field name="name">Codigo de Tipo de documento</field>
+		    <field name="res_model">einvoice.catalog.01</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+	    </record>
+
+    <!-- Tipos de documento de Identidad -->	
+	    <record id="view_catalog_06_tree" model="ir.ui.view">
+            <field name="name">Tipos de documento de Identidad</field>
+            <field name="model">einvoice.catalog.06</field>
+            <field name="arch" type="xml">
+                <tree string="Tipos de documento de Identidad">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="default"/>
+                </tree>
+            </field>
+	    </record>        
+	    <record id="view_catalog_06_form" model="ir.ui.view">
+            <field name="name">Tipos de documento de Identidad</field>
+            <field name="model">einvoice.catalog.06</field>            
+            <field name="arch" type="xml">
+                <form string="Tipos de documento de Identidad">
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="default"/>
+                        </group>
+                    </group>                    
+                </form>	
+            </field>
+	    </record>        
+	    <record model="ir.actions.act_window" id="catalog_06_action">
+		    <field name="name">Tipos de documento de Identidad</field>
+		    <field name="res_model">einvoice.catalog.06</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+	    </record>
+
+    <!-- Códigos de Tipo de Afectación del IGV -->	
+	    <record id="view_catalog_07_tree" model="ir.ui.view">
+            <field name="name">Códigos de Tipo de Afectación del IGV</field>
+            <field name="model">einvoice.catalog.07</field>
+            
+            <field name="arch" type="xml">
+                <tree string="Códigos de Tipo de Afectación del IGV">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="no_onerosa"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+	    </record>        
+	    <record id="view_catalog_07_form" model="ir.ui.view">
+            <field name="name">Códigos de Tipo de Afectación del IGV</field>
+            <field name="model">einvoice.catalog.07</field>            
+            <field name="arch" type="xml">
+                <form string="Códigos de Tipo de Afectación del IGV">
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="no_onerosa"/>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                </form>	
+            </field>
+	    </record>        
+	    <record model="ir.actions.act_window" id="catalog_07_action">
+		    <field name="name">Códigos de Tipo de Afectación del IGV</field>
+		    <field name="res_model">einvoice.catalog.07</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+	    </record>
+
+    <!-- Códigos de Tipos de Sistema de Cálculo del ISC -->	
+	    <record id="view_catalog_08_tree" model="ir.ui.view">
+            <field name="name">Códigos de Tipos de Sistema de Cálculo del ISC</field>
+            <field name="model">einvoice.catalog.08</field>            
+            <field name="arch" type="xml">
+                <tree string="Códigos de Tipos de Sistema de Cálculo del ISC">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+	    </record>        
+	    <record id="view_catalog_08_form" model="ir.ui.view">
+            <field name="name">Códigos de Tipo de Afectación del IGV</field>
+            <field name="model">einvoice.catalog.08</field>            
+            <field name="arch" type="xml">
+                <form string="Códigos de Tipos de Sistema de Cálculo del ISC">
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </form>	
+            </field>
+	    </record>        
+	    <record model="ir.actions.act_window" id="catalog_08_action">
+		    <field name="name">Códigos de Tipos de Sistema de Cálculo del ISC</field>
+		    <field name="res_model">einvoice.catalog.08</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+	    </record>
+
+    <!-- Codigos de Tipo de Nota de Credito Electronica -->	
+	    <record id="view_catalog_09_tree" model="ir.ui.view">
+            <field name="name">Codigos de Tipo de Nota de Credito Electronica</field>
+            <field name="model">einvoice.catalog.09</field>            
+            <field name="arch" type="xml">
+                <tree string="Tipo de Medio de Pago">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+	    </record>        
+	    <record id="view_catalog_09_form" model="ir.ui.view">
+            <field name="name">Codigos de Tipo de Nota de Credito Electronica</field>
+            <field name="model">einvoice.catalog.09</field>            
+            <field name="arch" type="xml">
+                <form string="Codigos de Tipo de Nota de Credito Electronica">
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </form>	
+            </field>
+	    </record>        
+	    <record model="ir.actions.act_window" id="catalog_09_action">
+		    <field name="name">Codigos de Tipo de Nota de Credito Electronica</field>
+		    <field name="res_model">einvoice.catalog.09</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+	    </record>
+
+    <!-- Codigos de Tipo de Nota de Debito Electronica -->	
+	    <record id="view_catalog_10_tree" model="ir.ui.view">
+            <field name="name">Codigos de Tipo de Nota de Debito Electronica</field>
+            <field name="model">einvoice.catalog.10</field>            
+            <field name="arch" type="xml">
+                <tree string="Tipo de Medio de Pago">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+	    </record>        
+	    <record id="view_catalog_10_form" model="ir.ui.view">
+            <field name="name">Codigos de Tipo de Nota de Debito Electronica</field>
+            <field name="model">einvoice.catalog.10</field>            
+            <field name="arch" type="xml">
+                <form string="Codigos de Tipo de Nota de Credito Electronica">
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </form>	
+            </field>
+	    </record>        
+	    <record model="ir.actions.act_window" id="catalog_10_action">
+		    <field name="name">Codigos de Tipo de Nota de Debito Electronica</field>
+		    <field name="res_model">einvoice.catalog.10</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+	    </record>
+
+    <!-- Codigos de Tipo de Nota de Debito Electronica -->	
+	    <record id="view_catalog_16_tree" model="ir.ui.view">
+            <field name="name">Codigos - Tipo de Precio de Venta Unitario</field>
+            <field name="model">einvoice.catalog.16</field>            
+            <field name="arch" type="xml">
+                <tree string="Codigos - Tipo de Precio de Venta Unitario">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+	    </record>        
+	    <record id="view_catalog_16_form" model="ir.ui.view">
+            <field name="name">Codigos - Tipo de Precio de Venta Unitario</field>
+            <field name="model">einvoice.catalog.16</field>            
+            <field name="arch" type="xml">
+                <form string="Codigos - Tipo de Precio de Venta Unitario">
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </form>	
+            </field>
+	    </record>        
+	    <record model="ir.actions.act_window" id="catalog_16_action">
+		    <field name="name">Codigos - Tipo de Precio de Venta Unitario</field>
+		    <field name="res_model">einvoice.catalog.16</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+	    </record>
+        
+
+    <!-- Menu -->
+    
+    <menuitem name="Factura Electronica" id="einvoice_configuration_menu" parent="account.menu_finance_configuration" sequence="23"/>
+    <menuitem name="Catalog 01 - Codigo de Tipo de documento" id="einvoice_catalog_01_menu" parent="einvoice_configuration_menu" action="catalog_01_action" sequence="1"/>
+    <menuitem name="Catalog 06 - Tipos de documento de Identidad" id="einvoice_catalog_06_menu" parent="einvoice_configuration_menu" action="catalog_06_action" sequence="6"/>
+    <menuitem name="Catalog 07 - Tipo de Afectación del IGV" id="einvoice_catalog_07_menu" parent="einvoice_configuration_menu" action="catalog_07_action" sequence="7"/>
+    <menuitem name="Catalog 08 - Tipos de Sistema de Cálculo del ISC" id="einvoice_catalog_08_menu" parent="einvoice_configuration_menu" action="catalog_08_action" sequence="8"/>
+    <menuitem name="Catalog 09 - Tipo Nota de Credito" id="einvoice_catalog_09_menu" parent="einvoice_configuration_menu" action="catalog_09_action" sequence="9"/>
+    <menuitem name="Catalog 10 - Tipo Nota de Debito" id="einvoice_catalog_10_menu" parent="einvoice_configuration_menu" action="catalog_10_action" sequence="10"/>
+    <menuitem name="Catalog 16 - Tipo de Precio de Venta Unitario" id="einvoice_catalog_16_menu" parent="einvoice_configuration_menu" action="catalog_16_action" sequence="16"/>
+    
+	</data>
+</openerp>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_partner_form" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <field name="parent_id" position="before">
+                    <field name="registration_name" placeholder="Razón social" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)]}"/> 
+                    <group col="4">
+                        <field name="catalog_06_id" placeholder="Tipo Doc." colspan="1" nolabel="1" widget="selection"/>
+                        <field name="vat" placeholder="Número de Documento" colspan="3" nolabel="1" />   
+                    </group>  
+                </field>
+            </field>
+        </record>
+        
+        <!--Modifica vista de base_vat -->
+        <record id="view_partner_base_vat_form" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base_vat.view_partner_form" />
+            <field name="arch" type="xml">
+                <!-- Oculta el VAT de su posicion original -->
+                <field name="vat" position="replace"/>                
+            </field>
+        </record>
+
+    </data>
+</openerp>

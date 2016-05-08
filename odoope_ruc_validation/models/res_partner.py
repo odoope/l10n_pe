@@ -28,9 +28,13 @@ from openerp import models, api
 from openerp.osv import osv
 from lxml import etree
 from openerp.tools.translate import _
+from openerp import models, fields
 
 class res_partner(models.Model):
     _inherit = 'res.partner'
+    
+    registration_name = fields.Char('Razon social')
+    catalog_06_id = fields.Many2one('einvoice.catalog.06', string='Tipo Doc.',help='Tipo de Documento de Identidad', required=True)
 	
     def _get_captcha(self, type):
         s = requests.Session() 

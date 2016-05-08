@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        
+        <!-- Catálogo No. 01 - Código de Tipo de documento -->
+        <record id="e01_00" model="einvoice.catalog.01"><field name="code">00</field><field name="name">Otros</field></record>
+        <record id="e01_01" model="einvoice.catalog.01"><field name="code">01</field><field name="name">Factura</field></record>
+        <record id="e01_02" model="einvoice.catalog.01"><field name="code">02</field><field name="name">Recibo por Honorarios</field></record>
+        <record id="e01_03" model="einvoice.catalog.01"><field name="code">03</field><field name="name">Boleta de Venta</field></record>
+        <record id="e01_04" model="einvoice.catalog.01"><field name="code">04</field><field name="name">Liquidación de compra</field></record>
+        <record id="e01_05" model="einvoice.catalog.01"><field name="code">05</field><field name="name">Boleto de compañía de aviación comercial por el servicio de transporte aéreo de pasajeros</field></record>
+        <record id="e01_06" model="einvoice.catalog.01"><field name="code">06</field><field name="name">Carta de porte aéreo por el servicio de transporte de carga aérea</field></record>
+        <record id="e01_07" model="einvoice.catalog.01"><field name="code">07</field><field name="name">Nota de crédito</field></record>
+        <record id="e01_08" model="einvoice.catalog.01"><field name="code">08</field><field name="name">Nota de débito</field></record>
+        <record id="e01_09" model="einvoice.catalog.01"><field name="code">09</field><field name="name">Guía de remisión - Remitente</field></record>
+        <record id="e01_10" model="einvoice.catalog.01"><field name="code">10</field><field name="name">Recibo por Arrendamiento</field></record>
+        <record id="e01_11" model="einvoice.catalog.01"><field name="code">11</field><field name="name">Póliza emitida por las Bolsas de Valores, Bolsas de Productos o Agentes de Intermediación por operaciones realizadas en las Bolsas de Valores o Productos o fuera de las mismas, autorizadas por CONASEV</field></record>
+        <record id="e01_12" model="einvoice.catalog.01"><field name="code">12</field><field name="name">Ticket o cinta emitido por máquina registradora</field></record>
+        <record id="e01_13" model="einvoice.catalog.01"><field name="code">13</field><field name="name">Documento emitido por bancos, instituciones financieras, crediticias y de seguros que se encuentren bajo el control de la Superintendencia de Banca y Seguros</field></record>
+        <record id="e01_14" model="einvoice.catalog.01"><field name="code">14</field><field name="name">Recibo por servicios públicos de suministro de energía eléctrica, agua, teléfono, telex y telegráficos y otros servicios complementarios que se incluyan en el recibo de servicio público</field></record>
+        <record id="e01_15" model="einvoice.catalog.01"><field name="code">15</field><field name="name">Boleto emitido por las empresas de transporte público urbano de pasajeros</field></record>
+        <record id="e01_16" model="einvoice.catalog.01"><field name="code">16</field><field name="name">Boleto de viaje emitido por las empresas de transporte público interprovincial de pasajeros dentro del país</field></record>
+        <record id="e01_17" model="einvoice.catalog.01"><field name="code">17</field><field name="name">Documento emitido por la Iglesia Católica por el arrendamiento de bienes inmuebles</field></record>
+        <record id="e01_18" model="einvoice.catalog.01"><field name="code">18</field><field name="name">Documento emitido por las Administradoras Privadas de Fondo de Pensiones que se encuentran bajo la supervisión de la Superintendencia de Administradoras Privadas de Fondos de Pensiones</field></record>
+        <record id="e01_19" model="einvoice.catalog.01"><field name="code">19</field><field name="name">Boleto o entrada por atracciones y espectáculos públicos</field></record>
+        <record id="e01_20" model="einvoice.catalog.01"><field name="code">20</field><field name="name">Comprobante de Retención</field></record>
+        <record id="e01_21" model="einvoice.catalog.01"><field name="code">21</field><field name="name">Conocimiento de embarque por el servicio de transporte de carga marítima</field></record>
+        <record id="e01_22" model="einvoice.catalog.01"><field name="code">22</field><field name="name">Comprobante por Operaciones No Habituales</field></record>
+        <record id="e01_23" model="einvoice.catalog.01"><field name="code">23</field><field name="name">Pólizas de Adjudicación emitidas con ocasión del remate o adjudicación de bienes por venta forzada, por los martilleros o las entidades que rematen o subasten bienes por cuenta de terceros</field></record>
+        <record id="e01_24" model="einvoice.catalog.01"><field name="code">24</field><field name="name">Certificado de pago de regalías emitidas por PERUPETRO S.A</field></record>
+        <record id="e01_25" model="einvoice.catalog.01"><field name="code">25</field><field name="name">Documento de Atribución (Ley del Impuesto General a las Ventas e Impuesto Selectivo al Consumo, Art. 19º, último párrafo, R.S. N° 022-98-SUNAT).</field></record>
+        <record id="e01_26" model="einvoice.catalog.01"><field name="code">26</field><field name="name">Recibo por el Pago de la Tarifa por Uso de Agua Superficial con fines agrarios y por el pago de la Cuota para la ejecución de una determinada obra o actividad acordada por la Asamblea General de la Comisión de Regantes o Resolución expedida por el Jefe de la Unidad de Aguas y de Riego (Decreto Supremo N° 003-90-AG, Arts. 28 y 48)</field></record>
+        <record id="e01_27" model="einvoice.catalog.01"><field name="code">27</field><field name="name">Seguro Complementario de Trabajo de Riesgo</field></record>
+        <record id="e01_28" model="einvoice.catalog.01"><field name="code">28</field><field name="name">Tarifa Unificada de Uso de Aeropuerto</field></record>
+        <record id="e01_29" model="einvoice.catalog.01"><field name="code">29</field><field name="name">Documentos emitidos por la COFOPRI en calidad de oferta de venta de terrenos, los correspondientes a las subastas públicas y a la retribución de los servicios que presta</field></record>
+        <record id="e01_30" model="einvoice.catalog.01"><field name="code">30</field><field name="name">Documentos emitidos por las empresas que desempeñan el rol adquirente en los sistemas de pago mediante tarjetas de crédito y débito</field></record>
+        <record id="e01_31" model="einvoice.catalog.01"><field name="code">31</field><field name="name">Guía de Remisión - Transportista</field></record>
+        <record id="e01_32" model="einvoice.catalog.01"><field name="code">32</field><field name="name">Documentos emitidos por las empresas recaudadoras de la denominada Garantía de Red Principal a la que hace referencia el numeral 7.6 del artículo 7° de la Ley N° 27133 – Ley de Promoción del Desarrollo de la Industria del Gas Natural </field></record>
+        <record id="e01_34" model="einvoice.catalog.01"><field name="code">34</field><field name="name">Documento del Operador</field></record>
+        <record id="e01_35" model="einvoice.catalog.01"><field name="code">35</field><field name="name">Documento del Partícipe</field></record>
+        <record id="e01_36" model="einvoice.catalog.01"><field name="code">36</field><field name="name">Recibo de Distribución de Gas Natural</field></record>
+        <record id="e01_37" model="einvoice.catalog.01"><field name="code">37</field><field name="name">Documentos que emitan los concesionarios del servicio de revisiones técnicas vehiculares, por la prestación de dicho servicio </field></record>
+        <record id="e01_40" model="einvoice.catalog.01"><field name="code">40</field><field name="name">Constancia de Depósito - IVAP (Ley 28211)</field></record>
+        <record id="e01_50" model="einvoice.catalog.01"><field name="code">50</field><field name="name">Declaración Única de Aduanas - Importación definitiva</field></record>
+        <record id="e01_52" model="einvoice.catalog.01"><field name="code">52</field><field name="name">Despacho Simplificado - Importación Simplificada</field></record>
+        <record id="e01_53" model="einvoice.catalog.01"><field name="code">53</field><field name="name">Declaración de Mensajería o Courier</field></record>
+        <record id="e01_54" model="einvoice.catalog.01"><field name="code">54</field><field name="name">Liquidación de Cobranza</field></record>
+        <record id="e01_87" model="einvoice.catalog.01"><field name="code">87</field><field name="name">Nota de Crédito Especial</field></record>
+        <record id="e01_88" model="einvoice.catalog.01"><field name="code">88</field><field name="name">Nota de Débito Especial</field></record>
+        <record id="e01_91" model="einvoice.catalog.01"><field name="code">91</field><field name="name">Comprobante de No Domiciliado</field></record>
+        <record id="e01_96" model="einvoice.catalog.01"><field name="code">96</field><field name="name">Exceso de crédito fiscal por retiro de bienes</field></record>
+        <record id="e01_97" model="einvoice.catalog.01"><field name="code">97</field><field name="name">Nota de Crédito - No Domiciliado</field></record>
+        <record id="e01_98" model="einvoice.catalog.01"><field name="code">98</field><field name="name">Nota de Débito - No Domiciliado</field></record>
+        <record id="e01_99" model="einvoice.catalog.01"><field name="code">99</field><field name="name">Otros -  Consolidado de Boletas de Venta</field></record>
+        
+        <!-- Catalogo 06 - Tipos de documento de Identitdad -->
+        <record id="e06_0" model="einvoice.catalog.06"><field name="code">0</field><field name="name">DOC.TRIB.NO.DOM.SIN.RUC</field><field name="default">-</field></record>
+        <record id="e06_1" model="einvoice.catalog.06"><field name="code">1</field><field name="name">DNI</field><field name="default">00000000</field></record>
+        <record id="e06_4" model="einvoice.catalog.06"><field name="code">4</field><field name="name">Carnet de Extrangería</field></record>
+        <record id="e06_6" model="einvoice.catalog.06"><field name="code">6</field><field name="name">RUC</field></record>
+        <record id="e06_7" model="einvoice.catalog.06"><field name="code">7</field><field name="name">Pasaporte</field></record>
+        <record id="e06_A" model="einvoice.catalog.06"><field name="code">A</field><field name="name">Cédula Diplomática de Identidad</field></record>
+        
+        <!-- Catalogo 07  - Códigos de Tipo de Afectación del IGV  -->
+        <record id="e07_10" model="einvoice.catalog.07"><field name="code">10</field><field name="name">Gravado - Operación Onerosa</field><field name="no_onerosa" eval="False"/><field name="type">gravado</field></record>
+        <record id="e07_11" model="einvoice.catalog.07"><field name="code">11</field><field name="name">Gravado – Retiro por premio</field><field name="no_onerosa" eval="True"/><field name="type">gravado</field></record>
+        <record id="e07_12" model="einvoice.catalog.07"><field name="code">12</field><field name="name">Gravado – Retiro por donación</field><field name="no_onerosa" eval="True"/><field name="type">gravado</field></record>
+        <record id="e07_13" model="einvoice.catalog.07"><field name="code">13</field><field name="name">Gravado – Retiro</field><field name="no_onerosa" eval="True"/><field name="type">gravado</field></record>
+        <record id="e07_14" model="einvoice.catalog.07"><field name="code">14</field><field name="name">Gravado – Retiro por publicidad</field><field name="no_onerosa" eval="True"/><field name="type">gravado</field></record>
+        <record id="e07_15" model="einvoice.catalog.07"><field name="code">15</field><field name="name">Gravado – Bonificaciones</field><field name="no_onerosa" eval="True"/><field name="type">gravado</field></record>
+        <record id="e07_16" model="einvoice.catalog.07"><field name="code">16</field><field name="name">Gravado – Retiro por entrega a trabajadores</field><field name="no_onerosa" eval="True"/><field name="type">gravado</field></record>
+        <record id="e07_20" model="einvoice.catalog.07"><field name="code">20</field><field name="name">Exonerado - Operación Onerosa</field><field name="no_onerosa" eval="False"/><field name="type">exonerado</field></record>
+        <record id="e07_30" model="einvoice.catalog.07"><field name="code">30</field><field name="name">Inafecto - Operación Onerosa</field><field name="no_onerosa" eval="False"/><field name="type">inafecto</field></record>
+        <record id="e07_31" model="einvoice.catalog.07"><field name="code">31</field><field name="name">Inafecto – Retiro por Bonificación</field><field name="no_onerosa" eval="True"/><field name="type">inafecto</field></record>
+        <record id="e07_32" model="einvoice.catalog.07"><field name="code">32</field><field name="name">Inafecto – Retiro</field><field name="no_onerosa" eval="True"/><field name="type">inafecto</field></record>
+        <record id="e07_33" model="einvoice.catalog.07"><field name="code">33</field><field name="name">Inafecto – Retiro por Muestras Médicas</field><field name="no_onerosa" eval="True"/><field name="type">inafecto</field></record>
+        <record id="e07_34" model="einvoice.catalog.07"><field name="code">34</field><field name="name">Inafecto - Retiro por Convenio Colectivo</field><field name="no_onerosa" eval="True"/><field name="type">inafecto</field></record>
+        <record id="e07_35" model="einvoice.catalog.07"><field name="code">35</field><field name="name">Inafecto – Retiro por premio</field><field name="no_onerosa" eval="True"/><field name="type">inafecto</field></record>
+        <record id="e07_36" model="einvoice.catalog.07"><field name="code">36</field><field name="name">Inafecto - Retiro por publicidad</field><field name="no_onerosa" eval="True"/><field name="type">inafecto</field></record>
+        <record id="e07_40" model="einvoice.catalog.07"><field name="code">40</field><field name="name">Exportación</field><field name="no_onerosa" eval="True"/><field name="type">exonerado</field></record>
+        
+        <!-- Catalogo 08  - Códigos de Tipos de Sistema de Cálculo del ISC  -->
+        <record id="e08_01" model="einvoice.catalog.08"><field name="code">01</field><field name="name">Sistema al valor (Apéndice IV, lit. A – T.U.O IGV e ISC)</field></record>
+        <record id="e08_02" model="einvoice.catalog.08"><field name="code">02</field><field name="name">Aplicación del Monto Fijo (Apéndice IV, lit. B – T.U.O IGV e ISC)</field></record>
+        <record id="e08_03" model="einvoice.catalog.08"><field name="code">03</field><field name="name">Sistema de Precios de Venta al Público (Apéndice IV, lit. C – T.U.O IGV e ISC)</field></record>
+        
+        <!-- Catalogo 09  - Codigos de Tipo de Nota de Credito Electronica  -->
+        <record id="e09_01" model="einvoice.catalog.09"><field name="code">01</field><field name="name">Anulación de la operación</field></record>
+        <record id="e09_02" model="einvoice.catalog.09"><field name="code">02</field><field name="name">Anulación por error en el RUC</field></record>
+        <record id="e09_03" model="einvoice.catalog.09"><field name="code">03</field><field name="name">Corrección por error en la descripción</field></record>
+        <record id="e09_04" model="einvoice.catalog.09"><field name="code">04</field><field name="name">Descuento global</field></record>
+        <record id="e09_05" model="einvoice.catalog.09"><field name="code">05</field><field name="name">Descuento por ítem</field></record>
+        <record id="e09_06" model="einvoice.catalog.09"><field name="code">06</field><field name="name">Devolución total</field></record>
+        <record id="e09_07" model="einvoice.catalog.09"><field name="code">07</field><field name="name">Devolución por ítem</field></record>
+        <record id="e09_08" model="einvoice.catalog.09"><field name="code">08</field><field name="name">Bonificación</field></record>
+        <record id="e09_09" model="einvoice.catalog.09"><field name="code">09</field><field name="name">Disminución en el valor</field></record>
+        
+        <!-- Catalogo 10  - Codigos de Tipo de Nota de Debito Electronica  -->
+        <record id="e10_01" model="einvoice.catalog.10"><field name="code">01</field><field name="name">Intereses por mora</field></record>
+        <record id="e10_02" model="einvoice.catalog.10"><field name="code">02</field><field name="name">Aumento en el valor</field></record>
+        
+        <!-- Catalogo 16  - Códigos – Tipo de Precio de Venta Unitario  -->
+        <record id="e16_01" model="einvoice.catalog.16"><field name="code">01</field><field name="name">Precio unitario (incluye el IGV)</field></record>
+        <record id="e16_02" model="einvoice.catalog.16"><field name="code">02</field><field name="name">Valor referencial unitario en operaciones no onerosas</field></record>
+
+    </data>
+</openerp>
