@@ -65,6 +65,9 @@ Este módulo esta basado en el módulo de Alex Cuellar en https://github.com/ale
     'test': [
         #'test/account_test_users.yml',
     ],
+    'images': [
+        'static/description/banner.png',
+    ],
     'installable': True,
     'auto_install': False,
     'application': True,
