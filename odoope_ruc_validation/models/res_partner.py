@@ -19,6 +19,7 @@
 #
 ###############################################################################
 
+import logging
 from PIL import Image
 import requests
 import pytesseract
@@ -28,17 +29,20 @@ from openerp import models, api
 from openerp.osv import osv
 from lxml import etree
 from openerp.tools.translate import _
-from openerp import models, fields
+from openerp.osv import osv, fields
 
-class res_partner(models.Model):
+class res_partner(osv.Model):
     _inherit = 'res.partner'
     
-    registration_name = fields.Char('Razon social')
-    catalog_06_id = fields.Many2one('einvoice.catalog.06', string='Tipo Doc.',help='Tipo de Documento de Identidad', required=True)
+    _columns = {
+            'registration_name': fields.char('Name', size=128, select=True, ),
+            'catalog_06_id': fields.many2one('einvoice.catalog.06','Tipo Doc.', select=True, required=True),
+            'state':fields.selection([('habido','Habido'),('nhabido','No Habido')],'State'), 
+    }
 	
     def _get_captcha(self, type):
         s = requests.Session() 
-        if type.upper() == 'R':
+        if type == '6':
             try:
                 r = s.get('http://www.sunat.gob.pe/cl-ti-itmrconsruc/captcha?accion=image')
             except s.exceptions.RequestException as e:
@@ -47,7 +51,7 @@ class res_partner(models.Model):
             captcha_val=pytesseract.image_to_string(img)
             captcha_val=captcha_val.strip().upper()
             return (s, captcha_val)
-        elif type.upper() == 'D':
+        elif type == '1':
             try:
                 r = s.get('https://cel.reniec.gob.pe/valreg/codigo.do')
             except s.exceptions.RequestException as e:
@@ -70,17 +74,17 @@ class res_partner(models.Model):
             
 
     @api.multi
-    def vat_change(self, vat):
+    def vat_change(self, type, vat):
         if not vat:
             return False
-        vat=vat[2:]
-        validate = self.check_vat_pe(vat)
-        vat_type,vat = vat and len(vat)>=2 and (vat[0], vat[1:]) or (False, False)
+        #~ validate = self.check_vat_pe(vat)
+        v = self.env['einvoice.catalog.06'].browse(type)
+        vat_type = v.code
         res={}
-        if vat_type and vat_type.upper() == 'D':
+        if vat and vat_type == '1':
             if len(vat)==8:
                 for i in range(10):
-                    consuta, captcha_val= self._get_captcha(vat_type.upper())
+                    consuta, captcha_val= self._get_captcha(vat_type)
                     if not consuta:
                         res['warning'] = {}
                         res['warning']['title'] = _('Connection error')
@@ -111,8 +115,11 @@ class res_partner(models.Model):
                         _('Error'),
                         _('the DNI entered is incorrect')) 
                 res['name'] = name.strip()
+                res['is_company'] = False
+                res['registration_name'] = False
                 return {'value': res}
-        elif vat_type and vat_type.upper() == 'R':
+        elif vat and vat_type == '6':
+                res={'value':{}}
                 factor = '5432765432'
                 sum = 0
                 dig_check = False
@@ -139,7 +146,7 @@ class res_partner(models.Model):
                         _('Error'),
                         _('the RUC entered is incorrect')) 
                 for i in range(10):
-                    consuta, captcha_val= self._get_captcha(vat_type.upper())
+                    consuta, captcha_val= self._get_captcha(vat_type)
                     if not consuta:
                         res['warning'] = {}
                         res['warning']['title'] = _('Connection error')
@@ -152,7 +159,7 @@ class res_partner(models.Model):
                                 "&codigo="+captcha_val+"&tipdoc=1&search2=&coddpto=&codprov=&coddist=&search3=")
                 texto_error='Surgieron problemas al procesar la consulta'
                 texto_consulta=get.text
-                print texto_consulta
+                #~ print texto_consulta
                 #busqueda_error=texto_consulta.find(texto_error)
                 if texto_error in (texto_consulta):
                     raise osv.except_osv(
@@ -161,21 +168,39 @@ class res_partner(models.Model):
                 else:
                     #consulta(ruc)
                     texto_consulta=StringIO.StringIO(texto_consulta).readlines()
-
+                    
                     temp=0;
                     tnombre=False
                     tdireccion=False
+                    tncomercial=False
+                    tstate=False
 
+
+                            
                     for li in texto_consulta:
                         if temp==1:
                             soup = BeautifulSoup(li)
                             tdireccion= soup.td.string
-                            #tdireccion=tdireccion.string
-
+                            #~  Extrae distrito sin espacios
+                            district = " ".join(tdireccion.split("-")[-1].split()) 
+                            #~ Borra distrito, provincia y espacios duplicados
+                            tdireccion = " ".join(tdireccion.split()) 
+                            tdireccion = " ".join(tdireccion.split("-")[0:-2])                             
+                                                           
+                            #~ Busca el distrito
+                            ditrict_obj = self.env['res.country.state']
+                            dist_id = ditrict_obj.search([('name', '=', district),('province_id', '!=', False),('state_id', '!=', False)], limit=1)
+                            if dist_id:
+                                res['value']['district_id'] = dist_id.id
+                                res['value']['province_id'] = dist_id.province_id.id
+                                res['value']['state_id'] = dist_id.state_id.id
+                                res['value']['country_id'] = dist_id.country_id.id
+                                logging.getLogger('server2').info('res:%s'%(res))
                             break
                     
                         if li.find("Domicilio Fiscal:") != -1:
                             temp=1
+                            
                     #print texto_consulta
                     for li in texto_consulta:
                         if li.find("desRuc") != -1:
@@ -183,13 +208,64 @@ class res_partner(models.Model):
                             tnombre=soup.input['value']
 
                             break 
-                    #raise osv.except_osv(
-                    #    _(tnombre),
-                    #    _(tdireccion))
-                
-                    return {
-                        'value': {'name': tnombre,'street': tdireccion, 'vat_subjected': True}
-                    }
+
+                    # Nombre comercial
+                    temp=0;
+                    for li in texto_consulta:
+                        if temp==1:
+                            soup = BeautifulSoup(li)
+                            tncomercial = soup.td.string
+                            if tncomercial == "-":
+                                tncomercial = tnombre
+                            break
+                    
+                        if li.find("Nombre Comercial:") != -1:
+                            temp=1
+                            
+                    # Estado ACTIVO
+                    temp=0;
+                    for li in texto_consulta:
+                        if temp==1:
+                            soup = BeautifulSoup(li)
+                            tactive = soup.td.string
+                            if tactive != 'ACTIVO':
+                               raise osv.except_osv(
+                                _('Advertencia'),
+                                _('El RUC ingresado no esta ACTIVO')) 
+                            break
+                    
+                        if li.find("Estado del Contribuyente:") != -1:
+                            temp=1
+
+                    # Estado Habido / No habido
+                    temp=0;
+                    for li in texto_consulta:
+                        
+                        # El resultado se encuentra 3 lineas por debajo de la linea encontrada
+                        if temp>=1:
+                            temp += 1
+                        if temp==4:
+                            soup = BeautifulSoup(li)
+                            # Si contiene la etiqueta "p" es HABIDO, caso contrario es un link <a> de NO HABIDO
+                            if soup.p:
+                                tstate = str(soup.p.string)
+                                tstate=tstate[0:6]
+                                if tstate == 'HABIDO':
+                                    tstate = 'habido'
+                            else:
+                                tstate = 'nhabido'
+                            break
+                        # linea encontrada
+                        if li.find("Condici&oacute;n del Contribuyente:") != -1:
+                            temp=1
+                            
+                    res['value']['registration_name'] = tnombre
+                    res['value']['name'] = tncomercial
+                    res['value']['street'] = tdireccion
+                    res['value']['vat_subjected'] = True
+                    res['value']['is_company'] = True
+                    res['value']['state'] = tstate
+                    return res
         else:
             return False
 

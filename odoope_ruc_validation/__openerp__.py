@@ -34,7 +34,7 @@
     ],
     'description' : """
 Validador RUC y DNI
-================
+-----------------------
 
 Clientes y Proveedores:
 -----------------------
@@ -52,7 +52,7 @@ Este módulo esta basado en el módulo de Alex Cuellar en https://github.com/ale
 
     """,
     'website': 'http://odooperu.pe/page/contabilidad',
-    'depends' : ['account','base_vat','odoope_einvoice_base'],
+    'depends' : ['account','odoope_einvoice_base'],
     'data': [
         'views/res_partner_view.xml',
     ],
