@@ -39,6 +39,14 @@ class res_partner(osv.osv):
         'province_id': fields.many2one('res.country.state', 'Provincia'),
         'district_id': fields.many2one('res.country.state', 'Distrito'),
         }
+        
+    # Funcion reemplazada para considerar los nuevos campos en el onchange
+    def _address_fields(self, cr, uid, context=None):
+        """ Returns the list of address fields that are synced from the parent
+        when the `use_parent_address` flag is set. """
+        #~ return list(ADDRESS_FIELDS)
+        address_fields = ('street', 'street2', 'zip', 'city', 'state_id', 'country_id','province_id','district_id')
+        return list(address_fields)
     
     # Onchange para actualizar el codigo de distrito
     @api.multi

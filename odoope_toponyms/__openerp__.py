@@ -21,7 +21,7 @@
 
 {
     'name' : 'Toponimos de Peru',
-    'version' : '1.0.1',
+    'version' : '1.0.2',
     'author' : 'Odoo Peru',
     'category' : 'Localisation/America',
     'summary': 'Departamentos, Provincias y distritos del Peru.',
