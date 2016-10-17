@@ -25,21 +25,19 @@ import requests
 import pytesseract
 from bs4 import BeautifulSoup
 import StringIO
-from openerp import models, api
-from openerp.osv import osv
 from lxml import etree
-from openerp.tools.translate import _
-from openerp.osv import osv, fields
+from odoo import api, fields, models
 
-class res_partner(osv.Model):
+
+class res_partner(models.Model):
+    _name = 'res.partner'
     _inherit = 'res.partner'
-    
-    _columns = {
-            'registration_name': fields.char('Name', size=128, select=True, ),
-            'catalog_06_id': fields.many2one('einvoice.catalog.06','Tipo Doc.', select=True, required=True),
-            'state':fields.selection([('habido','Habido'),('nhabido','No Habido')],'State'), 
-    }
+
+    registration_name = fields.Char('Name', size=128, select=True, )
+    catalog_06_id = fields.Many2one('einvoice.catalog.06','Tipo Doc.', select=True, required=True)
+    state = fields.Selection([('habido','Habido'),('nhabido','No Habido')],'State')
 	
+    @api.model
     def _get_captcha(self, type):
         s = requests.Session() 
         if type == '6':
@@ -73,12 +71,13 @@ class res_partner(osv.Model):
             return (s, captcha_val.upper())
             
 
-    @api.multi
-    def vat_change(self, type, vat):
-        if not vat:
+    @api.onchange('catalog_06_id','vat')
+    def vat_change(self):
+        if not self.vat:
             return False
+        vat = self.vat
         #~ validate = self.check_vat_pe(vat)
-        v = self.env['einvoice.catalog.06'].browse(type)
+        v = self.catalog_06_id
         vat_type = v.code
         res={}
         if vat and vat_type == '1':
@@ -109,7 +108,7 @@ class res_partner(osv.Model):
                 error_captcha="Ingrese el código que aparece en la imagen"
                 error_dni="El DNI N°"
                 if error_captcha==name.strip().encode('utf-8'):
-                    return self.vat_change(vat)
+                    return self.vat_change(vat_type)
                 elif error_dni==name.strip().encode('utf-8'):
                     return osv.except_osv(
                         _('Error'),
@@ -191,10 +190,10 @@ class res_partner(osv.Model):
                             ditrict_obj = self.env['res.country.state']
                             dist_id = ditrict_obj.search([('name', '=', district),('province_id', '!=', False),('state_id', '!=', False)], limit=1)
                             if dist_id:
-                                res['value']['district_id'] = dist_id.id
-                                res['value']['province_id'] = dist_id.province_id.id
-                                res['value']['state_id'] = dist_id.state_id.id
-                                res['value']['country_id'] = dist_id.country_id.id
+                                self.district_id = dist_id.id
+                                self.province_id = dist_id.province_id.id
+                                self.state_id = dist_id.state_id.id
+                                self.country_id = dist_id.country_id.id
                                 logging.getLogger('server2').info('res:%s'%(res))
                             break
                     
@@ -259,13 +258,12 @@ class res_partner(osv.Model):
                         if li.find("Condici&oacute;n del Contribuyente:") != -1:
                             temp=1
                             
-                    res['value']['registration_name'] = tnombre
-                    res['value']['name'] = tncomercial
-                    res['value']['street'] = tdireccion
-                    res['value']['vat_subjected'] = True
-                    res['value']['is_company'] = True
-                    res['value']['state'] = tstate
-                    return res
+                    self.registration_name = tnombre
+                    self.name = tncomercial
+                    self.street = tdireccion
+                    self.vat_subjected = True
+                    self.is_company = True
+                    self.state = tstate
         else:
             return False
 

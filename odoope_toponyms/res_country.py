@@ -19,17 +19,17 @@
 #
 ###############################################################################
 
-from openerp.osv import fields, osv
+from odoo import api, fields, models
 
-class CountryState(osv.osv):
+class CountryState(models.Model):
+    _description = "Country state"
     _inherit = 'res.country.state'
-    _columns = {
-        'code': fields.char('Country Code', size=9,
+    
+    code = fields.Char('Country Code', size=9,
             help='The ISO country code in two chars.\n'
-            'You can use this field for quick search.'),
-        'state_id': fields.many2one('res.country.state', 'Departamento'),
-        'province_id': fields.many2one('res.country.state', 'Provincia'),
-    }
+            'You can use this field for quick search.')
+    state_id = fields.Many2one('res.country.state', 'Departamento')
+    province_id = fields.Many2one('res.country.state', 'Provincia')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 

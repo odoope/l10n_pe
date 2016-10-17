@@ -11,15 +11,12 @@
                         <field name="state" widget="statusbar" nolabel="1" statusbar_visible="habido,nhabido" statusbar_colors="{&quot;habido&quot;:&quot;green&quot;,&quot;nhabido&quot;:&quot;red&quot;}" readonly="0" clickable="True"/>
                     </header>                        
                 </sheet>
-                <field name="parent_id" position="before">
+                <field name="parent_id" position="after">
                     <field name="registration_name" placeholder="Razón social" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)]}"/> 
-<!--
-                    <field name="state"/>
--->
-                    <group col="4">
-                        <field name="catalog_06_id" placeholder="Tipo Doc." colspan="1" nolabel="1" widget="selection" on_change="vat_change(catalog_06_id,vat)"/>
-                        <field name="vat" placeholder="Número de Documento" colspan="3" nolabel="1" on_change="vat_change(catalog_06_id,vat)"/>   
-                    </group>  
+                    <div class="o_row">
+                        <field name="catalog_06_id" placeholder="Tipo Doc." colspan="1" nolabel="1" widget="selection"/>
+                        <field name="vat" placeholder="Número de Documento" colspan="3" nolabel="1"/>   
+                    </div>  
                 </field>
             </field>
         </record>
