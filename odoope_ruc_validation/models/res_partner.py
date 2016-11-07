@@ -181,14 +181,21 @@ class res_partner(models.Model):
                             soup = BeautifulSoup(li)
                             tdireccion= soup.td.string
                             #~  Extrae distrito sin espacios
-                            district = " ".join(tdireccion.split("-")[-1].split()) 
+                            district = " ".join(tdireccion.split("-")[-1].split())
+                            prov = " ".join(tdireccion.split("-")[-2].split())
                             #~ Borra distrito, provincia y espacios duplicados
                             tdireccion = " ".join(tdireccion.split()) 
                             tdireccion = " ".join(tdireccion.split("-")[0:-2])                             
                                                            
                             #~ Busca el distrito
                             ditrict_obj = self.env['res.country.state']
-                            dist_id = ditrict_obj.search([('name', '=', district),('province_id', '!=', False),('state_id', '!=', False)], limit=1)
+                            prov_ids = ditrict_obj.search([('name', '=', prov),
+                                                           ('province_id', '=', False),
+                                                           ('state_id', '!=', False)])
+                            dist_id = ditrict_obj.search([('name', '=', district),
+                                                          ('province_id', '!=', False),
+                                                          ('state_id', '!=', False),
+                                                          ('province_id', 'in', [x.id for x in prov_ids])], limit=1)
                             if dist_id:
                                 self.district_id = dist_id.id
                                 self.province_id = dist_id.province_id.id
