@@ -8,16 +8,38 @@
             <field name="arch" type="xml">
                 <sheet position="before">
                     <header>
-                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="habido,nhabido" statusbar_colors="{&quot;habido&quot;:&quot;green&quot;,&quot;nhabido&quot;:&quot;red&quot;}" readonly="0" clickable="True"/>
+                        <button string="Actulizar datos RUC" type="object" name="update_document"/>
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="habido,nhabido" statusbar_colors="{&quot;habido&quot;:&quot;green&quot;,&quot;nhabido&quot;:&quot;red&quot;}" readonly="0"/>
                     </header>                        
                 </sheet>
-                <field name="parent_id" position="after">
-                    <field name="registration_name" placeholder="Razón social" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)]}"/> 
+                <div class="o_row" position="before">
                     <div class="o_row">
                         <field name="catalog_06_id" placeholder="Tipo Doc." colspan="1" nolabel="1" widget="selection"/>
                         <field name="vat" placeholder="Número de Documento" colspan="3" nolabel="1"/>   
                     </div>  
-                </field>
+                    <field name="registration_name" placeholder="Razón social" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)]}"/> 
+                </div>
+                <xpath expr="//page[@name='sales_purchases']" position="after">
+                    <page name="sunat_info" string="Datos Sunat" attrs="{'invisible': [('is_company','=', False)]}">
+                        <group name="container_row_2">
+                            <group string="Contribuyente" name="sale">
+                                <field name="tipo_contribuyente"/>
+                                <field name="fecha_inscripcion"/>
+                                <field name="estado_contribuyente"/>
+                                <field name="ultima_actualizacion_sunat"/>
+                            </group>
+                            <group string="Agente de Retención">
+                                <field name="agente_retencion"/>
+                                <field name="agente_retencion_apartir_del"/>
+                                <field name="agente_retencion_resolucion"/>
+                            </group>
+                            <group string="Contabilidad">
+                                <field name="sistema_emision_comprobante"/>
+                                <field name="sistema_contabilidad"/>
+                            </group>
+                        </group>
+                    </page>
+				</xpath>
             </field>
         </record>
 

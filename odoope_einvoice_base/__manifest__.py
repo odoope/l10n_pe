@@ -21,7 +21,7 @@
 
 {
     'name' : 'Factura electronica - Base',
-    'version' : '1.0',
+    'version' : '1.0.1',
     'author' : 'Odoo Peru',
     'category' : 'Accounting & Finance',
     'summary': 'Tablas y requisitos mínimos para la factura electrónica.',
