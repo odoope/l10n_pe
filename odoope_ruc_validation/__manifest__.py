@@ -24,7 +24,7 @@
 
 {
     'name' : 'Validador RUC/DNI',
-    'version' : '1.2.1',
+    'version' : '1.2.2',
     'author' : 'Odoo Peru',
     'category' : 'Generic Modules/Base',
     'summary': 'Valida RUC y DNI.',

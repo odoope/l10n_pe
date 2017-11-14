@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from openerp import _, api, fields, models
+from odoo import models, fields, api
 
 class einvoice_catalog_01(models.Model):
     _name = "einvoice.catalog.01"

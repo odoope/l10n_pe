@@ -19,6 +19,5 @@
 #
 ###############################################################################
 
-import res_partner
-import res_country
+from . import models
 # eof:__init__.py

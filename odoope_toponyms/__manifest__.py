@@ -46,9 +46,9 @@ Reportes incluidos:
     'website': 'http://odooperu.pe/page/contabilidad',
     'depends' : ['account'],
     'data': [
-        'res_partner_view.xml',
-        'res_country_view.xml',
-        'res_country_data.xml',
+        'views/res_partner_view.xml',
+        'views/res_country_view.xml',
+        'views/res_country_data.xml',
     ],
     'qweb' : [
 

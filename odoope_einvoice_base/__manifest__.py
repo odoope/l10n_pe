@@ -39,7 +39,7 @@ Tablas:
 
     """,
     'website': 'http://odooperu.pe/page/contabilidad',
-    'depends' : ['account','account_accountant'],
+    'depends' : ['account','account_invoicing'],
     'data': [
         'views/einvoice_view.xml',
         'data/einvoice_data.xml',

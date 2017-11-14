@@ -19,27 +19,6 @@
                     </div>  
                     <field name="registration_name" placeholder="Razón social" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)]}"/> 
                 </div>
-                <xpath expr="//page[@name='sales_purchases']" position="after">
-                    <page name="sunat_info" string="Datos Sunat" attrs="{'invisible': [('is_company','=', False)]}">
-                        <group name="container_row_2">
-                            <group string="Contribuyente" name="sale">
-                                <field name="tipo_contribuyente"/>
-                                <field name="fecha_inscripcion"/>
-                                <field name="estado_contribuyente"/>
-                                <field name="ultima_actualizacion_sunat"/>
-                            </group>
-                            <group string="Agente de Retención">
-                                <field name="agente_retencion"/>
-                                <field name="agente_retencion_apartir_del"/>
-                                <field name="agente_retencion_resolucion"/>
-                            </group>
-                            <group string="Contabilidad">
-                                <field name="sistema_emision_comprobante"/>
-                                <field name="sistema_contabilidad"/>
-                            </group>
-                        </group>
-                    </page>
-				</xpath>
             </field>
         </record>
 

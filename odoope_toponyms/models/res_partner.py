@@ -23,10 +23,9 @@ import datetime
 from lxml import etree
 import math
 import pytz
-import urlparse
 from PIL import Image
 
-from odoo import api, fields, models
+from odoo import models, fields, api
 
 class res_partner(models.Model):
     _name = 'res.partner'

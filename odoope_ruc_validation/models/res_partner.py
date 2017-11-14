@@ -20,8 +20,8 @@
 ###############################################################################
 
 import logging
-from openerp import models, fields, api
-from openerp.exceptions import Warning
+from odoo import models, fields, api
+from odoo.exceptions import Warning
 
 import requests
 
@@ -32,7 +32,7 @@ def get_data_doc_number(tipo_doc, numero_doc, format='json'):
     res = {'error': True, 'message': None, 'data': {}}
     try:
         response = requests.get(url, auth=(user, password))
-    except requests.exceptions.ConnectionError, e:
+    except requests.exceptions.ConnectionError as e:
         res['message'] = 'Error en la conexion'
         return res
 
@@ -42,7 +42,7 @@ def get_data_doc_number(tipo_doc, numero_doc, format='json'):
     else:
         try:
             res['message'] = response.json()['detail']
-        except Exception, e:
+        except Exception as e:
             res['error'] = True
     return res
 
@@ -118,7 +118,7 @@ class ResPartner(models.Model):
                     tstate = 'nhabido'
                 self.state = tstate
                             
-                self.name = d['nombre_comercial']                    
+                self.name = d['nombre_comercial'] != '-' and d['nombre_comercial'] or d['nombre']
                 self.registration_name = d['nombre']
                 self.street = d['domicilio_fiscal']
                 self.vat_subjected = True
