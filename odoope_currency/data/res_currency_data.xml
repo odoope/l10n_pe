@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Currencies -->
+        <record id="USDP" model="res.currency">
+            <field name="name">USD</field>
+            <field name="type">purchase</field>
+            <field name="symbol">$</field>
+            <field name="rounding">0.01</field>
+            <field name="position">before</field>
+            <field name="currency_unit_label">Dolares</field>
+            <field name="currency_subunit_label">Centavos</field>
+        </record>
+        
+        <record id="EURP" model="res.currency">
+            <field name="name">EUR</field>
+            <field name="type">purchase</field>
+            <field name="symbol">€</field>
+            <field name="rounding">0.01</field>
+            <field name="position">before</field>
+            <field name="currency_unit_label">Euros</field>
+            <field name="currency_subunit_label">Cents</field>
+        </record>
+        
+        <record id="base.PEN" model="res.currency">
+            <field name="name">PEN</field>
+            <field name="symbol">S/</field>
+            <field name="position">before</field>
+            <field name="currency_unit_label">Soles</field>
+            <field name="currency_subunit_label">Centimos</field>
+        </record>
+
+    </data>
+</odoo>
