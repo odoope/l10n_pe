@@ -39,7 +39,7 @@ Validador RUC y DNI
 Clientes y Proveedores:
 -----------------------
     * Nuevo campo "tipo de documento"
-    * Validacion RUC y DNI
+    * Validacion RUC y DNI (Solo nombres y apellidos.)
 
 Dependencias:
 -------------
