@@ -21,7 +21,7 @@
 
 {
     'name' : 'Factura electronica - Base',
-    'version' : '1.0.1',
+    'version' : '1.0.4',
     'author' : 'Odoo Peru',
     'category' : 'Accounting & Finance',
     'summary': 'Tablas y requisitos mínimos para la factura electrónica.',
@@ -38,11 +38,12 @@ Tablas:
     * Tablas requeridas por la Factura electrónica
 
     """,
-    'website': 'http://odooperu.pe/page/contabilidad',
-    'depends' : ['account','account_invoicing'],
+    'website': 'http://www.odooperu.pe/contabilidad',
+    'depends' : ['base','account'],
     'data': [
-        'views/einvoice_view.xml',
+        'views/einvoice_views.xml',
         'data/einvoice_data.xml',
+	'data/res_currency_data.xml',
         'security/ir.model.access.csv'
     ],
     'qweb' : [

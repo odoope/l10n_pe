@@ -7,6 +7,7 @@ class einvoice_catalog_01(models.Model):
 
     code = fields.Char(string='Codigo', size=4, index=True, required=True)
     name = fields.Char(string='Descripcion', size=128, index=True, required=True)
+    label = fields.Char(string='Label to print', size=256)
     
     @api.multi
     @api.depends('code', 'name')
@@ -109,6 +110,23 @@ class einvoice_catalog_10(models.Model):
 class einvoice_catalog_16(models.Model):
     _name = "einvoice.catalog.16"
     _description = 'Codigos - Tipo de Precio de Venta Unitario'
+
+    code = fields.Char(string='Codigo', size=4, index=True, required=True)
+    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
+	
+    @api.multi
+    @api.depends('code', 'name')
+    def name_get(self):
+        result = []
+        for table in self:
+            l_name = table.code and table.code + ' - ' or ''
+            l_name +=  table.name
+            result.append((table.id, l_name ))
+        return result
+        
+class einvoice_catalog_25(models.Model):
+    _name = "einvoice.catalog.25"
+    _description = 'Codigos - Producto SUNAT'
 
     code = fields.Char(string='Codigo', size=4, index=True, required=True)
     name = fields.Char(string='Descripcion', size=128, index=True, required=True)

@@ -1,0 +1,845 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* odoope_einvoice_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-16 20:22+0000\n"
+"PO-Revision-Date: 2019-01-16 20:22+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.res_config_settings_view_form
+msgid "<strong>Save</strong> this page and come back here to set up the feature."
+msgstr ""
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__partner_id
+msgid "Address"
+msgstr "Dirección"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_res_config_settings__module_odoope_einvoice_of
+msgid "Allow the users to send electronic invoices"
+msgstr "Permitir a los usuarios enviar facturas electrónicas"
+
+#. module: odoope_einvoice_base
+#: selection:account.invoice,discount_type:0
+msgid "Amount"
+msgstr "Monto"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice_line__price_total
+msgid "Amount (with Taxes)"
+msgstr "Total (con inpuestos)"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice_line__amount_discount
+msgid "Amount discount before taxes"
+msgstr "Monto descuento antes de impuestos"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__einv_amount_base
+msgid "Base Amount Total"
+msgstr "Importe base"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_res_currency_rate__rate_pe
+msgid "Cambio"
+msgstr "Cambio"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_res_currency__rate_pe
+msgid "Cambio del dia"
+msgstr "Cambio del día"
+
+#. module: odoope_einvoice_base
+#: code:addons/odoope_einvoice_base/models/account_invoice_refund.py:56
+#, python-format
+msgid "Cannot create a credit note for the invoice which is already reconciled, invoice should be unreconciled first, then only you can add credit note for this invoice."
+msgstr "No de Puede crear una nota de crédito para el comprobante que ya está reconciliado, La factura debe ser sin conciliar primero, entonces solo usted puede agregar una nota de crédito para esta factura."
+
+#. module: odoope_einvoice_base
+#: code:addons/odoope_einvoice_base/models/account_invoice_refund.py:54
+#, python-format
+msgid "Cannot create credit note for the draft/cancelled invoice."
+msgstr "No de puede crear una nota de credito para un comprobante en estado borrador/cancelado."
+
+#. module: odoope_einvoice_base
+#: model:ir.ui.menu,name:odoope_einvoice_base.einvoice_catalog_01_menu
+msgid "Catalog 01 - Codigo de Tipo de documento"
+msgstr "Catalog 01 - Codigo de Tipo de documento"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice__edocument_type
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_journal__edocument_type
+msgid "Catalog 01: Type of electronic document"
+msgstr "Catálogo 01 - Codigo de Tipo de documento"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_journal__credit_edocument
+msgid "Catalog 01: Type of electronic document for Credit Note"
+msgstr "Catálogo 01 - Código de Tipo de documento electrónico para Notas de crédito"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_journal__debit_edocument
+msgid "Catalog 01: Type of electronic document for Debit Note"
+msgstr "Catálogo 01 - Código de Tipo de documento electrónico para Notas de débito"
+
+#. module: odoope_einvoice_base
+#: model:ir.ui.menu,name:odoope_einvoice_base.einvoice_catalog_06_menu
+msgid "Catalog 06 - Tipos de documento de Identidad"
+msgstr "Catálogo 06 - Tipos de documento de Identidad"
+
+#. module: odoope_einvoice_base
+#: model:ir.ui.menu,name:odoope_einvoice_base.einvoice_catalog_07_menu
+msgid "Catalog 07 - Tipo de Afectación del IGV"
+msgstr "Catálogo 07 - Tipo de Afectación del IGV"
+
+#. module: odoope_einvoice_base
+#: model:ir.ui.menu,name:odoope_einvoice_base.einvoice_catalog_08_menu
+msgid "Catalog 08 - Tipos de Sistema de Cálculo del ISC"
+msgstr "Catálogo 08 - Tipos de Sistema de Cálculo del ISC"
+
+#. module: odoope_einvoice_base
+#: model:ir.ui.menu,name:odoope_einvoice_base.einvoice_catalog_09_menu
+msgid "Catalog 09 - Tipo Nota de Credito"
+msgstr "Catálogo 09 - Tipo Nota de Crédito"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice__credit_note_type
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice_refund__credit_note_type
+msgid "Catalog 09: Type of Credit note"
+msgstr "Catálogo 09 - Tipo Nota de Crédito"
+
+#. module: odoope_einvoice_base
+#: model:ir.ui.menu,name:odoope_einvoice_base.einvoice_catalog_10_menu
+msgid "Catalog 10 - Tipo Nota de Debito"
+msgstr "Catalog 10 - Tipo Nota de Debito"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice__debit_note_type
+msgid "Catalog 10: Type of Debit note"
+msgstr "Catálogo 10 - Tipo Nota de Débito"
+
+#. module: odoope_einvoice_base
+#: model:ir.ui.menu,name:odoope_einvoice_base.einvoice_catalog_16_menu
+msgid "Catalog 16 - Tipo de Precio de Venta Unitario"
+msgstr "Catálogo 16 - Tipo de Precio de Venta Unitario"
+
+#. module: odoope_einvoice_base
+#: model:ir.ui.menu,name:odoope_einvoice_base.einvoice_catalog_25_menu
+msgid "Catalog 25 - Codigos de Producto SUNAT"
+msgstr "Catálogo 25 - Códigos de Producto SUNAT"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_einvoice_shop__code
+msgid "Code from SUNAT"
+msgstr "Código de SUNAT"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_einvoice_shop__code
+msgid "Code from SUNAT"
+msgstr "Codigo de SUNAT"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_01__code
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_06__code
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_07__code
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_08__code
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_09__code
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_10__code
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_16__code
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_25__code
+msgid "Codigo"
+msgstr "Código"
+
+#. module: odoope_einvoice_base
+#: model:ir.actions.act_window,name:odoope_einvoice_base.catalog_01_action
+#: model:ir.model,name:odoope_einvoice_base.model_einvoice_catalog_01
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_01_form
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_01_tree
+msgid "Codigo de Tipo de documento"
+msgstr "Código de Tipo de documento"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_einvoice_catalog_25
+msgid "Codigos - Producto SUNAT"
+msgstr "Codigos - Producto SUNAT"
+
+#. module: odoope_einvoice_base
+#: model:ir.actions.act_window,name:odoope_einvoice_base.catalog_16_action
+#: model:ir.model,name:odoope_einvoice_base.model_einvoice_catalog_16
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_16_form
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_16_tree
+msgid "Codigos - Tipo de Precio de Venta Unitario"
+msgstr "Códigos - Tipo de Precio de Venta Unitario"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_einvoice_catalog_07
+#: model:ir.model,name:odoope_einvoice_base.model_einvoice_catalog_08
+msgid "Codigos de Tipo de Afectacion del IGV"
+msgstr "Códigos de Tipo de Afectacion del IGV"
+
+#. module: odoope_einvoice_base
+#: model:ir.actions.act_window,name:odoope_einvoice_base.catalog_09_action
+#: model:ir.model,name:odoope_einvoice_base.model_einvoice_catalog_09
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_09_form
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_10_form
+msgid "Codigos de Tipo de Nota de Credito Electronica"
+msgstr "Códigos de Tipo de Nota de Credito Electronica"
+
+#. module: odoope_einvoice_base
+#: model:ir.actions.act_window,name:odoope_einvoice_base.catalog_10_action
+#: model:ir.model,name:odoope_einvoice_base.model_einvoice_catalog_10
+msgid "Codigos de Tipo de Nota de Debito Electronica"
+msgstr "Códigos de Tipo de Nota de Debito Electronica"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__company_id
+msgid "Company"
+msgstr "Compañia"
+
+#. module: odoope_einvoice_base
+#: selection:res.currency,type:0
+msgid "Compra"
+msgstr ""
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de Configuración"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_01__create_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_06__create_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_07__create_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_08__create_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_09__create_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_10__create_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_16__create_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_25__create_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_01__create_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_06__create_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_07__create_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_08__create_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_09__create_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_10__create_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_16__create_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_25__create_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: odoope_einvoice_base
+#: code:addons/odoope_einvoice_base/models/account_invoice_refund.py:111
+#: model:ir.model,name:odoope_einvoice_base.model_account_invoice_refund
+#, python-format
+msgid "Credit Note"
+msgstr "Nota de Crédito"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_journal__credit_edocument
+msgid "Credit document type"
+msgstr "Tipo de nota de crédito"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__credit_note_type
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice_refund__credit_note_type
+msgid "Credit note type"
+msgstr "Tipo de nota de débito"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_res_currency
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_res_currency_rate
+msgid "Currency Rate"
+msgstr "Taza de Cambio"
+
+#. module: odoope_einvoice_base
+#: model:ir.actions.act_window,name:odoope_einvoice_base.catalog_07_action
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_07_form
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_07_tree
+msgid "Códigos de Tipo de Afectación del IGV"
+msgstr "Códigos de Tipo de Afectación del IGV"
+
+#. module: odoope_einvoice_base
+#: model:ir.actions.act_window,name:odoope_einvoice_base.catalog_08_action
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_08_form
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_08_tree
+msgid "Códigos de Tipos de Sistema de Cálculo del ISC"
+msgstr "Códigos de Tipos de Sistema de Cálculo del ISC"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_journal__debit_edocument
+msgid "Debit document type"
+msgstr "Tipo de documento para Nota de débito"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__debit_note_type
+msgid "Debit note type"
+msgstr "Tipo de nota de débito"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_01__name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_06__name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_07__name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_08__name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_09__name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_10__name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_16__name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_25__name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__amount_discount
+msgid "Discount"
+msgstr "Descuento"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__discount_rate
+msgid "Discount Amount"
+msgstr "Monto de Descuento"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.einvoice_account_invoice_inherit
+msgid "Discount Rate :"
+msgstr "Porcentaje de descuento"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__discount_type
+msgid "Discount Type"
+msgstr "Tipo de descuento"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.einvoice_account_invoice_inherit
+msgid "Discount Type :"
+msgstr "Tipo de descuento"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_01__display_name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_06__display_name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_07__display_name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_08__display_name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_09__display_name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_10__display_name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_16__display_name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_25__display_name
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__origin_document_number
+msgid "Document number"
+msgstr "Número de comprobante"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__origin_document_serie
+msgid "Document serie"
+msgstr "Número de serie"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__einv_number
+msgid "E-invoice Number"
+msgstr "Numero de comprobante electrónico"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__einv_serie
+msgid "E-invoice Serie"
+msgstr "Serie de comprobante electrónico"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_shop_form
+msgid "E-invoice configuration"
+msgstr "Configuración de Factura electrónica"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_shop_form
+msgid "E-invoice configuration"
+msgstr "Configuración del Estado de Factura Electrónica"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.einvoice_account_invoice_inherit
+msgid "E-invoice data"
+msgstr "Datos de Factura electrónica"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_currency_rate_form_inherit
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_currency_rate_tree_inherit
+msgid "Ejm: 3.25"
+msgstr ""
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.res_config_settings_view_form
+msgid "Electronic Invoicing (PE)"
+msgstr "Facturación electrónica (PE)"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__edocument_type
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_journal__edocument_type
+msgid "Electronic document type"
+msgstr "Tipo de comprobante electrónico"
+
+#. module: odoope_einvoice_base
+#: selection:einvoice.catalog.07,type:0
+msgid "Exonerado"
+msgstr "Exonerado"
+
+#. module: odoope_einvoice_base
+#: selection:account.invoice.tax,type_tax_einv:0
+#: selection:account.tax,type_tax_einv:0
+msgid "Exonerated"
+msgstr "Exonerado"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__einv_amount_exonerated
+msgid "Exonerated  Amount"
+msgstr "Monto exonerado"
+
+#. module: odoope_einvoice_base
+#: model:ir.ui.menu,name:odoope_einvoice_base.einvoice_configuration_menu
+msgid "Factura Electronica"
+msgstr "Factura Electrónica"
+
+#. module: odoope_einvoice_base
+#: selection:einvoice.catalog.07,type:0
+msgid "Gravado"
+msgstr "Gravado"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_01__id
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_06__id
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_07__id
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_08__id
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_09__id
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_10__id
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_16__id
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_25__id
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__id
+msgid "ID"
+msgstr "ID"
+
+#. module: odoope_einvoice_base
+#: selection:account.invoice.tax,type_tax_einv:0
+#: selection:account.tax,type_tax_einv:0
+msgid "IGV"
+msgstr "IGV"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__einv_amount_igv
+msgid "IGV Amount"
+msgstr "Monto IGV"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice_line__igv_amount
+msgid "IGV amount"
+msgstr "Monto IGV"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_product_template__igv_type
+msgid "IGV type"
+msgstr "Tipo de IGV"
+
+#. module: odoope_einvoice_base
+#: selection:account.invoice.tax,type_tax_einv:0
+#: selection:account.tax,type_tax_einv:0
+msgid "ISC"
+msgstr "ISC"
+
+#. module: odoope_einvoice_base
+#: selection:einvoice.catalog.07,type:0
+msgid "Inafecto"
+msgstr "Inafecto"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.einvoice_account_invoice_inherit
+msgid "Information"
+msgstr "Información"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Linea de comprobante"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_account_invoice_tax
+msgid "Invoice Tax"
+msgstr "Impuesto de Factura"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice__sent
+msgid "It indicates that the invoice has been sent."
+msgstr "Indica que la factura ha sido enviada."
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_account_journal
+msgid "Journal"
+msgstr "Diario"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__journal_ids
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_shop_form
+msgid "Journals"
+msgstr "Diarios"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_journal__label_to_print
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_01__label
+msgid "Label to print"
+msgstr "Texto a imprimir en el comprobante"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_01____last_update
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_06____last_update
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_07____last_update
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_08____last_update
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_09____last_update
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_10____last_update
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_16____last_update
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_25____last_update
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_01__write_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_06__write_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_07__write_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_08__write_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_09__write_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_10__write_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_16__write_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_25__write_uid
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_01__write_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_06__write_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_07__write_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_08__write_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_09__write_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_10__write_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_16__write_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_25__write_date
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_shop_tree
+msgid "Lista de tiendas y locales"
+msgstr "Lista de tiendas y locales"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_07__no_onerosa
+msgid "No onerosa"
+msgstr "No onerosa"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_shop_form
+msgid "Odoofact"
+msgstr "Odoofact"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.res_config_settings_view_form
+msgid "Odoofact for electronic invoices"
+msgstr "Odoofact para envío de comprobantes electrónicos"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.einvoice_account_invoice_inherit
+msgid "Origin Document"
+msgstr "Documento que afecta"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__origin_document_id
+msgid "Origin document"
+msgstr "Documento que afecta"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__einv_amount_others
+msgid "Other charges"
+msgstr "Otros cargos"
+
+#. module: odoope_einvoice_base
+#: selection:account.invoice.tax,type_tax_einv:0
+#: selection:account.tax,type_tax_einv:0
+msgid "Others"
+msgstr "Otros"
+
+#. module: odoope_einvoice_base
+#: selection:account.invoice,discount_type:0
+msgid "Percentage"
+msgstr "Porcentaje"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__igv_percent
+msgid "Percentage IGV"
+msgstr "Porcentaje de IGV"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__picking_number
+msgid "Picking number"
+msgstr "Número de Guía"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice_line__price_unit_included
+msgid "Price unit IGV included"
+msgstr "Precio unitario IGV incluído"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice_line__price_unit_excluded
+msgid "Price unit excluded"
+msgstr "Precio unitario sin impuestos"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice_line__price_unit_included
+msgid "Price unit with IGV included"
+msgstr "Precio unitario IGV incluído"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice_line__price_unit_excluded
+msgid "Price unit without taxes"
+msgstr "Precio unitario sin impuestos"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de Producto"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_product_template__product_code_sunat
+msgid "Product code SUNAT"
+msgstr "Código de Producto SUNAT"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__code
+msgid "SUNAT Code"
+msgstr "Código SUNAT"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_sale_order
+msgid "Sale Order"
+msgstr "Orden de Venta"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_einvoice_shop__journal_ids
+msgid "Select the from the journal configuration"
+msgstr "Seleccionar la configuración del diario"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__send_email
+msgid "Send Email"
+msgstr "Enviar correo electrónico"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_einvoice_shop__send_email
+msgid "Send email automatically"
+msgstr "Enviar email Automaticamente"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.res_config_settings_view_form
+msgid "Send your electronic invoices by Odoofact"
+msgstr "Enviar conprobantes electrónicos con Odoofact"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__sent
+msgid "Sent to CPE/OSE"
+msgstr "Enviar a CPE/OSE"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__shop_id
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_journal__shop_id
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_sale_order__shop_id
+msgid "Shop"
+msgstr "Tienda"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_einvoice_shop
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_res_company__shop_ids
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_res_users__shop_ids
+#: model:ir.ui.menu,name:odoope_einvoice_base.einvoice_configuration_shop_list_menu
+#: model:ir.ui.menu,name:odoope_einvoice_base.einvoice_configuration_shop_menu
+msgid "Shops"
+msgstr "Tiendas"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__amount_base
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice_line__price_base
+msgid "Subtotal without discounts"
+msgstr "Subtotal sin descuentos"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_account_tax
+msgid "Tax"
+msgstr "Impuesto"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice_tax__type_tax_einv
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_tax__type_tax_einv
+msgid "Tax type"
+msgstr "Tipo de impuestos"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_shop_form
+msgid "Tienda o Local"
+msgstr "Tienda o Local"
+
+#. module: odoope_einvoice_base
+#: model:ir.actions.act_window,name:odoope_einvoice_base.shop_action
+msgid "Tiendas o locales"
+msgstr "Tiendas o locales"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_07__type
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_res_currency__type
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_res_currency_rate__type
+msgid "Tipo"
+msgstr "Tipo"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_09_tree
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_10_tree
+msgid "Tipo de Medio de Pago"
+msgstr "Tipo"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_res_currency__rate_pe
+msgid "Tipo de cambio del dia en formato peruano."
+msgstr "Tipo de cambio del dia en formato peruano"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_res_currency_rate__rate_pe
+msgid "Tipo de cambio en formato peruano. Ejm: 3.25 si $1 = S/. 3.25"
+msgstr "Tipo de cambio en formato peruano. Ejm: 3.25 si $1 = S/. 3.25"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_einvoice_catalog_06
+msgid "Tipo de documento de Identidad"
+msgstr "Tipo de documento de Identidad"
+
+#. module: odoope_einvoice_base
+#: model:ir.actions.act_window,name:odoope_einvoice_base.catalog_06_action
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_06_form
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_catalog_06_tree
+msgid "Tipos de documento de Identidad"
+msgstr "Tipos de documento de Identidad"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__einvoice_of_token
+msgid "Token"
+msgstr "Token"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice_line__igv_amount
+msgid "Total IGV amount"
+msgstr "Total IGV"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice_line__price_total
+msgid "Total amount with taxes"
+msgstr "Importe total con impuestos"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice_line__price_base
+msgid "Total amount without discounts"
+msgstr "Total sin descuentos"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice_line__igv_type
+msgid "Type of IGV"
+msgstr "Tipo de IGV"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__einvoice_of_url
+msgid "URL"
+msgstr "URL"
+
+#. module: odoope_einvoice_base
+#: selection:account.invoice.tax,type_tax_einv:0
+#: selection:account.tax,type_tax_einv:0
+msgid "Unaffected"
+msgstr "Inafecto"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_account_invoice__einv_amount_unaffected
+msgid "Unaffected Amount"
+msgstr "Monto Inafecto"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice__origin_document_id
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice__origin_document_number
+#: model:ir.model.fields,help:odoope_einvoice_base.field_account_invoice__origin_document_serie
+msgid "Used for Credit an debit note"
+msgstr "Usado para notas de crédito y débito"
+
+#. module: odoope_einvoice_base
+#: model:ir.model,name:odoope_einvoice_base.model_res_users
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_shop__user_ids
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.view_shop_form
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: odoope_einvoice_base
+#: model:ir.model.fields,field_description:odoope_einvoice_base.field_einvoice_catalog_06__default
+msgid "Valor por defecto"
+msgstr "Valor por defecto"
+
+#. module: odoope_einvoice_base
+#: model_terms:ir.ui.view,arch_db:odoope_einvoice_base.einvoice_account_invoice_inherit
+msgid "Values"
+msgstr "Valores"
+
+#. module: odoope_einvoice_base
+#: selection:res.currency,type:0
+msgid "Venta"
+msgstr "Venta"
+
+#. module: odoope_einvoice_base
+#: code:addons/odoope_einvoice_base/models/res_currency.py:71
+#, python-format
+msgid "con"
+msgstr "con"
+

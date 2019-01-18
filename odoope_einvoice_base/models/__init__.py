@@ -20,4 +20,5 @@
 ###############################################################################
 
 from . import einvoice
+from . import res_currency
 # eof:__init__.py

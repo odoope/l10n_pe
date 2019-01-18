@@ -22,6 +22,7 @@
                         <group>
                             <field name="code"/>
                             <field name="name"/>
+                            <field name="label"/>
                         </group>
                     </group>                    
                 </form>	
@@ -233,6 +234,39 @@
 		    <field name="view_mode">tree,form</field>
 	    </record>
         
+        
+    <!-- Codigos de Producto SUNAT -->	
+	    <record id="view_catalog_25_tree" model="ir.ui.view">
+            <field name="name">Codigos - Producto SUNAT</field>
+            <field name="model">einvoice.catalog.25</field>            
+            <field name="arch" type="xml">
+                <tree string="Codigos - Producto SUNAT">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+	    </record>        
+	    <record id="view_catalog_25_form" model="ir.ui.view">
+            <field name="name">Codigos - Tipo de Precio de Venta Unitario</field>
+            <field name="model">einvoice.catalog.25</field>            
+            <field name="arch" type="xml">
+                <form string="Codigos - Producto SUNAT">
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </form>	
+            </field>
+	    </record>        
+	    <record model="ir.actions.act_window" id="catalog_25_action">
+		    <field name="name">Codigos - Producto SUNAT</field>
+		    <field name="res_model">einvoice.catalog.25</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+	    </record>
+        
 
     <!-- Menu -->
     
@@ -244,6 +278,7 @@
     <menuitem name="Catalog 09 - Tipo Nota de Credito" id="einvoice_catalog_09_menu" parent="einvoice_configuration_menu" action="catalog_09_action" sequence="9"/>
     <menuitem name="Catalog 10 - Tipo Nota de Debito" id="einvoice_catalog_10_menu" parent="einvoice_configuration_menu" action="catalog_10_action" sequence="10"/>
     <menuitem name="Catalog 16 - Tipo de Precio de Venta Unitario" id="einvoice_catalog_16_menu" parent="einvoice_configuration_menu" action="catalog_16_action" sequence="16"/>
+    <menuitem name="Catalog 25 - Codigos de Producto SUNAT" id="einvoice_catalog_25_menu" parent="einvoice_configuration_menu" action="catalog_25_action" sequence="25"/>
     
 	</data>
 </openerp>

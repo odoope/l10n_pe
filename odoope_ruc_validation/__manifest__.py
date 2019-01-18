@@ -39,7 +39,7 @@ Validador RUC y DNI
 Clientes y Proveedores:
 -----------------------
     * Nuevo campo "tipo de documento"
-    * Validacion RUC y DNI (Solo nombres y apellidos.)
+    * Validacion RUC y DNI
 
 Dependencias:
 -------------
@@ -52,10 +52,9 @@ Este módulo esta basado en el módulo de Alex Cuellar en https://github.com/ale
 
     """,
     'website': 'http://odooperu.pe/page/contabilidad',
-    'depends' : ['account','odoope_einvoice_base','odoope_toponyms','crm'],
+    'depends' : ['account','odoope_einvoice_base','odoope_toponyms'],
     'data': [
         'views/res_partner_view.xml',
-        'views/crm_lead_view.xml',
     ],
     'qweb' : [
 

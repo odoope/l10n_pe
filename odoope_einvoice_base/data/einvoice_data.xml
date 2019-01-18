@@ -99,6 +99,7 @@
         <!-- Catalogo 10  - Codigos de Tipo de Nota de Debito Electronica  -->
         <record id="e10_01" model="einvoice.catalog.10"><field name="code">01</field><field name="name">Intereses por mora</field></record>
         <record id="e10_02" model="einvoice.catalog.10"><field name="code">02</field><field name="name">Aumento en el valor</field></record>
+        <record id="e10_03" model="einvoice.catalog.10"><field name="code">03</field><field name="name">Penalidades/ otros conceptos</field></record>
         
         <!-- Catalogo 16  - Códigos – Tipo de Precio de Venta Unitario  -->
         <record id="e16_01" model="einvoice.catalog.16"><field name="code">01</field><field name="name">Precio unitario (incluye el IGV)</field></record>

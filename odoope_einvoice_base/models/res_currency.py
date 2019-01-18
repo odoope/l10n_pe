@@ -6,6 +6,11 @@ import logging
 import math
 import re
 import time
+try:
+    from num2words import num2words
+except ImportError:
+    logging.getLogger(__name__).warning("The num2words python library is not installed, l10n_mx_edi features won't be fully available.")
+    num2words = None
 
 from odoo import api, fields, models, tools, _
 
@@ -13,7 +18,6 @@ TYPES = [('purchase','Compra'),('sale','Venta')]
 
 class Currency(models.Model):
     _inherit = "res.currency"
-    _description = "Currency"
     
     rate_pe = fields.Float(compute='_compute_current_rate_pe', string='Cambio del dia', digits=(12, 4),
                         help='Tipo de cambio del dia en formato peruano.')
@@ -37,15 +41,44 @@ class Currency(models.Model):
         for currency in self:
             currency.rate_pe = currency_rates.get(currency.id) or 1.0
     
+    #~ Replace the original label for Amount to text
+    @api.multi
+    def amount_to_text(self, amount):
+        self.ensure_one()
+        def _num2words(number, lang):
+            try:
+                return num2words(number, lang=lang).title()
+            except NotImplementedError:
+                return num2words(number, lang='en').title()
+
+        if num2words is None:
+            logging.getLogger(__name__).warning("The library 'num2words' is missing, cannot render textual amounts.")
+            return ""
+
+        formatted = "%.{0}f".format(self.decimal_places) % amount
+        parts = formatted.partition('.')
+        integer_value = int(parts[0])
+        fractional_value = int(parts[2] or 0)
+        if fractional_value == 0:
+            fractional_value = '00'
+
+        lang_code = self.env.context.get('lang') or self.env.user.lang
+        lang = self.env['res.lang'].search([('code', '=', lang_code)])
+        amount_words = tools.ustr('{amt_value}').format(
+                        amt_value=_num2words(integer_value, lang=lang.iso_code)
+                        )
+        #~ For decimals
+        amount_words += ' ' + _('con') + tools.ustr(' {amt_value}/100 {amt_word}').format(
+                    amt_value= fractional_value,
+                    amt_word=self.currency_unit_label,
+                    )
+        return amount_words
+        
     #~ Agrega tipo de moneda en nombre
     @api.multi
     def name_get(self):
         return [(currency.id, tools.ustr(currency.name + ' - ' + dict(TYPES)[currency.type])) for currency in self]
     
-    _sql_constraints = [
-        ('unique_name', 'unique (name,type)', 'Solo puede existir una moneda con el mismo tipo de cambio!'),
-        ('rounding_gt_zero', 'CHECK (rounding>0)', 'The rounding factor must be greater than 0!')
-    ]
 
 class CurrencyRate(models.Model):
     _inherit = "res.currency.rate"
@@ -58,3 +91,4 @@ class CurrencyRate(models.Model):
     def onchange_rate_pe(self):
         if self.rate_pe > 0:
             self.rate = 1 / self.rate_pe
+       
