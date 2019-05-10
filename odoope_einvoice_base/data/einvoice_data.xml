@@ -53,15 +53,6 @@
         <record id="e01_98" model="einvoice.catalog.01"><field name="code">98</field><field name="name">Nota de Débito - No Domiciliado</field></record>
         <record id="e01_99" model="einvoice.catalog.01"><field name="code">99</field><field name="name">Otros -  Consolidado de Boletas de Venta</field></record>
         
-        <!-- Catalogo 06 - Tipos de documento de Identitdad -->
-        <record id="e06_0" model="einvoice.catalog.06"><field name="code">0</field><field name="name">DOC.TRIB.NO.DOM.SIN.RUC</field><field name="default">-</field></record>
-        <record id="e06_1" model="einvoice.catalog.06"><field name="code">1</field><field name="name">DNI</field><field name="default">00000000</field></record>
-        <record id="e06_4" model="einvoice.catalog.06"><field name="code">4</field><field name="name">Carnet de Extrangería</field></record>
-        <record id="e06_6" model="einvoice.catalog.06"><field name="code">6</field><field name="name">RUC</field></record>
-        <record id="e06_7" model="einvoice.catalog.06"><field name="code">7</field><field name="name">Pasaporte</field></record>
-        <record id="e06_A" model="einvoice.catalog.06"><field name="code">A</field><field name="name">Cédula Diplomática de Identidad</field></record>
-        <record id="e06_-" model="einvoice.catalog.06"><field name="code">-</field><field name="name">Varios - Ventas menores a S/.700.00 y otros</field></record>
-        
         <!-- Catalogo 07  - Códigos de Tipo de Afectación del IGV  -->
         <record id="e07_10" model="einvoice.catalog.07"><field name="code">10</field><field name="name">Gravado - Operación Onerosa</field><field name="no_onerosa" eval="False"/><field name="type">gravado</field></record>
         <record id="e07_11" model="einvoice.catalog.07"><field name="code">11</field><field name="name">Gravado – Retiro por premio</field><field name="no_onerosa" eval="True"/><field name="type">gravado</field></record>

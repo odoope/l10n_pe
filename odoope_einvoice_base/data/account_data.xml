@@ -7,7 +7,7 @@
             <field name="name">Exonerado</field>
             <field name="description">Exonerados</field>
             <field name="type_tax_use">sale</field>
-            <field name="type_tax_einv">exonerated</field>
+            <field name="einv_type_tax">exonerated</field>
             <field name="amount_type">fixed</field>
             <field name="amount">0.0</field>
         </record>
@@ -15,7 +15,7 @@
             <field name="name">Inafecto</field>
             <field name="description">Inafectos</field>
             <field name="type_tax_use">sale</field>
-            <field name="type_tax_einv">unaffected</field>
+            <field name="einv_type_tax">unaffected</field>
             <field name="amount_type">fixed</field>
             <field name="amount">0.0</field>
         </record>

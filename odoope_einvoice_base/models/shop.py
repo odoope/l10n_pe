@@ -18,7 +18,3 @@ class EinvoiceShop(models.Model):
     user_ids = fields.Many2many('res.users', 'einvoice_shop_users_rel', 'shop_id', 'user_id', string='Users')
     
     
-    
-    
-    
-    
