@@ -39,12 +39,19 @@ Tablas:
 
     """,
     'website': 'http://www.odooperu.pe/contabilidad',
-    'depends' : ['base','account'],
+    'depends' : ['base','account','odoope_ruc_validation'],
     'data': [
         'views/einvoice_views.xml',
+        'views/account_views.xml',
+        'views/account_invoice_view.xml',
+        'views/product_product_views.xml',
+        'views/res_config_settings_views.xml',
+        'views/res_users_view.xml',
+        'views/shop_views.xml',
         'data/einvoice_data.xml',
-	'data/res_currency_data.xml',
-        'security/ir.model.access.csv'
+        'data/account_data.xml',
+        'security/einvoice_base_security.xml',
+        'security/ir.model.access.csv',
     ],
     'qweb' : [
 
@@ -62,6 +69,7 @@ Tablas:
     'auto_install': False,
     'application': True,
     "sequence": 1,
+    'post_init_hook': '_create_shop',
 }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

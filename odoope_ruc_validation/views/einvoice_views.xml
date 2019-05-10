@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>	
+
+    <!-- Tipos de documento de Identidad -->	
+	    <record id="view_catalog_06_tree" model="ir.ui.view">
+            <field name="name">Tipos de documento de Identidad</field>
+            <field name="model">einvoice.catalog.06</field>
+            <field name="arch" type="xml">
+                <tree string="Tipos de documento de Identidad">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="default"/>
+                </tree>
+            </field>
+	    </record>        
+	    <record id="view_catalog_06_form" model="ir.ui.view">
+            <field name="name">Tipos de documento de Identidad</field>
+            <field name="model">einvoice.catalog.06</field>            
+            <field name="arch" type="xml">
+                <form string="Tipos de documento de Identidad">
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="default"/>
+                        </group>
+                    </group>                    
+                </form>	
+            </field>
+	    </record>        
+	    <record model="ir.actions.act_window" id="catalog_06_action">
+		    <field name="name">Tipos de documento de Identidad</field>
+		    <field name="res_model">einvoice.catalog.06</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+	    </record>
+
+	</data>
+</openerp>

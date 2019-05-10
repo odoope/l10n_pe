@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <!-- Catalogo 06 - Tipos de documento de Identitdad -->
+        <record id="e06_0" model="einvoice.catalog.06"><field name="code">0</field><field name="name">DOC.TRIB.NO.DOM.SIN.RUC</field><field name="default">-</field></record>
+        <record id="e06_1" model="einvoice.catalog.06"><field name="code">1</field><field name="name">DNI</field><field name="default">00000000</field></record>
+        <record id="e06_4" model="einvoice.catalog.06"><field name="code">4</field><field name="name">Carnet de Extrangería</field></record>
+        <record id="e06_6" model="einvoice.catalog.06"><field name="code">6</field><field name="name">RUC</field></record>
+        <record id="e06_7" model="einvoice.catalog.06"><field name="code">7</field><field name="name">Pasaporte</field></record>
+        <record id="e06_A" model="einvoice.catalog.06"><field name="code">A</field><field name="name">Cédula Diplomática de Identidad</field></record>
+        <record id="e06_-" model="einvoice.catalog.06"><field name="code">-</field><field name="name">Varios - Ventas menores a S/.700.00 y otros</field></record>
+       
+    </data>
+</openerp>

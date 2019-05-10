@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>	
+
+    <!-- Shop -->	
+	    <record id="view_shop_tree" model="ir.ui.view">
+            <field name="name">Shops</field>
+            <field name="model">einvoice.shop</field>
+            <field name="arch" type="xml">
+                <tree string="List of shops">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+	    </record>        
+	    <record id="view_shop_form" model="ir.ui.view">
+            <field name="name">Shop</field>
+            <field name="model">einvoice.shop</field>            
+            <field name="arch" type="xml">
+                <form string="Shop">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_id"/>
+                        </group>
+                        <group>
+                            <field name="code"/>
+                            <field name="send_email"/>
+                        </group>
+                    </group> 
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                        </group>
+                    </group> 
+                    <notebook>
+                        <page string="Journals" name="journals">
+                            <field name="journal_ids" readonly="True"/>
+                        </page>
+                        <page string="Users" name="users">
+                            <field name="user_ids" widget="many2many_kanban" options="{'not_delete': True}">
+                            </field>
+                        </page>
+                    </notebook>                   
+                </form>	
+            </field>
+	    </record>        
+	    <record model="ir.actions.act_window" id="shop_action">
+		    <field name="name">Shops</field>
+		    <field name="res_model">einvoice.shop</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+	    </record>
+
+    
+    <menuitem name="Shops" id="einvoice_configuration_shop_menu" parent="account.menu_finance_configuration" sequence="5"/>
+    <menuitem name="Shops" id="einvoice_configuration_shop_list_menu" parent="einvoice_configuration_shop_menu" action="shop_action" sequence="1"/>
+    
+	</data>
+</openerp>

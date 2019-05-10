@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_users_form_inherited" model="ir.ui.view">
+        <field name="name">res.users.form.inherited</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <notebook position="before">
+                <group>
+                    <group>
+                        <field name="shop_ids" widget="many2many_tags"/>
+                    </group>
+                </group>
+            </notebook>            
+        </field>
+    </record>    
+</odoo>
