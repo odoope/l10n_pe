@@ -19,26 +19,5 @@
 #
 ###############################################################################
 
-from . import models
-from . import wizard
+from . import einvoice_ose
 # eof:__init__.py
-
-from odoo import api, SUPERUSER_ID
-
-
-def _create_shop(cr, registry):
-    """ This hook is used to add a shop on existing companies
-    when module l10n_pe is installed.
-    """
-    env = api.Environment(cr, SUPERUSER_ID, {})
-    company_ids = env['res.company'].search([])
-    company_with_shop = env['einvoice.shop'].search([]).mapped('company_id')
-    company_without_shop = company_ids - company_with_shop
-    for company in company_without_shop:
-        shop_id = env['einvoice.shop'].create({
-            'name': '%s %s' % (company.name, company.id),
-            'code': '0000',
-            'company_id': company.id,
-            'partner_id': company.partner_id.id,
-            'user_ids': [(6, 0, env['res.users'].search([('company_id', '=', company.id)]).ids)],
-        })

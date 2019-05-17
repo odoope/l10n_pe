@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="0">
+        <!-- E-invoice OSE install form view -->
+        <record id="einvoice_ose_install_view_form" model="ir.ui.view">
+            <field name="name">E-invoice OSE install.view.form</field>
+            <field name="model">einvoice.ose.install</field>
+            <field name="arch" type="xml">
+                <form string="Install E-invoice by OSE">
+                    <sheet>
+                            <field name="message" readonly="True"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- E-invoice OSE install action window -->
+        <record id="einvoice_ose_install_action" model="ir.actions.act_window">
+            <field name="name">E-invoice OSE install</field>
+            <field name="res_model">einvoice.ose.install</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="einvoice_ose_install_view_form"/>
+            <field name="target">new</field>
+        </record>
+        
+    </data>
+</odoo>

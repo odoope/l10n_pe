@@ -6,9 +6,9 @@
 		<field name="inherit_id" ref="account.invoice_form"/>
 		<field name="type">form</field>
 		<field name="arch" type="xml"> 
-            <!-- <button name="action_invoice_cancel" position="replace">
-                <button name="action_invoice_cancel" type="object"  attrs="{'invisible':['|',('state', 'not in',['draft','proforma2','open']),('ose_accepted','=',True)]}"  string="Cancelar Factura" groups="base.group_no_one"/>
-            </button> -->
+            <button name="action_invoice_draft" position="after">
+				<button name="%(odoope_einvoice_base.einvoice_ose_install_action)d" string="Send to OSE" type="action" class="btn btn-primary" attrs="{'invisible':[('state','not in',['open','paid'])]}"/>                
+			</button>  
             <field name="journal_id" position="replace"/>
             <field name="type" position="replace"/>
             <field name="fiscal_position_id" position="after">
