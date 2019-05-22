@@ -13,9 +13,11 @@ class AccountInvoice(models.Model):
     
     _inherit = 'account.invoice'      
     
-    # ~ @api.model
-    # ~ def _get_default_shop(self):
-        # ~ return self.env['einvoice.shop'].search(limit=1)
+    """ @api.model
+    def _get_default_shop(self):
+        if not self.env.user.shop_ids:
+            return False
+        return self.env['einvoice.shop'].search([('id','in',self.env.user.shop_ids.ids)], limit=1) """
     
     amount_base = fields.Monetary(string='Subtotal',
         store=True, readonly=True, compute='_compute_amount', track_visibility='always')
@@ -43,14 +45,13 @@ class AccountInvoice(models.Model):
     origin_document_number = fields.Char(string='Document number', help='Used for Credit an debit note')
     picking_number = fields.Char(string='Picking number')
     sent_ose = fields.Boolean(string='Sent to OSE')
-    shop_id = fields.Many2one('einvoice.shop', string='Shop')
+    shop_id = fields.Many2one('einvoice.shop', string='Shop', related='journal_id.shop_id', store=True)
     
     # Onchange created for getting the default edocument type from the journal
     @api.onchange('journal_id')
     def onchange_edocument_type(self):        
         if self.journal_id:
             self.edocument_type = self.journal_id.edocument_type
-            self.shop_id = self.journal_id.shop_id
     
     @api.one
     @api.depends('invoice_line_ids.price_subtotal', 'invoice_line_ids.price_base', 'tax_line_ids.amount',
@@ -124,7 +125,7 @@ class AccountInvoice(models.Model):
     def _prepare_tax_line_vals(self, line, tax):
         #~ Adding Type of tax IGV, ISC u others
         vals = super(AccountInvoice, self)._prepare_tax_line_vals(line, tax)
-        vals.update({'type_tax_einv':self.env['account.tax'].browse(tax['id']).einv_type_tax})
+        vals.update({'einv_type_tax':self.env['account.tax'].browse(tax['id']).einv_type_tax})
         return vals    
         
 class AccountInvoiceLine(models.Model):
