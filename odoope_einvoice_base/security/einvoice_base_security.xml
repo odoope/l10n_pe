@@ -19,7 +19,7 @@
         <field name="name">Invoice multi-shop</field>
         <field name="model_id" ref="model_account_invoice"/>
         <field name="global" eval="False"/>
-        <field name="domain_force">['|',('shop_id','in',user.shop_ids.ids),('type','not in',['out_invoice','out_refund'])]</field>
+        <field name="domain_force">['|','|',('shop_id','in',user.shop_ids.ids),('shop_id','=',False),('type','not in',['out_invoice','out_refund'])]</field>
         <field name="groups" eval="[(4, ref('base.group_user'))]"/>
     </record>
     <record id="account_invoice_manager_rule" model="ir.rule">
@@ -29,11 +29,12 @@
         <field name="domain_force">[(1,'=',1)]</field>
         <field name="groups" eval="[(6, 0, [ref('base.group_erp_manager'), ref('account.group_account_manager')])]"/>
     </record>
+
     <record id="account_journal_rule" model="ir.rule">
         <field name="name">Journal multi-shop</field>
         <field name="model_id" ref="model_account_journal"/>
         <field name="global" eval="False"/>
-        <field name="domain_force">['|',('shop_id','in',user.shop_ids.ids),('shop_id','=',False)]</field>
+        <field name="domain_force">['|','|',('shop_id','in',user.shop_ids.ids),('shop_id','=',False),('shop_id','=',False)]</field>
         <field name="groups" eval="[(4, ref('base.group_user'))]"/>
     </record>
     <record id="account_journal_manager_rule" model="ir.rule">
@@ -43,5 +44,6 @@
         <field name="domain_force">[(1,'=',1)]</field>
         <field name="groups" eval="[(6, 0, [ref('base.group_erp_manager'), ref('account.group_account_manager')])]"/>
     </record>
+
 </data>
 </odoo>

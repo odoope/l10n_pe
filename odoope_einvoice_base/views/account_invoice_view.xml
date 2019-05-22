@@ -15,7 +15,7 @@
                 <field name="type"/>
             </field>
             <field name="date_invoice" position="after">
-                <field name="shop_id" required="True" options="{'no_create': True,'no_open': True}"/>
+                <field name="shop_id" options="{'no_create': True,'no_open': True}"/>
             </field>
             <field name="user_id" position="after">
                 <field name="picking_number"/>
