@@ -9,7 +9,7 @@ from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.exceptions import UserError, ValidationError
 from odoo import api, fields, models, _
 
-class AccountInvoice(models.Model):
+class AccountInvoice(models.Model): 
     
     _inherit = 'account.invoice'      
     
