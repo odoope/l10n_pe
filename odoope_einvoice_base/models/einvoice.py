@@ -378,7 +378,7 @@ class einvoice_catalog_25(models.Model):
             result.append((table.id, l_name ))
         return result
     
-    @api.model
+    """ @api.model
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
         args = args or []
         domain = []
@@ -388,7 +388,7 @@ class einvoice_catalog_25(models.Model):
                 domain = ['&', '!'] + domain[1:]
         ids = self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
         return self.browse(ids).name_get()
-
+ """
 
 class einvoice_catalog_51(models.Model):
     _name = "einvoice.catalog.51"
