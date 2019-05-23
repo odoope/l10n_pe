@@ -20,23 +20,26 @@ class AccountInvoice(models.Model):
         return self.env['einvoice.shop'].search([('id','in',self.env.user.shop_ids.ids)], limit=1) """
     
     amount_base = fields.Monetary(string='Subtotal',
-        store=True, readonly=True, compute='_compute_amount', track_visibility='always')
+        store=True, readonly=True, compute='_compute_amount', track_visibility='always', help='Total without discounts and taxes')
     amount_discount = fields.Monetary(string='Discount', store=True, readonly=True, compute='_compute_amount',
                                       track_visibility='always')
     global_discount = fields.Monetary(string='Global discount', store=True, readonly=True, compute='_compute_amount',
                                       track_visibility='always')
+    discount_description = fields.Char('Discount description')
+    discount_product = fields.Many2one('product.product', string='Apply discount as', domain=[('type','=','service')])
     discount_type = fields.Selection([('percent', 'Percentage'), ('amount', 'Amount')], string='Discount Type',
                                      readonly=True, states={'draft': [('readonly', False)]}, default='percent')
     discount_rate = fields.Float('Discount Amount', digits=(16, 2), readonly=True, states={'draft': [('readonly', False)]})
     edocument_type = fields.Many2one('einvoice.catalog.01', string='Electronic document type', help='Catalog 01: Type of electronic document')
     credit_note_type = fields.Many2one('einvoice.catalog.09', string='Credit note type', help='Catalog 09: Type of Credit note')
     debit_note_type = fields.Many2one('einvoice.catalog.10', string='Debit note type', help='Catalog 10: Type of Debit note')
-    einv_amount_base = fields.Monetary(string='Base Amount', store=True, readonly=True, compute='_compute_amount', track_visibility='always')
+    einv_amount_base = fields.Monetary(string='Base Amount', store=True, readonly=True, compute='_compute_amount', track_visibility='always', help='Total with discounts and before taxes')
     einv_amount_exonerated = fields.Monetary(string='Exonerated  Amount', store=True, compute='_compute_amount', track_visibility='always')
     einv_amount_free = fields.Monetary(string='Free Amount', store=True, compute='_compute_amount', track_visibility='always')
     einv_amount_unaffected = fields.Monetary(string='Unaffected Amount', store=True, compute='_compute_amount', track_visibility='always')
     einv_amount_igv = fields.Monetary(string='IGV Amount', store=True, compute='_compute_amount', track_visibility='always')
     einv_amount_others = fields.Monetary(string='Other charges', store=True, compute='_compute_amount', track_visibility='always')    
+    einv_amount_untaxed = fields.Monetary(string='Total before taxes', store=True, compute='_compute_amount', track_visibility='always', help='Total before taxes, all discounts included')   
     einv_serie = fields.Char(string='E-invoice Serie', compute='_get_einvoice_number', store=True)
     einv_number = fields.Integer(string='E-invoice Number', compute='_get_einvoice_number', store=True)
     igv_percent = fields.Integer(string="Percentage IGV", compute='_get_percentage_igv')
@@ -59,7 +62,7 @@ class AccountInvoice(models.Model):
     def _compute_amount(self):
         sign = self.type in ['in_refund', 'out_refund'] and -1 or 1
         super(AccountInvoice, self)._compute_amount()
-        self.global_discount = sum(line.price_total for line in self.invoice_line_ids.filtered(lambda r: r.price_base * sign < 0)) * sign * -1
+        self.global_discount = sum(line.price_base for line in self.invoice_line_ids.filtered(lambda r: r.price_base * sign < 0)) * sign * -1
         self.amount_discount = sum((line.price_base * line.discount)/100 for line in self.invoice_line_ids.filtered(lambda r: r.free_product == False))
         self.amount_base = sum(line.price_base for line in self.invoice_line_ids.filtered(lambda r: r.price_total > 0))
         #~ E-invoice amounts
@@ -69,6 +72,7 @@ class AccountInvoice(models.Model):
         self.einv_amount_unaffected = sum(line.base for line in self.tax_line_ids.filtered(lambda r: r.einv_type_tax == 'unaffected'))
         self.einv_amount_igv = sum(line.amount_total for line in self.tax_line_ids.filtered(lambda r: r.einv_type_tax == 'igv'))
         self.einv_amount_others = sum(line.amount_total for line in self.tax_line_ids.filtered(lambda r: r.einv_type_tax == 'others'))
+        self.einv_amount_untaxed = self.einv_amount_base - self.einv_amount_free 
     
     @api.multi
     @api.depends('move_id.name','move_name')
@@ -104,8 +108,32 @@ class AccountInvoice(models.Model):
                         self.origin_document_serie = self.origin_document_id.reference.split('-')[0]
                         self.origin_document_number = self.origin_document_id.reference.split('-')[1]
     
-    @api.onchange('discount_type', 'discount_rate', 'invoice_line_ids')
-    def onchange_discount_rate(self):
+    '''
+    @api.multi
+    def _create_global_discount(self):
+        self.ensure_one()
+        if self.discount_rate != 0.0:
+            if self.discount_type == 'percent':
+                for line in inv.invoice_line_ids:
+                    line.discount = inv.discount_rate
+            price_unit = 
+            values = [{
+                    'name': _("Discount: ") + (self.discount_description or _("Others")),
+                    'product_id': program.discount_line_product_id.id,
+                    'price_unit': - self._get_reward_values_discount_fixed_amount(program),
+                    'product_uom_qty': 1.0,
+                    'product_uom': program.discount_line_product_id.uom_id.id,
+                    'is_reward_line': True,
+                    'tax_id': [(4, tax.id, False) for tax in program.discount_line_product_id.taxes_id],
+                }]
+            self.write({'order_line': [(0, False, values)]})
+    '''
+
+    def onchange_discount_product(self):
+        if self.discount_product:
+            self.discount_description = self.discount_product.name
+
+    """ def onchange_discount_rate(self):
         for inv in self:
             if inv.discount_rate != 0.0:
                 if inv.discount_type == 'percent':
@@ -120,7 +148,7 @@ class AccountInvoice(models.Model):
                     else:
                         discount = inv.discount_rate
                     for line in inv.invoice_line_ids:
-                        line.discount = discount
+                        line.discount = discount """
                     
     def _prepare_tax_line_vals(self, line, tax):
         #~ Adding Type of tax IGV, ISC u others
@@ -139,7 +167,7 @@ class AccountInvoiceLine(models.Model):
     free_product = fields.Boolean('Free', compute='_compute_price', store=True, default=False)
     igv_type = fields.Many2one('einvoice.catalog.07', string="Type of IGV", default=_get_igv_type)
     igv_amount = fields.Monetary(string='IGV amount',readonly=True, compute='_compute_price', help="Total IGV amount")
-    price_base = fields.Monetary(string='Subtotal without discounts', readonly=True, compute='_compute_price', help="Total amount without discounts")
+    price_base = fields.Monetary(string='Subtotal without discounts', readonly=True, compute='_compute_price', help="Total amount without discounts and taxes")
     price_total = fields.Monetary(string='Amount (with Taxes)',
         store=True, readonly=True, compute='_compute_price', help="Total amount with taxes")
     price_unit_excluded = fields.Monetary(string='Price unit excluded', readonly=True, compute='_compute_price', help="Price unit without taxes")
@@ -192,7 +220,7 @@ class AccountInvoiceLine(models.Model):
             self.amount_free = self.price_unit_excluded * self.quantity
         else:
             self.amount_discount = (self.price_unit_excluded * self.discount * self.quantity) / 100
-            self.igv_amount = self.igv_amount > 0.01 and self.igv_amount or 0.02 # The IGV must be > 0.01, i't mandatory in Odoofact
+            self.igv_amount = abs(self.igv_amount) > 0.01 and abs(self.igv_amount) or 0.02 # The IGV must be > 0.01, i't mandatory in Odoofact
             self.igv_type = self.env['einvoice.catalog.07'].search([('code','=','10')], limit=1)
             self.free_product = False
     

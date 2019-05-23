@@ -7,13 +7,10 @@
 		<field name="arch" type="xml">
 			<field name="type" position="after">
                 <field name="shop_id" options="{'no_create': True,'no_open': True}"/>
-                <field name="edocument_type"/>
-                <field name="edocument_credit"/>
-                <field name="edocument_debit"/>
-            </field>                
-			<field name="code" position="after">
-                <field name="label_to_print"/>
-            </field>                
+                <field name="edocument_type" attrs="{'required':[('type','in',['sale'])], 'invisible':[('type','not in',['sale'])]}"/>
+                <field name="edocument_credit" attrs="{'required':[('type','in',['sale'])], 'invisible':[('type','not in',['sale'])]}"/>
+                <field name="edocument_debit" attrs="{'required':[('type','in',['sale'])], 'invisible':[('type','not in',['sale'])]}"/>
+            </field>                              
 		</field>
 	</record>
     
