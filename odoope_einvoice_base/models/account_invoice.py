@@ -13,23 +13,12 @@ class AccountInvoice(models.Model):
     
     _inherit = 'account.invoice'      
     
-    """ @api.model
-    def _get_default_shop(self):
-        if not self.env.user.shop_ids:
-            return False
-        return self.env['einvoice.shop'].search([('id','in',self.env.user.shop_ids.ids)], limit=1) """
-    
     amount_base = fields.Monetary(string='Subtotal',
         store=True, readonly=True, compute='_compute_amount', track_visibility='always', help='Total without discounts and taxes')
     amount_discount = fields.Monetary(string='Discount', store=True, readonly=True, compute='_compute_amount',
                                       track_visibility='always')
     global_discount = fields.Monetary(string='Global discount', store=True, readonly=True, compute='_compute_amount',
                                       track_visibility='always')
-    discount_description = fields.Char('Discount description')
-    discount_product = fields.Many2one('product.product', string='Apply discount as', domain=[('type','=','service')])
-    discount_type = fields.Selection([('percent', 'Percentage'), ('amount', 'Amount')], string='Discount Type',
-                                     readonly=True, states={'draft': [('readonly', False)]}, default='percent')
-    discount_rate = fields.Float('Discount Amount', digits=(16, 2), readonly=True, states={'draft': [('readonly', False)]})
     edocument_type = fields.Many2one('einvoice.catalog.01', string='Electronic document type', help='Catalog 01: Type of electronic document')
     credit_note_type = fields.Many2one('einvoice.catalog.09', string='Credit note type', help='Catalog 09: Type of Credit note')
     debit_note_type = fields.Many2one('einvoice.catalog.10', string='Debit note type', help='Catalog 10: Type of Debit note')
@@ -107,48 +96,6 @@ class AccountInvoice(models.Model):
                     if len(reference.split('-')) == 2:
                         self.origin_document_serie = self.origin_document_id.reference.split('-')[0]
                         self.origin_document_number = self.origin_document_id.reference.split('-')[1]
-    
-    '''
-    @api.multi
-    def _create_global_discount(self):
-        self.ensure_one()
-        if self.discount_rate != 0.0:
-            if self.discount_type == 'percent':
-                for line in inv.invoice_line_ids:
-                    line.discount = inv.discount_rate
-            price_unit = 
-            values = [{
-                    'name': _("Discount: ") + (self.discount_description or _("Others")),
-                    'product_id': program.discount_line_product_id.id,
-                    'price_unit': - self._get_reward_values_discount_fixed_amount(program),
-                    'product_uom_qty': 1.0,
-                    'product_uom': program.discount_line_product_id.uom_id.id,
-                    'is_reward_line': True,
-                    'tax_id': [(4, tax.id, False) for tax in program.discount_line_product_id.taxes_id],
-                }]
-            self.write({'order_line': [(0, False, values)]})
-    '''
-
-    def onchange_discount_product(self):
-        if self.discount_product:
-            self.discount_description = self.discount_product.name
-
-    """ def onchange_discount_rate(self):
-        for inv in self:
-            if inv.discount_rate != 0.0:
-                if inv.discount_type == 'percent':
-                    for line in inv.invoice_line_ids:
-                        line.discount = inv.discount_rate
-                else:
-                    total = discount = 0.0
-                    for line in inv.invoice_line_ids:
-                        total += (line.quantity * line.price_unit)
-                    if total != 0:
-                        discount = (inv.discount_rate / total) * 100
-                    else:
-                        discount = inv.discount_rate
-                    for line in inv.invoice_line_ids:
-                        line.discount = discount """
                     
     def _prepare_tax_line_vals(self, line, tax):
         #~ Adding Type of tax IGV, ISC u others
