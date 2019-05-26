@@ -119,6 +119,7 @@
                 <field name="igv_amount"/>
                 <field name="amount_discount"/>
                 <field name="price_total"/>
+                <field name="price_subtotal"/>
             </field>
         </field>
     </record>
