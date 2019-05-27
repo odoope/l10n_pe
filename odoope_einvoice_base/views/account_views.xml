@@ -13,10 +13,7 @@
             </field>                              
 		</field>
 	</record>
-    
-<!--
-    Taxes
--->
+
     <record id="view_tax_form_inherit" model="ir.ui.view">
         <field name="name">account.tax.form</field>
         <field name="model">account.tax</field>
@@ -26,6 +23,5 @@
                 <field name="einv_type_tax"/>
             </field>            
         </field>
-    </record>
-    		 
+    </record>    		 
 </odoo>

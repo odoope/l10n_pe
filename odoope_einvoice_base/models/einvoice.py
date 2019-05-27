@@ -1,13 +1,32 @@
 # -*- coding: utf-8 -*-
+###############################################################################
+#
+#    OpenERP, Open Source Management Solution
+#    Copyright (C) 2009-TODAY Odoo Peru(<http://www.odooperu.pe>).
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Lesser General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Lesser General Public License for more details.
+#
+#    You should have received a copy of the GNU Lesser General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+###############################################################################
+
 from odoo import models, fields, api
 
-class einvoice_catalog_01(models.Model):
-    _name = "einvoice.catalog.01"
-    _description = 'Codigo de Tipo de documento'
+class EinvoiceCatalogtmpl(models.Model):
+    _name = 'einvoice.catalog.tmpl'
+    _description = 'Catalog Template'
 
     code = fields.Char(string='Code', size=4, index=True, required=True)
     name = fields.Char(string='Description', size=128, index=True, required=True)
-    label = fields.Char(string='Label to print', size=256)
 
     @api.multi
     @api.depends('code', 'name')
@@ -19,519 +38,182 @@ class einvoice_catalog_01(models.Model):
             result.append((table.id, l_name ))
         return result
 
-class einvoice_catalog_05(models.Model):
+class EinvoiceCatalog01(models.Model):
+    _name = 'einvoice.catalog.01'
+    _description = 'Codigo de Tipo de documento'
+    _inherit = 'einvoice.catalog.tmpl'
+
+    label = fields.Char(string='Label to print', size=256)
+
+class EinvoiceCatalog05(models.Model):
     _name = "einvoice.catalog.05"
     _description = 'Codigo de Tipo de tributo'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
     un_5153 = fields.Char(string='UN/ECE 5153-Duty or tax or fee type name code', size=5)
     un_5103 = fields.Char(string='UN/ECE 5305-Duty or tax or fee category code', size=1)
 
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-class einvoice_catalog_06(models.Model):
+class EinvoiceCatalog06(models.Model):
     _name = "einvoice.catalog.06"
     _description = 'Tipo de documento de Identidad'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Code', size=4, index=True, required=True)
-    name = fields.Char(string='Description', size=128, index=True, required=True)
-    default = fields.Char(string='Valor por defecto', size=128)
-    
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
+    default = fields.Char(string='Default value', size=128)
         
-class einvoice_catalog_07(models.Model):
+class EinvoiceCatalog07(models.Model):
     _name = "einvoice.catalog.07"
     _description = 'Codigos de Tipo de Afectacion del IGV'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Code', size=4, index=True, required=True)
-    name = fields.Char(string='Description', size=128, index=True, required=True)
     no_onerosa = fields.Boolean(string='No onerosa')
     type = fields.Selection([('gravado','Gravado'),('exonerado','Exonerado'),('inafecto','Inafecto')],string='Tipo')
     
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-class einvoice_catalog_08(models.Model):
+class EinvoiceCatalog08(models.Model):
     _name = "einvoice.catalog.08"
     _description = 'Codigos de Tipo de Afectacion del IGV'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Code', size=4, index=True, required=True)
-    name = fields.Char(string='Description', size=128, index=True, required=True)
-	
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-class einvoice_catalog_09(models.Model):
+class EinvoiceCatalog09(models.Model):
     _name = "einvoice.catalog.09"
     _description = 'Codigos de Tipo de Nota de Credito Electronica'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Code', size=4, index=True, required=True)
-    name = fields.Char(string='Description', size=128, index=True, required=True)
-    
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-class einvoice_catalog_10(models.Model):
+class EinvoiceCatalog10(models.Model):
     _name = "einvoice.catalog.10"
     _description = 'Codigos de Tipo de Nota de Debito Electronica'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Code', size=4, index=True, required=True)
-    name = fields.Char(string='Description', size=128, index=True, required=True)
-    
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_11(models.Model):
+class EinvoiceCatalog11(models.Model):
     _name = "einvoice.catalog.11"
     _description = 'Codigo de Tipo de Valor de Venta'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_12(models.Model):
+class EinvoiceCatalog12(models.Model):
     _name = "einvoice.catalog.12"
     _description = 'Codigos -Documentos Relacionados Tributarios'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_14(models.Model):
+class EinvoiceCatalog14(models.Model):
     _name = "einvoice.catalog.14"
     _description = 'Codigos - Otros Conceptos Tributarios'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_15(models.Model):
+class EinvoiceCatalog15(models.Model):
     _name = "einvoice.catalog.15"
     _description = 'Codigos-Elementos Adicionales en la Factura Electrónica '
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Valor', size=256, index=True, required=True)
+    name = fields.Char(string='Value', size=256, index=True, required=True)
 
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_16(models.Model):
+class EinvoiceCatalog16(models.Model):
     _name = "einvoice.catalog.16"
     _description = 'Codigos - Tipo de Precio de Venta Unitario'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Code', size=4, index=True, required=True)
-    name = fields.Char(string='Description', size=128, index=True, required=True)
-	
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-class einvoice_catalog_17(models.Model):
+class EinvoiceCatalog17(models.Model):
     _name = "einvoice.catalog.17"
     _description = 'Codigos -Tipo de Operacion'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-class einvoice_catalog_18(models.Model):
+class EinvoiceCatalog18(models.Model):
     _name = "einvoice.catalog.18"
     _description = 'Codigos - Modalidad de  Traslado'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_19(models.Model):
+class EinvoiceCatalog19(models.Model):
     _name = "einvoice.catalog.19"
     _description = 'Codigos de Estado de Item'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_20(models.Model):
+class EinvoiceCatalog20(models.Model):
     _name = "einvoice.catalog.20"
     _description = 'Codigos - Motivo de Traslado'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-class einvoice_catalog_21(models.Model):
+class EinvoiceCatalog21(models.Model):
     _name = "einvoice.catalog.21"
     _description = 'Codigos-Documentos Relacionados '
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_22(models.Model):
+class EinvoiceCatalog22(models.Model):
     _name = "einvoice.catalog.22"
     _description = 'Codigos- Regimenes de Percepcion'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
     rate = fields.Char(string='Tasa', size=10, index=True, required=True)
 
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_23(models.Model):
+class EinvoiceCatalog23(models.Model):
     _name = "einvoice.catalog.23"
     _description = 'Codigos- Regimenes de Retencion'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=4, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
-
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_24(models.Model):
+class EinvoiceCatalog24(models.Model):
     _name = "einvoice.catalog.24"
     _description = 'Codigos- Recibo Electronico por Servicios Publicos'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    rate_code = fields.Char(string='Codigo tarifa', size=4, index=True, required=True)
-    code = fields.Char(string='Codigo',  index=True, required=True)
-    name = fields.Char(string='Servicio', size=128, index=True, required=True)
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_25(models.Model):
+    name = fields.Char(string='Service', size=128, index=True, required=True)
+    rate_code = fields.Char(string='Rate code', size=4, index=True, required=True)
+    
+class EinvoiceCatalog25(models.Model):
     _name = "einvoice.catalog.25"
     _description = 'Codigos - Producto SUNAT'
+    _inherit = 'einvoice.catalog.tmpl'
 
     code = fields.Char(string='Code', size=12, index=True, required=True)
-    name = fields.Char(string='Description', size=128, index=True, required=True)
-	
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-    
-    """ @api.model
-    def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
-        args = args or []
-        domain = []
-        if name:
-            domain = ['|', ('code', '=ilike', name.split('-')[0] + '%'), ('name', operator, name)]
-            if operator in expression.NEGATIVE_TERM_OPERATORS:
-                domain = ['&', '!'] + domain[1:]
-        ids = self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
-        return self.browse(ids).name_get()
- """
 
-class einvoice_catalog_51(models.Model):
+class EinvoiceCatalog51(models.Model):
     _name = "einvoice.catalog.51"
     _description = 'Codigo de  Tipo de Factura'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=12, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
+    code = fields.Char(string='Code', size=12, index=True, required=True)
 
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_52(models.Model):
+class EinvoiceCatalog52(models.Model):
     _name = "einvoice.catalog.52"
     _description = 'Codigos de Leyendas'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=12, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
+    code = fields.Char(string='Code', size=12, index=True, required=True)
 
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_53(models.Model):
+class EinvoiceCatalog53(models.Model):
     _name = "einvoice.catalog.53"
     _description = 'Codigos de Cargos o Descuentos'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=12, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
+    code = fields.Char(string='Code', size=12, index=True, required=True)
 
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_54(models.Model):
+class EinvoiceCatalog54(models.Model):
     _name = "einvoice.catalog.54"
     _description = 'Codigos de Bienes y Servicio Sujetos a Detraccion'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=12, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
+    code = fields.Char(string='Code', size=12, index=True, required=True)
 
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-
-class einvoice_catalog_55(models.Model):
+class EinvoiceCatalog55(models.Model):
     _name = "einvoice.catalog.55"
     _description = 'Codigo de identificacion del Item'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=12, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
+    code = fields.Char(string='Code', size=12, index=True, required=True)
 
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-
-class einvoice_catalog_56(models.Model):
+class EinvoiceCatalog56(models.Model):
     _name = "einvoice.catalog.56"
     _description = 'Codigo de Tipo de Servicio Publico'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=12, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
+    code = fields.Char(string='Code', size=12, index=True, required=True)
 
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-
-class einvoice_catalog_57(models.Model):
+class EinvoiceCatalog57(models.Model):
     _name = "einvoice.catalog.57"
     _description = 'Codigo de Tipo de Servicio Publicos-Telecomunicaciones'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=12, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
-
-
-class einvoice_catalog_58(models.Model):
+    code = fields.Char(string='Code', size=12, index=True, required=True)
+    
+class EinvoiceCatalog58(models.Model):
     _name = "einvoice.catalog.58"
     _description = 'Codigo de Tipo de Medidor-Recibo de Luz'
+    _inherit = 'einvoice.catalog.tmpl'
 
-    code = fields.Char(string='Codigo', size=12, index=True, required=True)
-    name = fields.Char(string='Descripcion', size=128, index=True, required=True)
-
-    @api.multi
-    @api.depends('code', 'name')
-    def name_get(self):
-        result = []
-        for table in self:
-            l_name = table.code and table.code + ' - ' or ''
-            l_name +=  table.name
-            result.append((table.id, l_name ))
-        return result
+    code = fields.Char(string='Code', size=12, index=True, required=True)

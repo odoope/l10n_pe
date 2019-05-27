@@ -101,7 +101,6 @@
         <record id="e10_02" model="einvoice.catalog.10"><field name="code">02</field><field name="name">Aumento en el valor</field></record>
         <record id="e10_03" model="einvoice.catalog.10"><field name="code">03</field><field name="name">Penalidades/ otros conceptos</field></record>
 
-
         <!-- Catalogo 11  - Codigos de Tipo de Valor de Venta -->
         <record id="e11_01" model="einvoice.catalog.11"><field name="code">01</field><field name="name">Gravado</field></record>
         <record id="e11_02" model="einvoice.catalog.11"><field name="code">02</field><field name="name">Exonerado</field></record>
@@ -173,14 +172,11 @@
         <record id="e15_6003" model="einvoice.catalog.15"><field name="code">6003</field><field name="name"> Comercialización de Oro : N° Resolución que autoriza Planta de Beneficio</field></record>
         <record id="e15_6004" model="einvoice.catalog.15"><field name="code">6004</field><field name="name"> Comercialización de Oro : Ley Mineral (%concent. oro)</field></record>
 
-
         <!-- Catalogo 16  - Códigos – Tipo de Precio de Venta Unitario  -->
         <record id="e16_01" model="einvoice.catalog.16"><field name="code">01</field><field name="name">Precio unitario (incluye el IGV)</field></record>
         <record id="e16_02" model="einvoice.catalog.16"><field name="code">02</field><field name="name">Valor referencial unitario en operaciones no onerosas</field></record>
 
-
        <!-- Catalogo 17  -  Códigos –Modalidad de Traslado -->
-
        <record id="e17_01" model="einvoice.catalog.17"><field name="code">01</field><field name="name"> Venta lnterna</field></record>
        <record id="e17_02" model="einvoice.catalog.17"><field name="code">02</field><field name="name"> Exportación </field></record>
        <record id="e17_03" model="einvoice.catalog.17"><field name="code">03</field><field name="name"> No Domiciliados</field></record>
@@ -194,23 +190,16 @@
        <record id="e17_12" model="einvoice.catalog.17"><field name="code">12</field><field name="name"> Boleta de Venta -  Comprobante de Percepcion</field></record>
        <record id="e17_13" model="einvoice.catalog.17"><field name="code">13</field><field name="name"> Gasto  Deducible Personal Natural</field></record>
 
-
-
        <!-- Catalogo 18  -  Códigos –Tipo de Operación  -->
-
        <record id="e18_01" model="einvoice.catalog.18"><field name="code">01</field><field name="name"> Transporte público</field></record>
        <record id="e18_02" model="einvoice.catalog.18"><field name="code">02</field><field name="name"> Transporte privado</field></record>
 
-
-                 <!-- Catalogo 19 - Códigos de estado de ítem-->
-
+      <!-- Catalogo 19 - Códigos de estado de ítem-->
        <record id="e19_1" model="einvoice.catalog.19"><field name="code">1</field><field name="name"> Adicionar</field></record>
        <record id="e19_2" model="einvoice.catalog.19"><field name="code">2</field><field name="name"> Modificar</field></record>
        <record id="e19_3" model="einvoice.catalog.19"><field name="code">3</field><field name="name"> Anulado </field></record>
 
-
         <!-- Catalogo 20  - Códigos Motivos de Traslado-->
-
       <record id="e20_01" model="einvoice.catalog.20"><field name="code">01</field><field name="name"> VENTA </field></record>
       <record id="e20_14" model="einvoice.catalog.20"><field name="code">14</field><field name="name"> VENTA SUJETA A CONFIRMACION DEL COMPRADOR </field></record>
       <record id="e20_02" model="einvoice.catalog.20"><field name="code">02</field><field name="name"> COMPRA</field></record>
@@ -221,9 +210,7 @@
       <record id="e20_19" model="einvoice.catalog.20"><field name="code">19</field><field name="name"> TRASLADO A ZONA PRIMARIA </field></record>
       <record id="e20_13" model="einvoice.catalog.20"><field name="code">13</field><field name="name"> OTROS </field></record>
 
-
-
-        <!-- Catalogo 21 - Documentos Relacionados -->
+      <!-- Catalogo 21 - Documentos Relacionados -->
       <record id="e21_01" model="einvoice.catalog.21"><field name="code">01</field><field name="name"> NUMERACION DAM </field></record>
       <record id="e21_02" model="einvoice.catalog.21"><field name="code">02</field><field name="name"> NUMERO DE ORDEN DE ENTREGA</field></record>
       <record id="e21_03" model="einvoice.catalog.21"><field name="code">03</field><field name="name"> NUMERO SCOP </field></record>
@@ -231,31 +218,15 @@
       <record id="e21_05" model="einvoice.catalog.21"><field name="code">05</field><field name="name"> NUMERO DE CONSTANCIA DE DETRACCION</field></record>
       <record id="e21_06" model="einvoice.catalog.21"><field name="code">06</field><field name="name"> OTROS </field></record>
 
-
-
-
-
-
-              <!-- Catalogo 22  - Regímenes de Percepción -->
-
+      <!-- Catalogo 22  - Regímenes de Percepción -->
       <record id="e22_01" model="einvoice.catalog.22"><field name="code">01</field><field name="name"> PERCEPCION VENTA INTERNA </field><field name="rate">TASA 2%</field></record>
       <record id="e22_02" model="einvoice.catalog.22"><field name="code">02</field><field name="name"> PERCEPCION A LA ADQUISICION DE COMBUSTIBLE </field><field name="rate">TASA 1%</field></record>
       <record id="e22_03" model="einvoice.catalog.22"><field name="code">03</field><field name="name"> PERCEPCION REALIZADA AL AGENTE DE PERCEPCION CON TASA ESPECIAL </field><field name="rate">TASA 0.5%</field></record>
 
-
-
-
-
-
-            <!-- Catalogo 23  - Regímenes de Retención -->
-
+      <!-- Catalogo 23  - Regímenes de Retención -->
       <record id="e23_01" model="einvoice.catalog.23"><field name="code">01</field><field name="name"> 3% </field></record>
 
-
-
-
-              <!-- Catalogo 24 -  Recibo Electrónico por Servicios Públicos-->
-
+      <!-- Catalogo 24 -  Recibo Electrónico por Servicios Públicos-->
       <record id="e24_L001" model="einvoice.catalog.24"><field name="rate_code">L001</field><field name="code">AT </field><field name="name">LUZ </field></record>
       <record id="e24_L002" model="einvoice.catalog.24"><field name="rate_code">L002</field><field name="code">MT2</field><field name="name">LUZ </field></record>
       <record id="e24_L003" model="einvoice.catalog.24"><field name="rate_code">L003</field><field name="code">MT3 </field><field name="name">LUZ </field></record>
@@ -269,11 +240,7 @@
       <record id="e24_L014" model="einvoice.catalog.24"><field name="rate_code">L014</field><field name="code">DOMESTICO </field><field name="name">AGUA</field></record>
       <record id="e24_L015" model="einvoice.catalog.24"><field name="rate_code">L015</field><field name="code">SOCIAL</field><field name="name">AGUA</field></record>
 
-
-
-  <!-- Catalogo 51 - Código de tipo de factura  -->
-
-
+      <!-- Catalogo 51 - Código de tipo de factura  -->
       <record id="e51_0101" model="einvoice.catalog.51"><field name="code">0101</field><field name="name">Venta lnterna</field></record>
       <record id="e51_0102" model="einvoice.catalog.51"><field name="code">0102</field><field name="name">Exportación</field></record>
       <record id="e51_0103" model="einvoice.catalog.51"><field name="code">0103</field><field name="name">No Domiciliados</field></record>
@@ -285,12 +252,7 @@
       <record id="e51_0110" model="einvoice.catalog.51"><field name="code">0110</field><field name="name">Factura - Guía remitente</field></record>
       <record id="e51_0111" model="einvoice.catalog.51"><field name="code">0111</field><field name="name">Factura -Guía transportista</field></record>
 
-
-
-
-
-    <!-- Catalogo 52 -  Código de de Leyendas  -->
-
+      <!-- Catalogo 52 -  Código de de Leyendas  -->
       <record id="e52_1000" model="einvoice.catalog.52"><field name="code">1000</field><field name="name">Monto en Letras</field></record>
       <record id="e52_1002" model="einvoice.catalog.52"><field name="code">1002</field><field name="name">Leyenda "TRANSFERENCIA GRATUITA DE UN BIEN Y/O SERVICIO PRESTADO GRATUITAMENTE"</field></record>
       <record id="e52_2000" model="einvoice.catalog.52"><field name="code">2000</field><field name="name">Leyenda “COMPROBANTE DE PERCEPCIÓN”</field></record>
@@ -302,14 +264,7 @@
       <record id="e52_2006" model="einvoice.catalog.52"><field name="code">2007</field><field name="name">Leyenda "Operación sujeta a detracción"</field></record>
       <record id="e52_3000" model="einvoice.catalog.52"><field name="code">2008</field><field name="name">Código interno generado por el software de Facturación </field></record>
 
-
-
-
-
-
-
-    <!-- Catalogo 53 -   Códigos de cargos o descuentos   -->
-
+      <!-- Catalogo 53 -   Códigos de cargos o descuentos   -->
       <record id="e53_00" model="einvoice.catalog.53"><field name="code">00</field><field name="name">OTROS DESCUENTOS</field></record>
       <record id="e53_50" model="einvoice.catalog.53"><field name="code">50</field><field name="name">OTROS CARGOS </field></record>
       <record id="e53_51" model="einvoice.catalog.53"><field name="code">51</field><field name="name">PERCEPCION VENTA INTERNA</field></record>
@@ -318,9 +273,7 @@
       <record id="e53_54" model="einvoice.catalog.53"><field name="code">54</field><field name="name">OTROS CARGOS RELACIONADOS AL SERVICIO</field></record>
       <record id="e53_55" model="einvoice.catalog.53"><field name="code">55</field><field name="name">OTROS CARGOS NO RELACIONADOS AL SERVICIO</field></record>
 
-
-        <!-- Catalogo 54- Códigos de bienes y servicios sujetos a detracción   -->
-
+      <!-- Catalogo 54- Códigos de bienes y servicios sujetos a detracción   -->
       <record id="e54_001" model="einvoice.catalog.54"><field name="code">001</field><field name="name">Azúcar</field></record>
       <record id="e54_003" model="einvoice.catalog.54"><field name="code">003</field><field name="name">Alcohol etílico</field></record>
       <record id="e54_004" model="einvoice.catalog.54"><field name="code">004</field><field name="name">Recursos hidrobiológicos</field></record>
@@ -358,9 +311,7 @@
       <record id="e54_039" model="einvoice.catalog.54"><field name="code">039</field><field name="name">Minerales no metálicos</field></record>
       <record id="e54_040" model="einvoice.catalog.54"><field name="code">040</field><field name="name">Bien inmueble gravado con IGV</field></record>
 
-
-<!-- Catalogo 55- Código de identificación del ítem  -->
-
+      <!-- Catalogo 55- Código de identificación del ítem  -->
       <record id="e55_3002" model="einvoice.catalog.55"><field name="code">3002</field><field name="name">Detracciones: Recursos Hidrobiológicos - Nombre y Matrícula de la Embarcación</field></record>
       <record id="e55_3003" model="einvoice.catalog.55"><field name="code">3003</field><field name="name">Detracciones: Cantidad de Especies Marinas</field></record>
       <record id="e55_3004" model="einvoice.catalog.55"><field name="code">3004</field><field name="name">Detracciones: Recursos Hidrobiológicos - Lugar de descarga</field></record>
@@ -392,30 +343,20 @@
       <record id="e55_8000" model="einvoice.catalog.55"><field name="code">8000</field><field name="name">Gastos Intereses Hipotecarios: Número de Contrato</field></record>
       <record id="e55_8001" model="einvoice.catalog.55"><field name="code">8001</field><field name="name">Gastos Intereses Hipotecarios: Fecha de Otorgamiento del Crédito</field></record>
 
-
-
-
       <!-- Catalogo 56- Código de   tipo de servicio público -->
-
       <record id="e56_1" model="einvoice.catalog.56"><field name="code">1</field><field name="name">Energía eléctrica</field></record>
       <record id="e56_2" model="einvoice.catalog.56"><field name="code">2</field><field name="name">Agua</field></record>
       <record id="e56_3" model="einvoice.catalog.56"><field name="code">3</field><field name="name">Cable</field></record>
       <record id="e56_4" model="einvoice.catalog.56"><field name="code">4</field><field name="name">Internet</field></record>
       <record id="e56_5" model="einvoice.catalog.56"><field name="code">5</field><field name="name">Otros servicios regulados por OSIPTEL</field></record>
 
-
-
       <!-- Catalogo 57- Código de   tipo de servicio público -telecomunicaciones-->
-
-
       <record id="e57_1" model="einvoice.catalog.57"><field name="code">1</field><field name="name">Servicios Portadores</field></record>
       <record id="e57_2" model="einvoice.catalog.57"><field name="code">2</field><field name="name">Teleservicios o Servicios Finales</field></record>
       <record id="e57_3" model="einvoice.catalog.57"><field name="code">3</field><field name="name">Servicios de Difusión</field></record>
       <record id="e57_4" model="einvoice.catalog.57"><field name="code">4</field><field name="name">Servicios de valor añadido</field></record>
 
-
-  <!-- Catalogo 58- Código de   tipo de medidor - recibo de luz-->
-
+      <!-- Catalogo 58- Código de   tipo de medidor - recibo de luz-->
       <record id="e58_1" model="einvoice.catalog.58"><field name="code">1</field><field name="name">Trifásico</field></record>
       <record id="e58_2" model="einvoice.catalog.58"><field name="code">2</field><field name="name">Monofásico</field></record>
 

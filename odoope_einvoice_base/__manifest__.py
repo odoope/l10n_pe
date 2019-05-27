@@ -21,7 +21,7 @@
 
 {
     'name' : 'Factura electronica - Base',
-    'version' : '1.0.4',
+    'version' : '2.0.0',
     'author' : 'Odoo Peru',
     'category' : 'Accounting & Finance',
     'summary': 'Tablas y requisitos mínimos para la factura electrónica.',
@@ -58,17 +58,16 @@ Tablas:
 
     ],
     'demo': [
-        #'demo/account_demo.xml',
+        
     ],
     'test': [
-        #'test/account_test_users.yml',
+        
     ],
     'images': [
         'static/description/banner.png',
     ],
     'installable': True,
     'auto_install': False,
-    'application': True,
     "sequence": 1,
     'post_init_hook': '_create_shop',
 }

@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <form string="Install E-invoice by OSE">
                     <sheet>
-                            <field name="message" readonly="True"/>
+                        <field name="message" readonly="True"/>
                     </sheet>
                 </form>
             </field>
@@ -23,6 +23,5 @@
             <field name="view_id" ref="einvoice_ose_install_view_form"/>
             <field name="target">new</field>
         </record>
-        
     </data>
 </odoo>

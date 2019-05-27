@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_einvoice_catalog_06,einvoice.catalog.06,model_einvoice_catalog_06,base.group_user,1,1,1,1
+access_einvoice_catalog_06,einvoice.catalog.06,model_einvoice_catalog_06,base.group_user,1,0,0,0
+access_einvoice_catalog_06_manager,einvoice.catalog.06.manager,model_einvoice_catalog_06,base.group_erp_manager,1,1,1,1
+access_einvoice_catalog_06_account_manager,einvoice.catalog.06.manager,model_einvoice_catalog_06,account.group_account_manager,1,1,1,1

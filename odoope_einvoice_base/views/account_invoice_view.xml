@@ -55,8 +55,7 @@
                         </group>
                     </group>
                 </page>
-            </page>            
-
+            </page>        
             <xpath expr="//field[@name='invoice_line_ids']//tree/field[@name='invoice_line_tax_ids']" position="before">
                 <field name="igv_type" options="{'no_create_edit': True,'no_open':True}"/>
             </xpath>
@@ -85,9 +84,7 @@
                     <field name="einv_amount_free"/>
                     <field name="amount_discount"/>
                     <field name="global_discount"/>  
-            </xpath>
-            
-                       
+            </xpath>          
 		</field>
 	</record>
     

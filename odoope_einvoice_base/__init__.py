@@ -21,10 +21,8 @@
 
 from . import models
 from . import wizard
-# eof:__init__.py
 
 from odoo import api, SUPERUSER_ID
-
 
 def _create_shop(cr, registry):
     """ This hook is used to add a shop on existing companies

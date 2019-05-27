@@ -57,6 +57,7 @@ Este módulo esta basado en el módulo de Alex Cuellar en https://github.com/ale
         'views/res_partner_view.xml',
         'views/einvoice_views.xml',
         'data/einvoice_data.xml',
+        'security/ir.model.access.csv',
     ],
     'qweb' : [
 
