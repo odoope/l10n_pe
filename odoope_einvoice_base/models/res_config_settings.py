@@ -25,4 +25,4 @@ class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
     module_odoope_einvoice_ose = fields.Boolean(
-        string='Allow the users to send electronic invoices')
+        string='Allow users to send electronic invoices')
