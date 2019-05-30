@@ -20,7 +20,7 @@
 ###############################################################################
 
 from odoo import tools
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 
 class EinvoiceOseInstall(models.TransientModel):
@@ -29,7 +29,7 @@ class EinvoiceOseInstall(models.TransientModel):
     
     @api.model
     def _get_message(self):
-        content_html = '''
+        content_html = _('''
                 <section class="jumbotron text-center bg-primary">
                     <div class="container pb32 pt32">
                         <h1 class="jumbotron-heading">{company}</h1>
@@ -72,7 +72,7 @@ class EinvoiceOseInstall(models.TransientModel):
                         </div>
                     </div>
                 </div>
-                '''
+                ''')
         html = tools.ustr(content_html).format(
                 company = self.env.user.company_id.name,
                 )
