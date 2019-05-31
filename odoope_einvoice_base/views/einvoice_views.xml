@@ -963,37 +963,37 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
-    <!-- Menu -->
-    <menuitem name="Factura Electronica" id="einvoice_configuration_menu" parent="account.menu_finance_configuration" sequence="23"/>
-    <menuitem name="Catalog 01 - Codigo de Tipo de documento" id="einvoice_catalog_01_menu" parent="einvoice_configuration_menu" action="catalog_01_action" sequence="1"/>
-	<menuitem name="Catalog 05 - Codigo de Tipo de tributo" id="einvoice_catalog_05_menu" parent="einvoice_configuration_menu" action="catalog_05_action" sequence="5"/>
-    <menuitem name="Catalog 06 - Tipos de documento de Identidad" id="einvoice_catalog_06_menu" parent="einvoice_configuration_menu" action="catalog_06_action" sequence="6"/>
-    <menuitem name="Catalog 07 - Tipo de Afectación del IGV" id="einvoice_catalog_07_menu" parent="einvoice_configuration_menu" action="catalog_07_action" sequence="7"/>
-    <menuitem name="Catalog 08 - Tipos de Sistema de Cálculo del ISC" id="einvoice_catalog_08_menu" parent="einvoice_configuration_menu" action="catalog_08_action" sequence="8"/>
-    <menuitem name="Catalog 09 - Tipo Nota de Credito" id="einvoice_catalog_09_menu" parent="einvoice_configuration_menu" action="catalog_09_action" sequence="9"/>
-    <menuitem name="Catalog 10 - Tipo Nota de Debito" id="einvoice_catalog_10_menu" parent="einvoice_configuration_menu" action="catalog_10_action" sequence="10"/>
-	<menuitem name="Catalog 11 - Tipo de Valor de Venta" id="einvoice_catalog_11_menu" parent="einvoice_configuration_menu" action="catalog_11_action" sequence="11"/>
-	<menuitem name="Catalog 12 - Documentos Relacionados Tributarios" id="einvoice_catalog_12_menu" parent="einvoice_configuration_menu" action="catalog_12_action" sequence="12"/>
-	<menuitem name="Catalog 14 - Otros Conceptos Tributarios" id="einvoice_catalog_14_menu" parent="einvoice_configuration_menu" action="catalog_14_action" sequence="14"/>
-	<menuitem name="Catalog 15 - Elementos Adicionales en la Factura Electrónica" id="einvoice_catalog_15_menu" parent="einvoice_configuration_menu" action="catalog_15_action" sequence="15"/>
-    <menuitem name="Catalog 16 - Tipo de Precio de Venta Unitario" id="einvoice_catalog_16_menu" parent="einvoice_configuration_menu" action="catalog_16_action" sequence="16"/>
-	<menuitem name="Catalog 17 - Tipo de Operacion" id="einvoice_catalog_17_menu" parent="einvoice_configuration_menu" action="catalog_17_action" sequence="17"/>
-	<menuitem name="Catalog 18 - Codigos - Modalidad de  Traslado" id="einvoice_catalog_18_menu" parent="einvoice_configuration_menu" action="catalog_18_action" sequence="18"/>
-	<menuitem name="Catalog 19 - Codigos de Estado de Item" id="einvoice_catalog_19_menu" parent="einvoice_configuration_menu" action="catalog_19_action" sequence="19"/>
-	<menuitem name="Catalog 20 - Codigos - Motivo de Traslado" id="einvoice_catalog_20_menu" parent="einvoice_configuration_menu" action="catalog_20_action" sequence="20"/>
-	<menuitem name="Catalog 21 - Documentos Relacionados" id="einvoice_catalog_21_menu" parent="einvoice_configuration_menu" action="catalog_21_action" sequence="21"/>
-	<menuitem name="Catalog 22 - Codigos- Regimenes de Percepcion" id="einvoice_catalog_22_menu" parent="einvoice_configuration_menu" action="catalog_22_action" sequence="22"/>
-	<menuitem name="Catalog 23 - Codigos- Regimenes de Retencion" id="einvoice_catalog_23_menu" parent="einvoice_configuration_menu" action="catalog_23_action" sequence="23"/>
-	<menuitem name="Catalog 24 - Codigos- Recibo Electronico por Servicios Publicos" id="einvoice_catalog_24_menu" parent="einvoice_configuration_menu" action="catalog_24_action" sequence="24"/>
-    <menuitem name="Catalog 25 - Codigos de Producto SUNAT" id="einvoice_catalog_25_menu" parent="einvoice_configuration_menu" action="catalog_25_action" sequence="25"/>
-	<menuitem name="Catalog 51 - Tipo de Factura" id="einvoice_catalog_51_menu" parent="einvoice_configuration_menu" action="catalog_51_action" sequence="51"/>
-	<menuitem name="Catalog 52 - Codigos de Leyendas" id="einvoice_catalog_52_menu" parent="einvoice_configuration_menu" action="catalog_52_action" sequence="52"/>
-	<menuitem name="Catalog 53 - Codigos de Cargos o Descuentos" id="einvoice_catalog_53_menu" parent="einvoice_configuration_menu" action="catalog_53_action" sequence="53"/>
-	<menuitem name="Catalog 54 - Codigos de Bienes y Servicio Sujetos a Detraccion" id="einvoice_catalog_54_menu" parent="einvoice_configuration_menu" action="catalog_54_action" sequence="54"/>
-	<menuitem name="Catalog 55 - Codigo de identificacion del Item" id="einvoice_catalog_55_menu" parent="einvoice_configuration_menu" action="catalog_55_action" sequence="55"/>
-	<menuitem name="Catalog 56 - Codigo de Tipo de Servicio Publico" id="einvoice_catalog_56_menu" parent="einvoice_configuration_menu" action="catalog_56_action" sequence="56"/>
-	<menuitem name="Catalog 57 - Tipo de Servicio Publicos-Telecomunicaciones" id="einvoice_catalog_57_menu" parent="einvoice_configuration_menu" action="catalog_57_action" sequence="57"/>
-	<menuitem name="Catalog 58 - Tipo de Medidor-Recibo de Luz" id="einvoice_catalog_58_menu" parent="einvoice_configuration_menu" action="catalog_58_action" sequence="58"/>
+		<!-- Menu -->
+		<menuitem name="Factura Electronica" id="einvoice_configuration_menu" parent="account.menu_finance_configuration" sequence="23"/>
+		<menuitem name="Catalog 01 - Codigo de Tipo de documento" id="einvoice_catalog_01_menu" parent="einvoice_configuration_menu" action="catalog_01_action" sequence="1"/>
+		<menuitem name="Catalog 05 - Codigo de Tipo de tributo" id="einvoice_catalog_05_menu" parent="einvoice_configuration_menu" action="catalog_05_action" sequence="5"/>
+		<menuitem name="Catalog 06 - Tipos de documento de Identidad" id="einvoice_catalog_06_menu" parent="einvoice_configuration_menu" action="catalog_06_action" sequence="6"/>
+		<menuitem name="Catalog 07 - Tipo de Afectación del IGV" id="einvoice_catalog_07_menu" parent="einvoice_configuration_menu" action="catalog_07_action" sequence="7"/>
+		<menuitem name="Catalog 08 - Tipos de Sistema de Cálculo del ISC" id="einvoice_catalog_08_menu" parent="einvoice_configuration_menu" action="catalog_08_action" sequence="8"/>
+		<menuitem name="Catalog 09 - Tipo Nota de Credito" id="einvoice_catalog_09_menu" parent="einvoice_configuration_menu" action="catalog_09_action" sequence="9"/>
+		<menuitem name="Catalog 10 - Tipo Nota de Debito" id="einvoice_catalog_10_menu" parent="einvoice_configuration_menu" action="catalog_10_action" sequence="10"/>
+		<menuitem name="Catalog 11 - Tipo de Valor de Venta" id="einvoice_catalog_11_menu" parent="einvoice_configuration_menu" action="catalog_11_action" sequence="11"/>
+		<menuitem name="Catalog 12 - Documentos Relacionados Tributarios" id="einvoice_catalog_12_menu" parent="einvoice_configuration_menu" action="catalog_12_action" sequence="12"/>
+		<menuitem name="Catalog 14 - Otros Conceptos Tributarios" id="einvoice_catalog_14_menu" parent="einvoice_configuration_menu" action="catalog_14_action" sequence="14"/>
+		<menuitem name="Catalog 15 - Elementos Adicionales en la Factura Electrónica" id="einvoice_catalog_15_menu" parent="einvoice_configuration_menu" action="catalog_15_action" sequence="15"/>
+		<menuitem name="Catalog 16 - Tipo de Precio de Venta Unitario" id="einvoice_catalog_16_menu" parent="einvoice_configuration_menu" action="catalog_16_action" sequence="16"/>
+		<menuitem name="Catalog 17 - Tipo de Operacion" id="einvoice_catalog_17_menu" parent="einvoice_configuration_menu" action="catalog_17_action" sequence="17"/>
+		<menuitem name="Catalog 18 - Codigos - Modalidad de  Traslado" id="einvoice_catalog_18_menu" parent="einvoice_configuration_menu" action="catalog_18_action" sequence="18"/>
+		<menuitem name="Catalog 19 - Codigos de Estado de Item" id="einvoice_catalog_19_menu" parent="einvoice_configuration_menu" action="catalog_19_action" sequence="19"/>
+		<menuitem name="Catalog 20 - Codigos - Motivo de Traslado" id="einvoice_catalog_20_menu" parent="einvoice_configuration_menu" action="catalog_20_action" sequence="20"/>
+		<menuitem name="Catalog 21 - Documentos Relacionados" id="einvoice_catalog_21_menu" parent="einvoice_configuration_menu" action="catalog_21_action" sequence="21"/>
+		<menuitem name="Catalog 22 - Codigos- Regimenes de Percepcion" id="einvoice_catalog_22_menu" parent="einvoice_configuration_menu" action="catalog_22_action" sequence="22"/>
+		<menuitem name="Catalog 23 - Codigos- Regimenes de Retencion" id="einvoice_catalog_23_menu" parent="einvoice_configuration_menu" action="catalog_23_action" sequence="23"/>
+		<menuitem name="Catalog 24 - Codigos- Recibo Electronico por Servicios Publicos" id="einvoice_catalog_24_menu" parent="einvoice_configuration_menu" action="catalog_24_action" sequence="24"/>
+		<menuitem name="Catalog 25 - Codigos de Producto SUNAT" id="einvoice_catalog_25_menu" parent="einvoice_configuration_menu" action="catalog_25_action" sequence="25"/>
+		<menuitem name="Catalog 51 - Tipo de Factura" id="einvoice_catalog_51_menu" parent="einvoice_configuration_menu" action="catalog_51_action" sequence="51"/>
+		<menuitem name="Catalog 52 - Codigos de Leyendas" id="einvoice_catalog_52_menu" parent="einvoice_configuration_menu" action="catalog_52_action" sequence="52"/>
+		<menuitem name="Catalog 53 - Codigos de Cargos o Descuentos" id="einvoice_catalog_53_menu" parent="einvoice_configuration_menu" action="catalog_53_action" sequence="53"/>
+		<menuitem name="Catalog 54 - Codigos de Bienes y Servicio Sujetos a Detraccion" id="einvoice_catalog_54_menu" parent="einvoice_configuration_menu" action="catalog_54_action" sequence="54"/>
+		<menuitem name="Catalog 55 - Codigo de identificacion del Item" id="einvoice_catalog_55_menu" parent="einvoice_configuration_menu" action="catalog_55_action" sequence="55"/>
+		<menuitem name="Catalog 56 - Codigo de Tipo de Servicio Publico" id="einvoice_catalog_56_menu" parent="einvoice_configuration_menu" action="catalog_56_action" sequence="56"/>
+		<menuitem name="Catalog 57 - Tipo de Servicio Publicos-Telecomunicaciones" id="einvoice_catalog_57_menu" parent="einvoice_configuration_menu" action="catalog_57_action" sequence="57"/>
+		<menuitem name="Catalog 58 - Tipo de Medidor-Recibo de Luz" id="einvoice_catalog_58_menu" parent="einvoice_configuration_menu" action="catalog_58_action" sequence="58"/>
 
 	</data>
 </openerp>

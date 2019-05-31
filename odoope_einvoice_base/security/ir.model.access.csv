@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_einvoice_shop,einvoice.shop,model_einvoice_shop,base.group_user,1,0,0,0
-access_einvoice_shop_manager,einvoice.shop.manager,model_einvoice_shop,base.group_user,1,1,1,1
+access_einvoice_shop_manager,einvoice.shop.manager,model_einvoice_shop,base.group_erp_manager,1,1,1,1
 access_einvoice_shop_account_manager,einvoice.shop.manager,model_einvoice_shop,account.group_account_manager,1,1,1,1
 access_einvoice_catalog_tmpl,einvoice.catalog.tmpl,model_einvoice_catalog_tmpl,base.group_user,1,0,0,0
 access_einvoice_catalog_tmpl_manager,einvoice.catalog.tmpl.manager,model_einvoice_catalog_tmpl,base.group_erp_manager,1,1,1,1

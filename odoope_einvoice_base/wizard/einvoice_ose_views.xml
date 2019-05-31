@@ -6,10 +6,11 @@
             <field name="name">E-invoice OSE install.view.form</field>
             <field name="model">einvoice.ose.install</field>
             <field name="arch" type="xml">
-                <form string="Install E-invoice by OSE">
+                <form string="Install E-invoice by OSE" create="false" edit="false">
                     <sheet>
                         <field name="message" readonly="True"/>
                     </sheet>
+                    <footer></footer>
                 </form>
             </field>
         </record>

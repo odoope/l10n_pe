@@ -30,15 +30,15 @@ class EinvoiceOseInstall(models.TransientModel):
     @api.model
     def _get_message(self):
         content_html = _('''
-                <section class="jumbotron text-center bg-primary">
-                    <div class="container pb32 pt32">
+                <section class="jumbotron text-center bg-primary" style="padding: 4% 0% 4% 0%;top: 0;bottom: 0;right: 0;left: 0;width: 100%;height: 100%;background-image: linear-gradient(#875A7B, #3C3364);">
+                    <div class="container pb32 pt32" >
                         <h1 class="jumbotron-heading">{company}</h1>
-                        <p class="lead text-muted">
-                            Get full book information with cover image just by the ISBN number.
+                        <p class="lead text-muted" style="margin-bottom: 30px">
+                            Obtenga el módulo Odoo para enviar sus comprobantes electrónicos a través de una OSE. 
+                            </br>Fácil, económico y seguro.
                         </p>
-                        <span class="badge badge-warning" style="font-size: 30px;">
-                            20% Off
-                        </span>
+                        <a style="text-align: center; background: #00A09D;width: 293px;padding: 12px;color: #fff !important;opacity: 1 !important;font-weight: 600;font-size: 18px; border-radius: 5px; margin: 15px 0 30px 0; -webkit-box-shadow: 0 10px 90px rgba(0, 0, 0, 0.08); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); color: #fff !important;" href="#" target="_blank"><i class="fa fa-download" style="margin: 0px 8px"></i> Descarga
+                                conexi&oacute;n a OSE</a>
                     </div>
                 </section>
                 <div class="container">
@@ -46,27 +46,71 @@ class EinvoiceOseInstall(models.TransientModel):
                         <div class="col">
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <i class="fa fa-database"/> Large books database
+                                    <i class="fa fa-database"/> Factura electrónica / OSE
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-text">
-                                        We have largest book databse. It contains more
-                                        then 2500000+ books.
-                                    </p>
+                                    <ul class="fa-ul">
+                                        <li><span class="fa-li"><i class="fa fa-check-square"
+                                                    style="font-size: 16px; color: #00A09D; margin-right: 22px;"></i></span>Activación de cuenta en 24 horas.
+                                        </li>
+                                        <li><span class="fa-li"><i class="fa fa-check-square"
+                                                    style="font-size: 16px; color: #00A09D; margin-right: 22px;"></i></span>Certificación digital incluído</li>
+                                        <li><span class="fa-li"><i class="fa fa-check-square"
+                                                    style="font-size: 16px; color: #00A09D; margin-right: 22px;"></i></span>Facturas, Boletas de Venta, Notas de Crédito, Débito y Anulaciones. </li>
+                                        <li><span class="fa-li"><i class="fa fa-check-square"
+                                                    style="font-size: 16px; color: #00A09D; margin-right: 22px;"></i></span>Personalización con propio LOGOTIPO.</li>
+                                        <li><span class="fa-li"><i class="fa fa-check-square"
+                                                    style="font-size: 16px; color: #00A09D; margin-right: 22px;"></i></span>Capacitación de uso</li>
+                                        <li><span class="fa-li"><i class="fa fa-check-square"
+                                                    style="font-size: 16px; color: #00A09D; margin-right: 22px;"></i></span>Soporte por sistemas de Tickets y email.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <i class="fa fa-image"/>
-                                    With cover image
+                                    <i class="fa fa-gear"/>
+                                    Integración con Odoo
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-text">
-                                        More then 95% of our books having high quality
-                                        book cover images.
-                                    </p>
+                                    <ul class="fa-ul">
+                                        <li><span class="fa-li"><i class="fa fa-check"
+                                                    style="font-size: 16px; color: #00A09D; margin-right: 22px;"></i></span>Envía los comprobantes en tiempo real.
+                                        </li>
+                                        <li><span class="fa-li"><i class="fa fa-check"
+                                                    style="font-size: 16px; color: #00A09D; margin-right: 22px;"></i></span>Envío automático diario</li>
+                                        <li><span class="fa-li"><i class="fa fa-check"
+                                                    style="font-size: 16px; color: #00A09D; margin-right: 22px;"></i></span>Consulta estado en SUNAT. </li>
+                                        <li><span class="fa-li"><i class="fa fa-check"
+                                                    style="font-size: 16px; color: #00A09D; margin-right: 22px;"></i></span>Envía el comprobante por correo electrónico al cliente.</li>
+                                        <li><span class="fa-li"><i class="fa fa-check"
+                                                    style="font-size: 16px; color: #00A09D; margin-right: 22px;"></i></span>Disponible para Odoo v12</li>
+                                    </ul>
+                                    <div
+                                        style="display: -moz-flex; display: -ms-flex; display: -o-flex; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-preferred-size: 1; flex-basis: 1;margin-top: 15px;">
+                                        <div>
+                                            <a
+                                                style="border: 1px solid #ddd; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; padding: 10px 15px;border-radius: 30px 30px 30px 0; -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin-right: 20px;">
+                                                <i class="fa fa-users"
+                                                    style="display: inline-block; color: #47425d; font-size: 20px; margin-right: 15px;"></i>
+                                                <p class="mb-0"
+                                                    style="font-size: 12px; line-height: 1; -webkit-transition-duration: 500ms; -o-transition-duration: 500ms; transition-duration: 500ms;">
+                                                    <span style="font-size: 10px; display: block;">compatible con</span> Odoo Community</p>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a
+                                                style="border: 1px solid #ddd; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; padding: 10px 15px;border-radius: 30px 30px 30px 0; -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin-right: 20px; background-color: #875A7B; color: #ffffff">
+                                                <i class="fa fa-rocket"
+                                                    style="display: inline-block; color: #ffffff; font-size: 20px; margin-right: 15px;"></i>
+                                                <p class="mb-0"
+                                                    style="font-size: 12px; line-height: 1; -webkit-transition-duration: 500ms; -o-transition-duration: 500ms; transition-duration: 500ms;">
+                                                    <span style="font-size: 10px; display: block;">compatible con</span> Odoo Enterprise
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
