@@ -21,7 +21,7 @@
 
 from odoo import models, fields, api
 
-class EinvoiceCatalogtmpl(models.Model):
+class EinvoiceCatalogTmpl(models.Model):
     _name = 'einvoice.catalog.tmpl'
     _description = 'Catalog Template'
 
