@@ -23,11 +23,11 @@
 ###############################################################################
 
 {
-    'name' : 'Validador RUC/DNI',
+    'name' : 'Validador RUC',
     'version' : '1.2.2',
     'author' : 'Odoo Peru',
     'category' : 'Generic Modules/Base',
-    'summary': 'Valida RUC y DNI.',
+    'summary': 'Valida RUC.',
     'license': 'AGPL-3',
     'contributors': [
         'Leonidas Pezo <leonidas@odooperu.pe>',

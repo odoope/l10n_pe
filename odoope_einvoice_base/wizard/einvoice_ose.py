@@ -30,15 +30,15 @@ class EinvoiceOseInstall(models.TransientModel):
     @api.model
     def _get_message(self):
         content_html = _('''
-                <section class="jumbotron text-center bg-primary" style="padding: 4% 0% 4% 0%;top: 0;bottom: 0;right: 0;left: 0;width: 100%;height: 100%;background-image: linear-gradient(#875A7B, #3C3364);">
+                <section class="jumbotron text-center bg-primary" style="padding: 4% 0% 4% 0%;top: 0;bottom: 0;right: 0;left: 0;width: 100%;height: 100%;background-image: linear-gradient(#875A7B, #62495B);">
                     <div class="container pb32 pt32" >
-                        <h1 class="jumbotron-heading">{company}</h1>
+                        <h1 style="color:#FFFFFF" class="jumbotron-heading">{company}</h1>
                         <p class="lead text-muted" style="margin-bottom: 30px">
                             Obtenga el módulo Odoo para enviar sus comprobantes electrónicos a través de una OSE. 
                             </br>Fácil, económico y seguro.
                         </p>
-                        <a style="text-align: center; background: #00A09D;width: 293px;padding: 12px;color: #fff !important;opacity: 1 !important;font-weight: 600;font-size: 18px; border-radius: 5px; margin: 15px 0 30px 0; -webkit-box-shadow: 0 10px 90px rgba(0, 0, 0, 0.08); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); color: #fff !important;" href="#" target="_blank"><i class="fa fa-download" style="margin: 0px 8px"></i> Descarga
-                                conexi&oacute;n a OSE</a>
+                        <a style="text-align: center; background: #00A09D;width: 293px;padding: 12px;color: #fff !important;opacity: 1 !important;font-weight: 600;font-size: 18px; border-radius: 5px; margin: 15px 0 30px 0; -webkit-box-shadow: 0 10px 90px rgba(0, 0, 0, 0.08); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); color: #fff !important;" href="http://www.odoo.com/apps/modules/12.0/odoope_einvoice_ose/" target="_blank"><i class="fa fa-download" style="margin: 0px 8px"></i> Descarga
+                                conexi&oacute;n a PSE/OSE</a>
                     </div>
                 </section>
                 <div class="container">
@@ -46,7 +46,7 @@ class EinvoiceOseInstall(models.TransientModel):
                         <div class="col">
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <i class="fa fa-database"/> Factura electrónica / OSE
+                                    <i class="fa fa-database"/> Factura electrónica vía PSE/OSE
                                 </div>
                                 <div class="card-body">
                                     <ul class="fa-ul">

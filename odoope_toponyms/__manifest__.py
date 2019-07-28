@@ -60,7 +60,7 @@ Reportes incluidos:
         #'test/account_test_users.yml',
     ],
     'images': [
-        'static/description/ubigeos_banner.png',
+        'static/description/banner.png',
     ],
     'installable': True,
     'auto_install': False,
