@@ -25,7 +25,7 @@
     'author' : 'Odoo Peru',
     'category' : 'Accounting & Finance',
     'summary': 'Tablas y requisitos mínimos para la factura electrónica.',
-    'license': 'AGPL-3',
+    'license': 'LGPL-3',
     'contributors': [
         'Leonidas Pezo <leonidas@odooperu.pe>',
     ],
