@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ###############################################################################
 #
-#    OpenERP, Open Source Management Solution
+#    OpenERP, Open Source Management Solution -
 #    Copyright (C) 2009-TODAY Odoo Peru(<http://www.odooperu.pe>).
 #
 #    This program is free software: you can redistribute it and/or modify
