@@ -1,0 +1,55 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* odoope_ruc_validation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-13 19:05+0000\n"
+"PO-Revision-Date: 2020-11-13 19:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: odoope_ruc_validation
+#: model:ir.model,name:odoope_ruc_validation.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields.selection,name:odoope_ruc_validation.selection__res_partner__state__habido
+msgid "Habido"
+msgstr ""
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields.selection,name:odoope_ruc_validation.selection__res_partner__state__nhabido
+msgid "No Habido"
+msgstr ""
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_partner__registration_name
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_users__registration_name
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_partner_form__view_inherit
+msgid "Registration Name"
+msgstr "Nombre Comercial"
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_partner__state
+msgid "State"
+msgstr "Estado"
+
+#. module: odoope_ruc_validation
+#: code:addons/odoope_ruc_validation/models/res_partner.py:0
+#, python-format
+msgid "The Ruc must be 11 characters long."
+msgstr "El Ruc debe tener 11 caracteres."
+
+#. module: odoope_ruc_validation
+#: code:addons/odoope_ruc_validation/models/res_partner.py:0
+#, python-format
+msgid "Warning"
+msgstr "Alerta"

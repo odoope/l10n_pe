@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="res_partner_form__view_inherit">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//form//sheet" position="before">
+                    <header>
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="habido,nhabido" readonly="0"/>
+                    </header>
+                </xpath>
+                <div class="o_row" position="before">
+                    <div class="o_row"> 
+                        <field name="registration_name" placeholder="Registration Name" attrs="{'invisible': [('is_company','=',False)]}" /> 
+                    </div>
+                </div>
+                
+            </field>
+        </record>
+
+    </data>
+</odoo>
