@@ -10,19 +10,46 @@
 ###############################################################################
 
 {
-    'name': 'RUC validator',
-    'version': '0.3',
-    'author': 'OPeru',
-    'category': 'Generic Modules',
-    'summary': 'RUC validator.',
-    'description': ''' RUC validator.''',
-    'depends': ['l10n_latam_base','l10n_pe'],
-    'data': [ 
-        'views/res_partner_view.xml',      
+    'name' : 'Validador de RUC - Peru',
+    'version' : '0.0.1',
+    'author' : 'OPeru',
+    'category' : 'Generic Modules/Base',
+    'summary': 'RUC validator - PERU',
+    'license': 'AGPL-3',
+    'contributors': [
+        'Enrique Huayas <enrique@operu.pe>',
+        'Leonidas Pezo <leonidas@operu.pe>',
     ],
-    'installable': True,
-    'license': 'OPL-1',
-    'support': 'soporte@operu.pe',
-    'sequence': 1,
-}
+    'description' : """
+Validador RUC
+-----------------------
+Clientes y Proveedores:
+-----------------------
+    * Nuevo campo "tipo de documento"
+    * Validacion RUC
+Dependencias:
+-------------
+$ sudo pip3 install beautifulsoup4
 
+    """,
+    'depends': ['l10n_latam_base','l10n_pe'],
+    'data': [
+        'views/res_partner_view.xml',
+    ],
+    'qweb' : [
+
+    ],
+    'demo': [
+        #'demo/account_demo.xml',
+    ],
+    'test': [
+        #'test/account_test_users.yml',
+    ],
+    'images': [
+        'static/description/banner.png',
+    ],
+    'support': 'soporte@operu.pe',
+    'installable': True,
+    'auto_install': False,
+    "sequence": 1,
+}

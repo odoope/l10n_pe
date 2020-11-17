@@ -13,10 +13,9 @@
                 </xpath>
                 <div class="o_row" position="before">
                     <div class="o_row"> 
-                        <field name="registration_name" placeholder="Registration Name" attrs="{'invisible': [('is_company','=',False)]}" /> 
+                        <field name="commercial_name" placeholder="Commercial Name" attrs="{'invisible': [('is_company','=',False)]}" /> 
                     </div>
                 </div>
-                
             </field>
         </record>
 
