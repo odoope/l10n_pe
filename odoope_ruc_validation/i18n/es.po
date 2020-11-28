@@ -15,6 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#. module: l10n_latam_base
+#: model:l10n_latam.identification.type,name:l10n_latam_base.it_vat
+msgid "VAT"
+msgstr "RUC"
+
 #. module: odoope_ruc_validation
 #: model:ir.model,name:odoope_ruc_validation.model_res_city
 msgid "City"
