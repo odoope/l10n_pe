@@ -1,0 +1,58 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_pe_currency
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-30 17:11+0000\n"
+"PO-Revision-Date: 2020-11-30 17:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_pe_currency
+#: model:ir.model.fields,field_description:l10n_pe_currency.field_res_currency_rate__rate_pe
+msgid "Change type"
+msgstr ""
+
+#. module: l10n_pe_currency
+#: model:ir.model,name:l10n_pe_currency.model_res_currency
+msgid "Currency"
+msgstr ""
+
+#. module: l10n_pe_currency
+#: model:ir.model,name:l10n_pe_currency.model_res_currency_rate
+msgid "Currency Rate"
+msgstr ""
+
+#. module: l10n_pe_currency
+#: model:ir.model.fields,help:l10n_pe_currency.field_res_currency__rate_pe
+msgid "Currency rate in peruvian format."
+msgstr ""
+
+#. module: l10n_pe_currency
+#: model:ir.model.fields,help:l10n_pe_currency.field_res_currency_rate__rate_pe
+msgid "Currency rate in peruvian format. Ex: 3.25 when $1 = S/. 3.25"
+msgstr ""
+
+#. module: l10n_pe_currency
+#: model_terms:ir.ui.view,arch_db:l10n_pe_currency.view_currency_rate_form_inherit
+#: model_terms:ir.ui.view,arch_db:l10n_pe_currency.view_currency_rate_tree_inherit
+msgid "Ex: 3.25"
+msgstr ""
+
+#. module: l10n_pe_currency
+#: model:ir.model.fields,field_description:l10n_pe_currency.field_res_currency__rate_pe
+msgid "Peruvian format"
+msgstr ""
+
+#. module: l10n_pe_currency
+#: code:addons/l10n_pe_currency/models/res_currency.py:0
+#, python-format
+msgid "The amount must be greater than zero"
+msgstr ""
