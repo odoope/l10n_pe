@@ -15,7 +15,7 @@
     'author' : 'OPeru',
     'category' : 'Generic Modules/Base',
     'summary': 'RUC validator - PERU',
-    'license': 'AGPL-3',
+    'license': 'LGPL-3',
     'contributors': [
         'Enrique Huayas <enrique@operu.pe>',
         'Leonidas Pezo <leonidas@operu.pe>',
