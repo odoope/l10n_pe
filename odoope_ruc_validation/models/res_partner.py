@@ -19,10 +19,14 @@ class ResPartner(models.Model):
 
     commercial_name = fields.Char(string="Commercial Name")
     state = fields.Selection([('habido','Habido'),('nhabido','No Habido')],'State')
+    alert_warning_vat= fields.Boolean(string="Alert warning vat", default=False)
 
     @api.onchange('vat','l10n_latam_identification_type_id')
     def onchange_vat(self):
         res = {}
+        self.name = False
+        self.commercial_name =False
+        self.street = False
         if self.vat: 
             if self.l10n_latam_identification_type_id.l10n_pe_vat_code == '6':
                 if len(self.vat) != 11 :
@@ -34,19 +38,21 @@ class ResPartner(models.Model):
 
     def get_data_ruc(self):
         result = self.sunat_connection(self.vat)
-        self.company_type = 'company'
-        self.name =  result['business_name']
-        self.commercial_name =result['commercial_name']
-        self.street = result['residence']
-        if result['contributing_condition'] == 'HABIDO':
-            self.state = 'habido'
-        else:
-            self.state = 'nhabido'
-        if result['value']:
-            self.l10n_pe_district = result['value']['district_id']
-            self.city_id = result['value']['city_id'] 
-            self.state_id = result['value']['state_id'] 
-            self.country_id = result['value']['country_id']
+        if result:
+            self.alert_warning_vat=False
+            self.company_type = 'company'
+            self.name = result['business_name']
+            self.commercial_name =result['commercial_name'] or result['business_name']
+            self.street = result['residence']
+            if result['contributing_condition'] == 'HABIDO':
+                self.state = 'habido'
+            else:
+                self.state = 'nhabido'
+            if result['value']:
+                self.l10n_pe_district = result['value']['district_id']
+                self.city_id = result['value']['city_id'] 
+                self.state_id = result['value']['state_id'] 
+                self.country_id = result['value']['country_id']
         
     @api.model
     def sunat_connection(self,ruc):
@@ -54,28 +60,24 @@ class ResPartner(models.Model):
         url_sunat = "https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias"
         headers = requests.utils.default_headers()
         headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36' 
+        data = {}
         try:
             captcha_data = session.get('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/captcha?accion=random', headers=headers).text
             data_ruc = {'accion':'consPorRuc','nroRuc':ruc,'numRnd':str(captcha_data)}
             html_doc = session.post(url=url_sunat,data=data_ruc,headers=headers)
-        except Exception :
-            raise Warning("Your inquiry could not be processed")
-        
-        html_info = BeautifulSoup(html_doc.content, 'html.parser')
-        table_info = html_info.find_all('tr')
-        data = {}
-        try:
-            number_ruc = (table_info[0].find_all("td"))[1].contents[0]
-            data['ruc'] = number_ruc.split('-')[0]
-            data['business_name'] = number_ruc.split('-')[1]
-            data['type_of_taxpayer']= (table_info[1].find_all("td"))[1].contents[0]
+            html_info = BeautifulSoup(html_doc.content, 'html.parser')
+            table_info = html_info.find_all('tr')
             sunat_cons = None
             if ruc[0] == '1':
                 sunat_cons = sunatconstants.PersonaNaturalConstant    
                 
             elif ruc[0] == '2':
-                sunat_cons = sunatconstants.PersonaJuridicaConstant               
-        
+                sunat_cons = sunatconstants.PersonaJuridicaConstant
+
+            number_ruc = (table_info[sunat_cons.number_ruc.value].find_all("td"))[1].contents[0]
+            data['ruc'] = number_ruc.split('-')[0]
+            data['business_name'] = number_ruc.split('-')[1]
+            data['type_of_taxpayer']= (table_info[sunat_cons.type_of_taxpayer.value].find_all("td"))[1].contents[0]
             data['estado'] = (table_info[sunat_cons.taxpayer_state.value].find_all("td"))[1].contents[0]
             data['contributing_condition'] = (table_info[sunat_cons.contributing_condition.value].find_all("td"))[1].contents[0].replace('\r', '') \
             .replace('\n', '').strip()
@@ -104,11 +106,9 @@ class ResPartner(models.Model):
             data['residence']  = address
 
         except Exception:
-            raise Warning('The query could not be processed:'
-                                '\n\n* This RUC number is not valid for SUNAT'
-                                '\n\n* Please verify the data.')                      
+            self.alert_warning_vat=True
+            data = False                    
         return data
-    
     @api.onchange('l10n_pe_district')
     def _onchange_l10n_pe_district(self):
         if self.l10n_pe_district and self.l10n_pe_district.city_id:

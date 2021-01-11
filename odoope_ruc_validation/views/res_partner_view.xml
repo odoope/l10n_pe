@@ -6,10 +6,14 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form" />
             <field name="arch" type="xml">
-                <xpath expr="//form//sheet" position="before">
+                <xpath expr="//form//sheet" position="before">      
                     <header>
                         <field name="state" widget="statusbar" nolabel="1" statusbar_visible="habido,nhabido" readonly="0"/>
                     </header>
+                    <field name="alert_warning_vat" invisible="1"/>
+                    <div class="alert alert-warning" role="alert" attrs="{'invisible': [('alert_warning_vat', '=', False)]}">
+                        <span><strong>NO HAY CONEXION O LOS DATOS NO EXISTE, POR FAVOR REGISTRE LOS DATOS MANUALMENTE.</strong></span>
+                    </div>
                 </xpath>
                 <div class="o_row" position="before">
                     <div class="o_row"> 
