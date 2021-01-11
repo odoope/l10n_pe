@@ -32,7 +32,9 @@ class ResPartner(models.Model):
                 if len(self.vat) != 11 :
                     res['warning'] = {'title': _('Warning'), 'message': _('The Ruc must be 11 characters long.')}
                 else:
-                    self.get_data_ruc()
+                    company = self.env['res.company'].browse(self.env.company.id) 
+                    if company.ruc_validation == True:
+                        self.get_data_ruc()
         if res:
             return res            
 

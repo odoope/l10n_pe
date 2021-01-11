@@ -35,6 +35,8 @@ $ sudo pip3 install beautifulsoup4
     'depends': ['l10n_latam_base','l10n_pe'],
     'data': [
         'views/res_partner_view.xml',
+        'views/res_config_settings_views.xml',
+        'views/res_company_views.xml',
     ],
     'qweb' : [
 
