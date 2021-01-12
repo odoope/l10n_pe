@@ -35,9 +35,9 @@ class ResPartner(models.Model):
     def get_data_ruc(self):
         result = self.sunat_connection(self.vat)
         self.company_type = 'company'
-        self.name =  result['business_name']
-        self.commercial_name =result['commercial_name']
-        self.street = result['residence']
+        self.name = str(result['business_name']).strip()
+        self.commercial_name = str(result['commercial_name']).strip()
+        self.street = str(result['residence']).strip()
         if result['contributing_condition'] == 'HABIDO':
             self.state = 'habido'
         else:
@@ -68,7 +68,7 @@ class ResPartner(models.Model):
             number_ruc = (table_info[0].find_all("td"))[1].contents[0]
             data['ruc'] = number_ruc.split('-')[0]
             data['business_name'] = number_ruc.split('-')[1]
-            data['type_of_taxpayer']= (table_info[1].find_all("td"))[1].contents[0]
+            data['type_of_taxpayer'] = (table_info[1].find_all("td"))[1].contents[0]
             sunat_cons = None
             if ruc[0] == '1':
                 sunat_cons = sunatconstants.PersonaNaturalConstant    
@@ -100,7 +100,7 @@ class ResPartner(models.Model):
                 vals['city_id'] = l10n_pe_district.city_id.id
                 vals['state_id'] = l10n_pe_district.city_id.state_id.id
                 vals['country_id'] = l10n_pe_district.city_id.state_id.country_id.id
-            data['value']=vals    
+            data['value'] = vals    
             data['residence']  = address
 
         except Exception:
