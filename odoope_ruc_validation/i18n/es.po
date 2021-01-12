@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-17 00:46+0000\n"
-"PO-Revision-Date: 2020-11-17 00:46+0000\n"
+"POT-Creation-Date: 2021-01-12 16:53+0000\n"
+"PO-Revision-Date: 2021-01-12 16:53+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,10 +15,18 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: l10n_latam_base
-#: model:l10n_latam.identification.type,name:l10n_latam_base.it_vat
-msgid "VAT"
-msgstr "RUC"
+#. module: odoope_ruc_validation
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_partner_form__view_inherit
+msgid ""
+"<span><strong>NO CONNECTION OR THE DATA DOES NOT EXIST, PLEASE REGISTER THE "
+"DATA MANUALLY.<span><strong>"
+msgstr "<span><strong>NO HAY CONEXION O LOS DATOS NO EXISTE, POR FAVOR REGISTRE LOS DATOS MANUALMENTE.<span><strong>"
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_partner__alert_warning_vat
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_users__alert_warning_vat
+msgid "Alert warning vat"
+msgstr ""
 
 #. module: odoope_ruc_validation
 #: model:ir.model,name:odoope_ruc_validation.model_res_city
@@ -31,6 +39,16 @@ msgstr "Ciudad"
 #: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_partner_form__view_inherit
 msgid "Commercial Name"
 msgstr "Nombre comercial"
+
+#. module: odoope_ruc_validation
+#: model:ir.model,name:odoope_ruc_validation.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: odoope_ruc_validation
+#: model:ir.model,name:odoope_ruc_validation.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de Configuración"
 
 #. module: odoope_ruc_validation
 #: model:ir.model,name:odoope_ruc_validation.model_res_partner
@@ -61,6 +79,18 @@ msgstr ""
 #: model:ir.model.fields.selection,name:odoope_ruc_validation.selection__res_partner__state__nhabido
 msgid "No Habido"
 msgstr ""
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_company__ruc_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_config_settings__ruc_validation
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_config_settings_view_form
+msgid "Ruc Validation"
+msgstr "Validador de RUC"
+
+#. module: odoope_ruc_validation
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.view_form_company_inherited
+msgid "Ruc Validation(PE)"
+msgstr "Validador de RUC(PE)"
 
 #. module: odoope_ruc_validation
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_partner__state
