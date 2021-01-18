@@ -41,11 +41,11 @@ class ResPartner(models.Model):
     def get_data_ruc(self):
         result = self.sunat_connection(self.vat)
         if result:
-            self.alert_warning_vat=False
+            self.alert_warning_vat = False
             self.company_type = 'company'
-            self.name = result['business_name']
-            self.commercial_name =result['commercial_name'] or result['business_name']
-            self.street = result['residence']
+            self.name = str(result['business_name']).strip()
+            self.commercial_name = str(result['commercial_name'] or result['business_name']).strip()
+            self.street = str(result['residence']).strip()
             if result['contributing_condition'] == 'HABIDO':
                 self.state = 'habido'
             else:
@@ -79,7 +79,7 @@ class ResPartner(models.Model):
             number_ruc = (table_info[sunat_cons.number_ruc.value].find_all("td"))[1].contents[0]
             data['ruc'] = number_ruc.split('-')[0]
             data['business_name'] = number_ruc.split('-')[1]
-            data['type_of_taxpayer']= (table_info[sunat_cons.type_of_taxpayer.value].find_all("td"))[1].contents[0]
+            data['type_of_taxpayer'] = (table_info[sunat_cons.type_of_taxpayer.value].find_all("td"))[1].contents[0]
             data['estado'] = (table_info[sunat_cons.taxpayer_state.value].find_all("td"))[1].contents[0]
             data['contributing_condition'] = (table_info[sunat_cons.contributing_condition.value].find_all("td"))[1].contents[0].replace('\r', '') \
             .replace('\n', '').strip()
@@ -108,7 +108,7 @@ class ResPartner(models.Model):
             data['residence']  = address
 
         except Exception:
-            self.alert_warning_vat=True
+            self.alert_warning_vat = True
             data = False                    
         return data
     
