@@ -9,9 +9,10 @@
 #
 ###############################################################################
 
-from . import res_partner
-from . import sunatconstants
-from . import res_city
-from . import res_city_district
-from . import res_config_settings
-from . import res_company
+from odoo import api, fields, models, _
+
+class ResConfigSettings(models.TransientModel):
+    _inherit = 'res.config.settings'
+
+    ruc_validation = fields.Boolean(string="Ruc Validation", related='company_id.ruc_validation',readonly=False)
+    

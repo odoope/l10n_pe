@@ -9,9 +9,12 @@
 #
 ###############################################################################
 
-from . import res_partner
-from . import sunatconstants
-from . import res_city
-from . import res_city_district
-from . import res_config_settings
-from . import res_company
+from datetime import date, datetime, timedelta
+from odoo.fields import Date, Datetime
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError, UserError, AccessError
+
+class ResCompany(models.Model):
+    _inherit = 'res.company'
+
+    ruc_validation = fields.Boolean(string="Ruc Validation")

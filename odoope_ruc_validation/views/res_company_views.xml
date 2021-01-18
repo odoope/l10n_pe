@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_form_company_inherited" model="ir.ui.view">
+            <field name="name">res.company.inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//page[1]" position="after">
+                <page string="Ruc Validation(PE)">
+                    <group>
+                        <group>
+                            <field name="ruc_validation"/>
+                                 
+                        </group>
+                        <group>
+                                               
+                        </group>                        
+                    </group>    
+                </page>
+            </xpath>            
+            </field>
+        </record>
+    </data>
+</odoo>
