@@ -85,7 +85,7 @@ class CurrencyRate(models.Model):
     _inherit = "res.currency.rate"
     _description = "Currency Rate"
 
-    rate_pe = fields.Float(string='Change type',digits=(12, 3), help='Currency rate in peruvian format. Ex: 3.25 when $1 = S/. 3.25')
+    rate_pe = fields.Float(string='Change type',digits=(12, 3), default=1.0, help='Currency rate in peruvian format. Ex: 3.25 when $1 = S/. 3.25')
     
     @api.onchange('rate_pe')
     def onchange_rate_pe(self):

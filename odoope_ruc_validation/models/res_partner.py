@@ -104,7 +104,7 @@ class ResPartner(models.Model):
                 vals['city_id'] = l10n_pe_district.city_id.id
                 vals['state_id'] = l10n_pe_district.city_id.state_id.id
                 vals['country_id'] = l10n_pe_district.city_id.state_id.country_id.id
-            data['value']=vals    
+            data['value'] = vals    
             data['residence']  = address
 
         except Exception:
