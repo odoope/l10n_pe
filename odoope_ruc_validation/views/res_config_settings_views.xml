@@ -11,10 +11,26 @@
                     <div class="col-12 col-lg-6 o_setting_box">
                         <div class="o_setting_left_pane"/>
                         <div class="o_setting_right_pane">
-                            <div class="content-group" id="einvoice_supplier">
+                            <div class="content-group">
                                 <div class="row mt16">
                                     <label for="ruc_validation" class="col-lg-3 o_light_label"/>
                                     <field name="ruc_validation" />
+                                </div>
+                            </div>
+                                                         
+                        </div>
+                    </div>
+                   
+                </div>
+                <h2>Dni Validation</h2>
+                <div class="row mt16 o_settings_container" id="dni_validation_settings">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="dni_validation" class="col-lg-3 o_light_label"/>
+                                    <field name="dni_validation" />
                                 </div>
                             </div>
                                                          

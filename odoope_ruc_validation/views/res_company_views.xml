@@ -11,7 +11,7 @@
                     <group>
                         <group>
                             <field name="ruc_validation"/>
-                                 
+                            <field name="dni_validation"/>
                         </group>
                         <group>
                                                

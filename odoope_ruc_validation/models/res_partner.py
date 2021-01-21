@@ -35,6 +35,13 @@ class ResPartner(models.Model):
                     company = self.env['res.company'].browse(self.env.company.id) 
                     if company.ruc_validation == True:
                         self.get_data_ruc()
+            elif self.l10n_latam_identification_type_id.l10n_pe_vat_code == '1':
+                if len(self.vat) != 8 :
+                    res['warning'] = {'title': _('Warning'), 'message': _('The Dni must be 8 characters long.')}
+                else:
+                    company = self.env['res.company'].browse(self.env.company.id) 
+                    if company.dni_validation == True:
+                        self.get_data_dni()         
         if res:
             return res            
 
@@ -55,7 +62,13 @@ class ResPartner(models.Model):
                 self.city_id = result['value']['city_id'] 
                 self.state_id = result['value']['state_id'] 
                 self.country_id = result['value']['country_id']
-        
+    def get_data_dni(self):
+        result = self.reniec_connection(self.vat)
+        if result:
+            self.alert_warning_vat=False
+            self.name= result['nombre'] or ''
+            self.company_type = 'person'
+
     @api.model
     def sunat_connection(self,ruc):
         session = requests.Session()
@@ -111,6 +124,23 @@ class ResPartner(models.Model):
             self.alert_warning_vat=True
             data = False                    
         return data
+    
+    @api.model
+    def reniec_connection(self,dni):
+        session = requests.Session()
+        headers = requests.utils.default_headers()
+        headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
+        url_reniec = 'https://api.reniec.cloud/dni/{dni}'
+        data = {}
+        try:
+            result= session.get(url=url_reniec.format(dni=dni),verify = False,headers=headers).json()
+            data['nombre'] = (result['nombres'] + " " +result['apellido_paterno'] + " " + result['apellido_materno'])
+        except Exception :
+            self.alert_warning_vat=True
+            data = False 
+        return data 
+
+       
     @api.onchange('l10n_pe_district')
     def _onchange_l10n_pe_district(self):
         if self.l10n_pe_district and self.l10n_pe_district.city_id:

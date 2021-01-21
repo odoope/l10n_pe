@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-12 16:59+0000\n"
-"PO-Revision-Date: 2021-01-12 16:59+0000\n"
+"POT-Creation-Date: 2021-01-21 21:57+0000\n"
+"PO-Revision-Date: 2021-01-21 21:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid ""
 "<span><strong>NO CONNECTION OR THE DATA DOES NOT EXIST, PLEASE REGISTER THE "
 "DATA MANUALLY.</strong></span>"
-msgstr ""
+msgstr "<span><strong>NO HAY CONEXION O LOS DATOS NO EXISTE, POR FAVOR REGISTRE LOS DATOS MANUALMENTE.<span><strong>"
 
 #. module: odoope_ruc_validation
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_partner__alert_warning_vat
@@ -31,44 +31,51 @@ msgstr ""
 #. module: odoope_ruc_validation
 #: model:ir.model,name:odoope_ruc_validation.model_res_city
 msgid "City"
-msgstr ""
+msgstr "Ciudad"
 
 #. module: odoope_ruc_validation
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_partner__commercial_name
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_users__commercial_name
 #: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_partner_form__view_inherit
 msgid "Commercial Name"
-msgstr ""
+msgstr "Nombre comercial"
 
 #. module: odoope_ruc_validation
 #: model:ir.model,name:odoope_ruc_validation.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Compañías"
 
 #. module: odoope_ruc_validation
 #: model:ir.model,name:odoope_ruc_validation.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Opciones de Configuración"
 
 #. module: odoope_ruc_validation
 #: model:ir.model,name:odoope_ruc_validation.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "Contacto"
 
 #. module: odoope_ruc_validation
 #: model:ir.model,name:odoope_ruc_validation.model_l10n_pe_res_city_district
 msgid "District"
-msgstr ""
+msgstr "Distrito"
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_company__dni_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_config_settings__dni_validation
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_config_settings_view_form
+msgid "Dni Validation"
+msgstr "Validador de Dni"
 
 #. module: odoope_ruc_validation
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_city__complete_name
 msgid "Full City Name"
-msgstr ""
+msgstr "Nombre completo"
 
 #. module: odoope_ruc_validation
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_l10n_pe_res_city_district__complete_name
 msgid "Full District Name"
-msgstr ""
+msgstr "Nombre completo"
 
 #. module: odoope_ruc_validation
 #: model:ir.model.fields.selection,name:odoope_ruc_validation.selection__res_partner__state__habido
@@ -85,26 +92,33 @@ msgstr ""
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_config_settings__ruc_validation
 #: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_config_settings_view_form
 msgid "Ruc Validation"
-msgstr ""
+msgstr "Validador de RUC"
 
 #. module: odoope_ruc_validation
 #: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.view_form_company_inherited
 msgid "Ruc Validation(PE)"
-msgstr ""
+msgstr "Validador de RUC(PE)"
 
 #. module: odoope_ruc_validation
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_partner__state
 msgid "State"
-msgstr ""
+msgstr "Estado"
+
+#. module: odoope_ruc_validation
+#: code:addons/odoope_ruc_validation/models/res_partner.py:0
+#, python-format
+msgid "The Dni must be 8 characters long."
+msgstr "El Dni debe tener 8 caracteres."
 
 #. module: odoope_ruc_validation
 #: code:addons/odoope_ruc_validation/models/res_partner.py:0
 #, python-format
 msgid "The Ruc must be 11 characters long."
-msgstr ""
+msgstr "El Ruc debe tener 11 caracteres."
 
 #. module: odoope_ruc_validation
 #: code:addons/odoope_ruc_validation/models/res_partner.py:0
+#: code:addons/odoope_ruc_validation/models/res_partner.py:0
 #, python-format
 msgid "Warning"
-msgstr ""
+msgstr "Alerta"

@@ -15,4 +15,5 @@ class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
     ruc_validation = fields.Boolean(string="Ruc Validation", related='company_id.ruc_validation',readonly=False)
+    dni_validation = fields.Boolean(string="Dni Validation", related='company_id.dni_validation',readonly=False)
     
