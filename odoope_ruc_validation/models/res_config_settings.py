@@ -14,6 +14,6 @@ from odoo import api, fields, models, _
 class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
-    ruc_validation = fields.Boolean(string="Ruc Validation", related='company_id.ruc_validation',readonly=False)
-    dni_validation = fields.Boolean(string="Dni Validation", related='company_id.dni_validation',readonly=False)
+    l10n_pe_ruc_validation = fields.Boolean(string="RUC Validation", related='company_id.l10n_pe_ruc_validation',readonly=False)
+    l10n_pe_dni_validation = fields.Boolean(string="DNI Validation", related='company_id.l10n_pe_dni_validation',readonly=False)
     

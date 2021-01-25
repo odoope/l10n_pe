@@ -11,7 +11,7 @@
 
 {
     'name' : 'Validador de RUC - Peru',
-    'version' : '0.0.1',
+    'version' : '0.1.1',
     'author' : 'OPeru',
     'category' : 'Generic Modules/Base',
     'summary': 'RUC validator - PERU',
