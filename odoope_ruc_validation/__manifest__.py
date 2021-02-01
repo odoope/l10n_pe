@@ -54,4 +54,6 @@ $ sudo pip3 install beautifulsoup4
     'installable': True,
     'auto_install': False,
     "sequence": 1,
+
+    'post_init_hook': '_odoope_ruc_validation_init',
 }

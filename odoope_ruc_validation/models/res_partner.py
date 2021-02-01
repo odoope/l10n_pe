@@ -33,14 +33,14 @@ class ResPartner(models.Model):
                     res['warning'] = {'title': _('Warning'), 'message': _('The Ruc must be 11 characters long.')}
                 else:
                     company = self.env['res.company'].browse(self.env.company.id) 
-                    if company.ruc_validation == True:
+                    if company.l10n_pe_ruc_validation == True:
                         self.get_data_ruc()
             elif self.l10n_latam_identification_type_id.l10n_pe_vat_code == '1':
                 if len(self.vat) != 8 :
                     res['warning'] = {'title': _('Warning'), 'message': _('The Dni must be 8 characters long.')}
                 else:
                     company = self.env['res.company'].browse(self.env.company.id) 
-                    if company.dni_validation == True:
+                    if company.l10n_pe_dni_validation == True:
                         self.get_data_dni()         
         if res:
             return res            

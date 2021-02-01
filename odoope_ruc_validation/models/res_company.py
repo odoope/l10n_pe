@@ -17,5 +17,5 @@ from odoo.exceptions import ValidationError, UserError, AccessError
 class ResCompany(models.Model):
     _inherit = 'res.company'
 
-    l10n_pe_ruc_validation = fields.Boolean(string="RUC Validation", default=True)
-    l10n_pe_dni_validation = fields.Boolean(string="DNI Validation", default=True)
+    l10n_pe_ruc_validation = fields.Boolean(string="RUC Validation")
+    l10n_pe_dni_validation = fields.Boolean(string="DNI Validation")
