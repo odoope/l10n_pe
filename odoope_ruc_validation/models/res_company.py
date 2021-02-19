@@ -19,3 +19,13 @@ class ResCompany(models.Model):
 
     l10n_pe_ruc_validation = fields.Boolean(string="RUC Validation")
     l10n_pe_dni_validation = fields.Boolean(string="DNI Validation")
+
+    @api.onchange('country_id')
+    def _onchange_country_id(self):
+        super(ResCompany, self)._onchange_country_id()
+        if self.country_id and self.country_id.code == 'PE':
+            self.l10n_pe_ruc_validation = True
+            self.l10n_pe_dni_validation = True
+        else:
+            self.l10n_pe_ruc_validation = False
+            self.l10n_pe_dni_validation = False
