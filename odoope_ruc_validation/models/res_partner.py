@@ -137,7 +137,7 @@ class ResPartner(models.Model):
         url_reniec = 'https://api.reniec.cloud/dni/{dni}'
         data = {}
         try:
-            result= session.get(url=url_reniec.format(dni=dni),verify = False,headers=headers).json()
+            result= session.get(url=url_reniec.format(dni=dni),verify = False,headers=headers,timeout=10).json()
             data['nombre'] = (result['nombres'] + " " +result['apellido_paterno'] + " " + result['apellido_materno'])
         except Exception:
             self.alert_warning_vat = True
