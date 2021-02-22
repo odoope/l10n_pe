@@ -77,7 +77,7 @@ class ResPartner(models.Model):
         headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36' 
         data = {}
         try:
-            captcha_data = session.get('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/captcha?accion=random', headers=headers).text
+            captcha_data = session.get('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/captcha?accion=random', headers=headers,timeout=5).text
             data_ruc = {'accion':'consPorRuc','nroRuc':ruc,'numRnd':str(captcha_data)}
             html_doc = session.post(url=url_sunat,data=data_ruc,headers=headers,timeout=10)
             html_info = BeautifulSoup(html_doc.content, 'html.parser')
