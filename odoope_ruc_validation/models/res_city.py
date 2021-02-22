@@ -13,13 +13,24 @@ from odoo import fields, models, api
 
 class City(models.Model):
     _inherit = "res.city"
+    _rec_name = 'complete_name'
+
+    complete_name = fields.Char("Full City Name", compute='_compute_complete_name')
 
     def name_get(self):
         res = []
         for city in self:
             if city.state_id:
-                display_name = '%s (%s)' % (city.name, city.state_id.name)
+                complete_name = '%s / %s ' % (city.name, city.state_id.name)
             else:
-                display_name = city.name
-            res.append((city.id, display_name))
+                complete_name = city.name
+            res.append((city.id, complete_name))
         return res
+        
+    @api.depends('name', 'state_id.name')
+    def _compute_complete_name(self):
+        for city in self:
+            if city.state_id:
+                city.complete_name = '%s / %s ' % (city.name, city.state_id.name)
+            else:
+                city.complete_name = city.name
