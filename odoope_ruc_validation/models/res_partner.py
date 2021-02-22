@@ -79,7 +79,7 @@ class ResPartner(models.Model):
         try:
             captcha_data = session.get('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/captcha?accion=random', headers=headers,timeout=5).text
             data_ruc = {'accion':'consPorRuc','nroRuc':ruc,'numRnd':str(captcha_data)}
-            html_doc = session.post(url=url_sunat,data=data_ruc,headers=headers,timeout=10)
+            html_doc = session.post(url=url_sunat,data=data_ruc,headers=headers,timeout=(5,10))
             html_info = BeautifulSoup(html_doc.content, 'html.parser')
             table_info = html_info.find_all('tr')
             sunat_cons = None
