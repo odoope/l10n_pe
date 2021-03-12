@@ -12,6 +12,7 @@
 from odoo import _, api, fields, models
 from odoo.addons.odoope_ruc_validation.models import sunatconstants
 import requests
+import json
 from bs4 import BeautifulSoup
 from odoo.exceptions import Warning, UserError
 class ResPartner(models.Model):
@@ -77,9 +78,9 @@ class ResPartner(models.Model):
         headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36' 
         data = {}
         try:
-            captcha_data = session.get('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/captcha?accion=random', headers=headers).text
+            captcha_data = session.get('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/captcha?accion=random', headers=headers,timeout=12).text
             data_ruc = {'accion':'consPorRuc','nroRuc':ruc,'numRnd':str(captcha_data)}
-            html_doc = session.post(url=url_sunat,data=data_ruc,headers=headers)
+            html_doc = session.post(url=url_sunat,data=data_ruc,headers=headers,timeout=(15,20))
             html_info = BeautifulSoup(html_doc.content, 'html.parser')
             table_info = html_info.find_all('tr')
             sunat_cons = None
@@ -133,7 +134,9 @@ class ResPartner(models.Model):
         url_reniec = 'https://api.reniec.cloud/dni/{dni}'
         data = {}
         try:
-            result= session.get(url=url_reniec.format(dni=dni),verify = False,headers=headers).json()
+            response= session.get(url=url_reniec.format(dni=dni),verify = False,headers=headers).text
+            values_response = response.replace('&Ntilde;','Ñ')
+            result = json.loads(values_response)
             data['nombre'] = (result['nombres'] + " " +result['apellido_paterno'] + " " + result['apellido_materno'])
         except Exception :
             self.alert_warning_vat=True
