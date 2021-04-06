@@ -179,7 +179,7 @@ class ResPartner(models.Model):
         try:
             r = requests.get(url, headers=headers,timeout=(15))
             result = r.json()
-            name = result.get('first_name') +" "+ result.get('last_name') + "" + result.get('name')
+            name = result.get('first_name') +" "+ result.get('last_name') + " " + result.get('name')
             data['nombre'] = name
         except Exception :
             self.alert_warning_vat = True
