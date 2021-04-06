@@ -19,7 +19,8 @@ class ResCompany(models.Model):
 
     l10n_pe_ruc_validation = fields.Boolean(string="RUC Validation")
     l10n_pe_dni_validation = fields.Boolean(string="DNI Validation")
-
+    l10n_pe_api_dni_connection = fields.Selection([('jne','JNE') ,('facturacion_electronica','Facturacion Electronica DNI'),('free_api','Free Api')], string='Api DNI Connection', default='jne')
+    l10n_pe_api_ruc_connection = fields.Selection([('sunat','Sunat')], string='Api RUC Connection', default='sunat')
     @api.onchange('country_id')
     def _onchange_country_id(self):
         super(ResCompany, self)._onchange_country_id()
