@@ -47,7 +47,7 @@ class ResPartner(models.Model):
             return res            
 
     def get_data_ruc(self):
-        result = self.sunat_connection(self.vat)
+        result = self.l10n_pe_ruc_connection(self.vat)
         if result:
             self.alert_warning_vat=False
             self.company_type = 'company'
@@ -64,7 +64,7 @@ class ResPartner(models.Model):
                 self.state_id = result['value']['state_id'] 
                 self.country_id = result['value']['country_id']
     def get_data_dni(self):
-        result = self.reniec_connection(self.vat)
+        result = self.l10n_pe_dni_connection(self.vat)
         if result:
             self.alert_warning_vat=False
             self.name= result['nombre'] or ''
@@ -125,6 +125,14 @@ class ResPartner(models.Model):
             self.alert_warning_vat=True
             data = False                    
         return data
+
+    @api.model     
+    def l10n_pe_ruc_connection(self, ruc):
+        data = {}
+        company = self.env.user.company_id
+        if self.env.user.company_id.l10n_pe_api_ruc_connection == 'sunat':
+            data =self.sunat_connection(ruc)      
+        return data    
     
     @api.model
     def reniec_connection(self,dni):
@@ -134,7 +142,7 @@ class ResPartner(models.Model):
         url_reniec = 'https://api.reniec.cloud/dni/{dni}'
         data = {}
         try:
-            response= session.get(url=url_reniec.format(dni=dni),verify = False,headers=headers).text
+            response= session.get(url=url_reniec.format(dni=dni),verify = False,headers=headers,timeout=(15)).text
             values_response = response.replace('&Ntilde;','Ñ')
             result = json.loads(values_response)
             data['nombre'] = (result['nombres'] + " " +result['apellido_paterno'] + " " + result['apellido_materno'])
@@ -143,7 +151,76 @@ class ResPartner(models.Model):
             data = False 
         return data 
 
-       
+    @api.model
+    def jne_connection(self,dni):
+        session = requests.Session()
+        headers = requests.utils.default_headers()
+        headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
+        headers['Content-Type'] = 'application/json;chartset=utf-8'
+        headers['Requestverificationtoken'] = 'Dmfiv1Unnsv8I9EoXEzbyQExSD8Q1UY7viyyf_347vRCfO-1xGFvDddaxDAlvm0cZ8XgAKTaWclVFnnsGgoy4aLlBGB5m-E8rGw_ymEcCig1:eq4At-H2zqgXPrPnoiDGFZH0Fdx5a-1UiyVaR4nQlCvYZzAhzmvWxLwkUk6-yORYrBBxEnoG5sm-Hkiyc91so6-nHHxIeLee5p700KE47Cw1'
+        url_reniec = 'https://aplicaciones007.jne.gob.pe/srop_publico/Consulta/api/AfiliadoApi/GetNombresCiudadano'
+        dni_value = {"CODDNI":dni}
+        data = {}
+        try:
+            response = session.post(url=url_reniec,json=dni_value,headers=headers,timeout=(15)).text
+            values_response = response.replace('|',' ')
+            result = json.loads(values_response)
+            data['nombre'] = result['data']
+        except Exception :
+            self.alert_warning_vat = True
+            data = False 
+        return data     
+
+    @api.model     
+    def free_api_connection(self, dni):
+        url = 'https://dni.optimizeperu.com/api/prod/persons/{dni}'.format(dni=dni)
+        headers = {'authorization': 'token 48b5594ab9a37a8c3581e5e71ed89c7538a36f11'}
+        data = {}
+        try:
+            r = requests.get(url, headers=headers,timeout=(15))
+            result = r.json()
+            name = result.get('first_name') +" "+ result.get('last_name') + "" + result.get('name')
+            data['nombre'] = name
+        except Exception :
+            self.alert_warning_vat = True
+            data = False 
+        return data
+        
+    @api.model     
+    def facturacion_electronica_dni_connection(self, dni):
+        url = 'https://www.facturacionelectronica.us/facturacion/controller/ws_consulta_rucdni_v2.php'
+        params = {
+            'usuario': '10447915125',
+            'password': '985511933',
+            'documento': 'DNI',
+            'nro_documento': dni
+        }
+        data = {}
+        try:
+            r = requests.get(url, params, timeout=(15))
+            result = r.json()
+            name = result.get('result').get('Paterno') +" "+ result.get('result').get('Materno') + " " + result.get('result').get('Nombre')
+            data['nombre'] = name
+        except Exception :
+            self.alert_warning_vat = True
+            data = False 
+
+        return data    
+    
+    @api.model     
+    def l10n_pe_dni_connection(self, dni):
+        data = {}
+        company = self.env.user.company_id
+        if self.env.user.company_id.l10n_pe_api_dni_connection == 'jne':
+            data = self.jne_connection(dni)
+        elif company.l10n_pe_api_dni_connection == 'facturacion_electronica':
+            data = self.facturacion_electronica_dni_connection(dni)
+        elif company.l10n_pe_api_dni_connection == 'free_api':
+            data = self.free_api_connection(dni)
+        else:
+            data = False   
+        return data                 
+
     @api.onchange('l10n_pe_district')
     def _onchange_l10n_pe_district(self):
         if self.l10n_pe_district and self.l10n_pe_district.city_id:
