@@ -18,15 +18,19 @@ from odoo.exceptions import Warning, UserError
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    def _default_country(self):
+        return self.env.company.country_id.id
+
+    country_id = fields.Many2one(default=_default_country)
     commercial_name = fields.Char(string="Commercial Name")
-    state = fields.Selection([('habido','Habido'),('nhabido','No Habido')],'State')
+    state = fields.Selection([('habido','Habido'),('nhabido','No Habido')], string="State")
     alert_warning_vat= fields.Boolean(string="Alert warning vat", default=False)
 
     @api.onchange('vat','l10n_latam_identification_type_id')
     def onchange_vat(self):
         res = {}
         self.name = False
-        self.commercial_name =False
+        self.commercial_name = False
         self.street = False
         if self.vat: 
             if self.l10n_latam_identification_type_id.l10n_pe_vat_code == '6':
@@ -42,18 +46,18 @@ class ResPartner(models.Model):
                 else:
                     company = self.env['res.company'].browse(self.env.company.id) 
                     if company.l10n_pe_dni_validation == True:
-                        self.get_data_dni()         
+                        self.get_data_dni()
         if res:
-            return res            
+            return res
 
     def get_data_ruc(self):
         result = self.l10n_pe_ruc_connection(self.vat)
         if result:
-            self.alert_warning_vat=False
+            self.alert_warning_vat = False
             self.company_type = 'company'
-            self.name = result['business_name']
-            self.commercial_name =result['commercial_name'] or result['business_name']
-            self.street = result['residence']
+            self.name = str(result['business_name']).strip()
+            self.commercial_name = str(result['commercial_name'] or result['business_name']).strip()
+            self.street = str(result['residence']).strip()
             if result['contributing_condition'] == 'HABIDO':
                 self.state = 'habido'
             else:
@@ -66,12 +70,12 @@ class ResPartner(models.Model):
     def get_data_dni(self):
         result = self.l10n_pe_dni_connection(self.vat)
         if result:
-            self.alert_warning_vat=False
-            self.name= result['nombre'] or ''
+            self.alert_warning_vat = False
+            self.name = str(result['nombre'] or '').strip()
             self.company_type = 'person'
 
     @api.model
-    def sunat_connection(self,ruc):
+    def sunat_connection(self, ruc):
         session = requests.Session()
         url_sunat = "https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias"
         headers = requests.utils.default_headers()
@@ -85,7 +89,7 @@ class ResPartner(models.Model):
             table_info = html_info.find_all('tr')
             sunat_cons = None
             if ruc[0] == '1':
-                sunat_cons = sunatconstants.PersonaNaturalConstant    
+                sunat_cons = sunatconstants.PersonaNaturalConstant
                 
             elif ruc[0] == '2':
                 sunat_cons = sunatconstants.PersonaJuridicaConstant
@@ -93,63 +97,62 @@ class ResPartner(models.Model):
             number_ruc = (table_info[sunat_cons.number_ruc.value].find_all("td"))[1].contents[0]
             data['ruc'] = number_ruc.split('-')[0]
             data['business_name'] = number_ruc.split('-')[1]
-            data['type_of_taxpayer']= (table_info[sunat_cons.type_of_taxpayer.value].find_all("td"))[1].contents[0]
+            data['type_of_taxpayer'] = (table_info[sunat_cons.type_of_taxpayer.value].find_all("td"))[1].contents[0]
             data['estado'] = (table_info[sunat_cons.taxpayer_state.value].find_all("td"))[1].contents[0]
             data['contributing_condition'] = (table_info[sunat_cons.contributing_condition.value].find_all("td"))[1].contents[0].replace('\r', '') \
             .replace('\n', '').strip()
-            data['commercial_name'] = (table_info[sunat_cons.commercial_name.value].find_all("td"))[1].contents[0].replace('-','').strip()    
+            data['commercial_name'] = (table_info[sunat_cons.commercial_name.value].find_all("td"))[1].contents[0].replace('-','').strip()
 
             residence = (table_info[sunat_cons.tax_residence.value].find_all("td"))[1].contents[0]
             district = (" ".join(residence.split("-")[-1].split())).title()
             province = (" ".join(residence.split("-")[-2].split())).title()
             address = " ".join(residence.split())
-            address = " ".join(residence.split("-")[0:-2])	
+            address = " ".join(residence.split("-")[0:-2])
             prov_ids = self.env['res.city'].search([('name', '=', province),('state_id','!=',False)])
             dist_id = self.env['l10n_pe.res.city.district'].search([('name', '=', district),('city_id', 'in', [x.id for x in prov_ids])], limit=1)
             dist_short_id = self.env['l10n_pe.res.city.district'].search([('name', '=', district)], limit=1)
             if dist_id:
                 l10n_pe_district = dist_id
             else:
-                l10n_pe_district = dist_short_id  
-    
-            vals={}
+                l10n_pe_district = dist_short_id
+
+            vals = {}
             if l10n_pe_district:
                 vals['district_id'] = l10n_pe_district.id
                 vals['city_id'] = l10n_pe_district.city_id.id
                 vals['state_id'] = l10n_pe_district.city_id.state_id.id
                 vals['country_id'] = l10n_pe_district.city_id.state_id.country_id.id
-            data['value']=vals    
+            data['value'] = vals
             data['residence']  = address
 
         except Exception:
-            self.alert_warning_vat=True
-            data = False                    
+            self.alert_warning_vat = True
+            data = False
         return data
 
     @api.model     
     def l10n_pe_ruc_connection(self, ruc):
         data = {}
-        company = self.env.user.company_id
         if self.env.user.company_id.l10n_pe_api_ruc_connection == 'sunat':
             data =self.sunat_connection(ruc)      
-        return data    
+        return data       
     
     @api.model
-    def reniec_connection(self,dni):
+    def reniec_connection(self, dni):
         session = requests.Session()
         headers = requests.utils.default_headers()
         headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
         url_reniec = 'https://api.reniec.cloud/dni/{dni}'
         data = {}
         try:
-            response= session.get(url=url_reniec.format(dni=dni),verify = False,headers=headers,timeout=(15)).text
+            response= session.get(url=url_reniec.format(dni=dni),verify = False,headers=headers).text
             values_response = response.replace('&Ntilde;','Ñ')
             result = json.loads(values_response)
             data['nombre'] = (result['nombres'] + " " +result['apellido_paterno'] + " " + result['apellido_materno'])
-        except Exception :
-            self.alert_warning_vat=True
+        except Exception:
+            self.alert_warning_vat = True
             data = False 
-        return data 
+        return data
 
     @api.model
     def jne_connection(self,dni):
@@ -169,7 +172,7 @@ class ResPartner(models.Model):
         except Exception :
             self.alert_warning_vat = True
             data = False 
-        return data     
+        return data 
 
     @api.model     
     def free_api_connection(self, dni):
@@ -184,8 +187,8 @@ class ResPartner(models.Model):
         except Exception :
             self.alert_warning_vat = True
             data = False 
-        return data
-        
+        return data  
+
     @api.model     
     def facturacion_electronica_dni_connection(self, dni):
         url = 'https://www.facturacionelectronica.us/facturacion/controller/ws_consulta_rucdni_v2.php'
@@ -205,8 +208,8 @@ class ResPartner(models.Model):
             self.alert_warning_vat = True
             data = False 
 
-        return data    
-    
+        return data
+
     @api.model     
     def l10n_pe_dni_connection(self, dni):
         data = {}
@@ -219,7 +222,7 @@ class ResPartner(models.Model):
             data = self.free_api_connection(dni)
         else:
             data = False   
-        return data                 
+        return data   
 
     @api.onchange('l10n_pe_district')
     def _onchange_l10n_pe_district(self):
@@ -230,8 +233,20 @@ class ResPartner(models.Model):
     def _onchange_city_id(self):
         if self.city_id and self.city_id.state_id:
             self.state_id = self.city_id.state_id
-    
+        res = {}
+        res['domain'] = {}
+        res['domain']['l10n_pe_district'] = []
+        if self.city_id:
+            res['domain']['l10n_pe_district'] += [('city_id','=',self.city_id.id)]
+        return res
+
     @api.onchange('state_id')
     def _onchange_state_id(self):
         if self.state_id and self.state_id.country_id:
             self.country_id = self.state_id.country_id
+        res = {}
+        res['domain'] = {}
+        res['domain']['city_id'] = []
+        if self.state_id:
+            res['domain']['city_id'] += [('state_id','=',self.state_id.id)]
+        return res
