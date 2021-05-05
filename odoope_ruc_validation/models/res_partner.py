@@ -95,8 +95,8 @@ class ResPartner(models.Model):
                 sunat_cons = sunatconstants.PersonaJuridicaConstant
 
             number_ruc = (table_info[sunat_cons.number_ruc.value].find_all("td"))[1].contents[0]
-            data['ruc'] = number_ruc.split('-')[0]
-            data['business_name'] = number_ruc.split('-')[1]
+            data['ruc'] = number_ruc.split(' - ')[0]
+            data['business_name'] = number_ruc.split(' - ')[1]
             data['type_of_taxpayer'] = (table_info[sunat_cons.type_of_taxpayer.value].find_all("td"))[1].contents[0]
             data['estado'] = (table_info[sunat_cons.taxpayer_state.value].find_all("td"))[1].contents[0]
             data['contributing_condition'] = (table_info[sunat_cons.contributing_condition.value].find_all("td"))[1].contents[0].replace('\r', '') \
