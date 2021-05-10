@@ -134,7 +134,7 @@ class ResPartner(models.Model):
     def l10n_pe_ruc_connection(self, ruc):
         data = {}
         if self.env.user.company_id.l10n_pe_api_ruc_connection == 'sunat':
-            data =self.sunat_connection(ruc)      
+            data = self.sunat_connection(ruc)      
         return data       
     
     @api.model
@@ -155,7 +155,7 @@ class ResPartner(models.Model):
         return data
 
     @api.model
-    def jne_connection(self,dni):
+    def jne_connection(self, dni):
         session = requests.Session()
         headers = requests.utils.default_headers()
         headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
