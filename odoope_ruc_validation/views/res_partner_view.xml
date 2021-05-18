@@ -8,21 +8,21 @@
             <field name="arch" type="xml">
                 <sheet position="before">
                     <header>
-                        <button string="Actulizar datos RUC" type="object" name="update_document"/>
+                        <button string="Actualizar datos RUC" type="object" name="update_document"/>
                         <field name="state" widget="statusbar" nolabel="1" statusbar_visible="habido,nhabido" statusbar_colors="{&quot;habido&quot;:&quot;green&quot;,&quot;nhabido&quot;:&quot;red&quot;}" readonly="0"/>
-                    </header>                        
+                    </header>  
+                    <field name="alert_warning_vat" invisible="1"/>
+                    <div class="alert alert-warning" role="alert" attrs="{'invisible': [('alert_warning_vat', '=', False)]}">
+                        <span><strong>NO CONNECTION OR THE DATA DOES NOT EXIST, PLEASE REGISTER THE DATA MANUALLY.</strong></span>
+                    </div>                      
                 </sheet>
-                <field name="vat" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
+                <field name="vat" position="replace"/>
                 <div class="o_row" position="before">
                     <div class="o_row">
                         <field name="catalog_06_id" placeholder="Tipo Doc." colspan="1" nolabel="1" widget="selection"/>
                         <field name="vat" placeholder="Número de Documento" colspan="3" nolabel="1"/>   
-                    </div> 
-                    <div class="oe_left"> 
-                        <field name="registration_name" placeholder="Razón social" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)]}" /> 
-                    </div>
+                    </div>  
+                    <field name="registration_name" placeholder="Razón social" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)]}"/> 
                 </div>
             </field>
         </record>

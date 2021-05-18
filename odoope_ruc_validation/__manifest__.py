@@ -23,14 +23,14 @@
 ###############################################################################
 
 {
-    'name' : 'Validador RUC',
-    'version' : '1.2.2',
-    'author' : 'Odoo Peru',
+    'name' : 'Validador RUC/DNI',
+    'version' : '12.0.1.0.0',
+    'author' : 'Grupo Odoo S.A.C.',
     'category' : 'Generic Modules/Base',
     'summary': 'Valida RUC.',
     'license': 'AGPL-3',
     'contributors': [
-        'Leonidas Pezo <leonidas@odooperu.pe>',
+        'Leonidas Pezo <leonidas@operu.pe>',
     ],
     'description' : """
 Validador RUC y DNI
@@ -46,15 +46,13 @@ Dependencias:
 $ sudo apt-get install tesseract-ocr tesseract-ocr-eng python-imaging python-pip python-bs4
 $ sudo pip install pytesseract
 
-Créditos:
----------
-Este módulo esta basado en el módulo de Alex Cuellar en https://github.com/alexcuellar/l10n_pe_doc_validation
-
     """,
     'website': 'http://odooperu.pe/page/contabilidad',
     'depends' : ['account','odoope_toponyms'],
     'data': [
         'views/res_partner_view.xml',
+        'views/res_config_settings_views.xml',
+        'views/res_company_views.xml',
         'views/einvoice_views.xml',
         'data/einvoice_data.xml',
         'security/ir.model.access.csv',
