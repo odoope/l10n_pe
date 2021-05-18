@@ -128,7 +128,7 @@ class ResPartner(models.Model):
                 vals['state_id'] = l10n_pe_district.city_id.state_id.id
                 vals['country_id'] = l10n_pe_district.city_id.state_id.country_id.id
             data['value'] = vals
-            data['residence']  = address
+            data['residence']  = str(address).strip()
 
         except Exception:
             self.alert_warning_vat = True
