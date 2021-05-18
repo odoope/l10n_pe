@@ -82,11 +82,16 @@ class ResPartner(models.Model):
         headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36' 
         data = {}
         try:
-            captcha_data = session.get('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/captcha?accion=random', headers=headers,timeout=12).text
-            data_ruc = {'accion':'consPorRuc','nroRuc':ruc,'numRnd':str(captcha_data)}
+            url_numRnd = session.get('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias?accion=consPorRazonSoc&razSoc=BVA%20FOODS', headers=headers,timeout=12).content
+            html_content = BeautifulSoup(url_numRnd, 'html.parser')
+            content_form = html_content.find_all('form')
+            numRnd = content_form[0].find_all('input')[3].get('value')
+            data_ruc = {'accion':'consPorRuc','nroRuc':ruc,'numRnd':numRnd,'actReturn':'1','modo':'1'}
             html_doc = session.post(url=url_sunat,data=data_ruc,headers=headers,timeout=(15,20))
             html_info = BeautifulSoup(html_doc.content, 'html.parser')
-            table_info = html_info.find_all('tr')
+            div_info = html_info.find_all("div", {"class": "list-group"})
+            div_p_info = div_info[0].find_all("p", {"class": "list-group-item-text"})
+            div_h4_info = div_info[0].find_all("h4", {"class": "list-group-item-heading"})
             sunat_cons = None
             if ruc[0] == '1':
                 sunat_cons = sunatconstants.PersonaNaturalConstant
@@ -94,16 +99,16 @@ class ResPartner(models.Model):
             elif ruc[0] == '2':
                 sunat_cons = sunatconstants.PersonaJuridicaConstant
 
-            number_ruc = (table_info[sunat_cons.number_ruc.value].find_all("td"))[1].contents[0]
+            number_ruc = (div_h4_info[sunat_cons.number_ruc.value].contents[0])
             data['ruc'] = number_ruc.split('-')[0]
             data['business_name'] = number_ruc.split('-')[1]
-            data['type_of_taxpayer'] = (table_info[sunat_cons.type_of_taxpayer.value].find_all("td"))[1].contents[0]
-            data['estado'] = (table_info[sunat_cons.taxpayer_state.value].find_all("td"))[1].contents[0]
-            data['contributing_condition'] = (table_info[sunat_cons.contributing_condition.value].find_all("td"))[1].contents[0].replace('\r', '') \
+            data['type_of_taxpayer'] = (div_p_info[sunat_cons.type_of_taxpayer.value].contents[0])
+            data['estado'] = (div_p_info[sunat_cons.taxpayer_state.value].contents[0])
+            data['contributing_condition'] = (div_p_info[sunat_cons.contributing_condition.value].contents[0]).replace('\r', '') \
             .replace('\n', '').strip()
-            data['commercial_name'] = (table_info[sunat_cons.commercial_name.value].find_all("td"))[1].contents[0].replace('-','').strip()
+            data['commercial_name'] = (div_p_info[sunat_cons.commercial_name.value].contents[0]).replace('-','').strip()
 
-            residence = (table_info[sunat_cons.tax_residence.value].find_all("td"))[1].contents[0]
+            residence = (div_p_info[sunat_cons.tax_residence.value].contents[0])
             district = (" ".join(residence.split("-")[-1].split())).title()
             province = (" ".join(residence.split("-")[-2].split())).title()
             address = " ".join(residence.split())

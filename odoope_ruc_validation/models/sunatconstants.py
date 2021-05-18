@@ -12,21 +12,21 @@
 from enum import Enum
 
 class PersonaNaturalConstant(Enum):
-    number_ruc = 5
-    type_of_taxpayer = 6
-    commercial_name = 8
+    number_ruc = 1
+    type_of_taxpayer = 0
+    commercial_name = 2
     registration_date = 4
-    taxpayer_state = 10
-    contributing_condition = 11
-    tax_residence = 12
+    taxpayer_state = 5
+    contributing_condition = 6
+    tax_residence = 7
     economic_activity = 13
 
 class PersonaJuridicaConstant(Enum):
-    number_ruc = 5
-    type_of_taxpayer = 6
-    commercial_name = 7
+    number_ruc = 1
+    type_of_taxpayer = 0
+    commercial_name = 1
     registration_date = 3
-    taxpayer_state = 9
-    contributing_condition = 10
-    tax_residence = 11
+    taxpayer_state = 4
+    contributing_condition = 5
+    tax_residence = 6
     economic_activity = 12
