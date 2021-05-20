@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account.action_account_payments" model="ir.actions.act_window">
+        <field name="domain">[('internal_payment_type','=','other')]</field>
+    </record>
+
+    <record id="account.action_account_payments_payable" model="ir.actions.act_window">
+        <field name="domain">[('internal_payment_type','=','other')]</field>
+    </record>
+
+    <record id="view_account_payment_tree" model="ir.ui.view">
+        <field name="name">account.payment.tree.l10n_pe_account_letters_checks</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="currency_id" position="after">
+                <field name="paid_state" widget="badge" decoration-warning="paid_state == 'no'" decoration-success="paid_state == 'paid'"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_supplier_payment_tree" model="ir.ui.view">
+        <field name="name">account.supplier.payment.tree.l10n_pe_account_letters_checks</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_supplier_payment_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="currency_id" position="after">
+                <field name="paid_state" widget="badge" decoration-warning="paid_state == 'no'" decoration-success="paid_state == 'paid'"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_letters_receivable" model="ir.actions.act_window">
+        <field name="name">Letters Receivable</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">tree,kanban,form,graph</field>
+        <field name="context">{}</field>
+        <field name="domain">[('internal_payment_type','=','lr')]</field>
+        <field name="view_id" ref="l10n_pe_account_letters_checks.view_account_payment_tree"/>
+    </record>
+
+    <menuitem id="menu_action_letters_receivable" action="action_letters_receivable" parent="account.menu_finance_receivables" sequence="16"/>
+
+    <record id="action_checks_receivable" model="ir.actions.act_window">
+        <field name="name">Checks Receivable</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">tree,kanban,form,graph</field>
+        <field name="context">{}</field>
+        <field name="domain">[('internal_payment_type','=','cr')]</field>
+        <field name="view_id" ref="l10n_pe_account_letters_checks.view_account_payment_tree"/>
+    </record>
+
+    <menuitem id="menu_action_checks_receivable" action="action_checks_receivable" parent="account.menu_finance_receivables" sequence="17"/>
+
+    <record id="action_letters_payable" model="ir.actions.act_window">
+        <field name="name">Letters Payable</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">tree,kanban,form,graph</field>
+        <field name="context">{}</field>
+        <field name="domain">[('internal_payment_type','=','lp')]</field>
+        <field name="view_id" ref="l10n_pe_account_letters_checks.view_account_supplier_payment_tree"/>
+    </record>
+
+    <menuitem id="menu_action_letters_payable" action="action_letters_payable" parent="account.menu_finance_payables" sequence="21"/>
+
+    <record id="action_checks_payable" model="ir.actions.act_window">
+        <field name="name">Checks Payable</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">tree,kanban,form,graph</field>
+        <field name="context">{}</field>
+        <field name="domain">[('internal_payment_type','=','cp')]</field>
+        <field name="view_id" ref="l10n_pe_account_letters_checks.view_account_supplier_payment_tree"/>
+    </record>
+
+    <menuitem id="menu_action_checks_payable" action="action_checks_payable" parent="account.menu_finance_payables" sequence="22"/>
+
+    <record id="view_account_payment_form" model="ir.ui.view">
+        <field name="name">account.payment.form.l10n_pe_account_letters_checks</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <field name="country_code" position="after">
+                <field name="internal_payment_type" invisible="1"/>
+                <field name="paid_state" invisible="1"/>
+            </field>
+            <button name="mark_as_sent" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', '|', '|', ('internal_payment_type', '!=', 'other'), ('state', '!=', 'posted'), ('is_move_sent', '=', True), ('payment_method_code', '!=', 'manual')]}</attribute>
+            </button>
+            <widget name="web_ribbon" position="after">
+                <widget name="web_ribbon" title="Paid Letter" bg_color="bg-success"
+                    attrs="{'invisible': ['|', ('internal_payment_type', 'not in', ['lr', 'lp']), ('paid_state', '=', 'no')]}"/>
+                <widget name="web_ribbon" title="Paid Check" bg_color="bg-success"
+                    attrs="{'invisible': ['|', ('internal_payment_type', 'not in', ['cr', 'cp']), ('paid_state', '=', 'no')]}"/>
+            </widget>
+        </field>
+    </record>
+
+    <record id="view_account_payment_register_form_receivable" model="ir.ui.view">
+        <field name="name">account.payment.register.form.l10n_pe_account_letters_checks</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="journal_id" position="replace">
+                <field name="journal_id" widget="selection" required="1"
+                    domain="[('company_id', '=', company_id), ('type', 'in', ('bank', 'cash')),('internal_payment_type','in',['other','lr','cr'])]"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_payment_register_form_payable" model="ir.ui.view">
+        <field name="name">account.payment.register.form.l10n_pe_account_letters_checks</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="journal_id" position="replace">
+                <field name="journal_id" widget="selection" required="1"
+                    domain="[('company_id', '=', company_id), ('type', 'in', ('bank', 'cash')),('internal_payment_type','in',['other','lp','cp'])]"/>
+            </field>
+        </field>
+    </record>
+</odoo>
