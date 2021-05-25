@@ -50,7 +50,7 @@ $ sudo pip3 install beautifulsoup4
     'images': [
         'static/description/banner.png',
     ],
-    'support': 'soporte@operu.pe',
+    'support': 'modulos@operu.pe',
     'installable': True,
     'auto_install': False,
     "sequence": 1,
