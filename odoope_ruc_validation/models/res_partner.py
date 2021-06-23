@@ -13,7 +13,9 @@ from odoo import _, api, fields, models
 from odoo.addons.odoope_ruc_validation.models import sunatconstants
 import requests
 import json
+from zipfile import ZipFile
 from bs4 import BeautifulSoup
+from io import BytesIO
 from odoo.exceptions import Warning, UserError
 class ResPartner(models.Model):
     _inherit = 'res.partner'
@@ -134,12 +136,75 @@ class ResPartner(models.Model):
             self.alert_warning_vat = True
             data = False
         return data
+    def _extract_csv_from_zip(self, url_zip,name_zip):
+        nombre_txt = name_zip.replace('.zip', '.txt')
+        res = requests.get(url_zip)
+        zipfile = ZipFile(BytesIO(res.content))
+        lineas = list()
+        for linea in zipfile.open(nombre_txt).readlines():
+            lineas.append(linea.decode('utf-8'))
+        json_datos = dict()
+        cabeceras = lineas[0].split('|')
+        valores = lineas[1].split('|')
+        for indice, cabecera in enumerate(cabeceras):
+            if indice != len(cabeceras) - 1:
+                json_datos[cabecera.strip().lower().replace('-', '').replace('ó', '').replace(' ', '_')] = valores[
+                    indice].strip()          
+        return json_datos
+
+    def sunat_connection_multi(self, ruc):
+        session = requests.Session()
+        url_sunat = "https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsmulruc/jrmS00Alias"
+        headers = requests.utils.default_headers()
+        headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36' 
+        data = {}
+        try:
+            captcha = "https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsmulruc/captcha"
+            text_captcha =session.post(url=captcha,data={'accion':'random'},headers=headers)
+            data_ruc = {'accion':'consManual','selRuc':ruc,'numRnd':text_captcha}
+            html_doc = session.post(url=url_sunat,data=data_ruc,headers=headers,timeout=(15,20))
+            html_info = BeautifulSoup(html_doc.content, 'html.parser')
+            table_info = html_info.find_all('a',href=True)
+            url_zip = table_info[0]['href']
+            name_zip = table_info[0].contents[0]
+            json_datos = self._extract_csv_from_zip(url_zip,name_zip)
+            data['ruc'] = json_datos['numeroruc']
+            data['business_name'] = json_datos['nombre__razonsocial']
+            data['type_of_taxpayer'] =  json_datos['tipo_de_contribuyente'] 
+            data['estado'] = json_datos['estado_del_contribuyente']
+            data['contributing_condition'] = json_datos['condicion_del_contribuyente']
+            data['commercial_name'] = json_datos['nombre_comercial']
+            provincia = json_datos['provincia'].title()
+            distrito = json_datos['distrito'].title()
+            prov_ids = self.env['res.city'].search([('name', '=', provincia),('state_id','!=',False)])
+            dist_id = self.env['l10n_pe.res.city.district'].search([('name', '=',distrito ),('city_id', 'in', [x.id for x in prov_ids])], limit=1)
+            dist_short_id = self.env['l10n_pe.res.city.district'].search([('name', '=', json_datos['distrito'])], limit=1)
+            if dist_id:
+                l10n_pe_district = dist_id
+            else:
+                l10n_pe_district = dist_short_id
+
+            vals = {}
+            if l10n_pe_district:
+                vals['district_id'] = l10n_pe_district.id
+                vals['city_id'] = l10n_pe_district.city_id.id
+                vals['state_id'] = l10n_pe_district.city_id.state_id.id
+                vals['country_id'] = l10n_pe_district.city_id.state_id.country_id.id
+            data['value'] = vals
+            data['residence']  = json_datos['direccion']
+        except Exception:
+            self.alert_warning_vat = True
+            data = False
+        return data
+
 
     @api.model     
     def l10n_pe_ruc_connection(self, ruc):
         data = {}
         if self.env.user.company_id.l10n_pe_api_ruc_connection == 'sunat':
-            data = self.sunat_connection(ruc)      
+            data = self.sunat_connection(ruc)   
+        if self.env.user.company_id.l10n_pe_api_ruc_connection == 'sunar_multi':  
+            data = self.sunat_connection_multi(ruc)
         return data       
     
     @api.model
