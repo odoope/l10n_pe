@@ -203,7 +203,7 @@ class ResPartner(models.Model):
         data = {}
         if self.env.user.company_id.l10n_pe_api_ruc_connection == 'sunat':
             data = self.sunat_connection(ruc)   
-        if self.env.user.company_id.l10n_pe_api_ruc_connection == 'sunar_multi':  
+        if self.env.user.company_id.l10n_pe_api_ruc_connection == 'sunat_multi':  
             data = self.sunat_connection_multi(ruc)
         return data       
     
