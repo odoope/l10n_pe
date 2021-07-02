@@ -11,7 +11,7 @@
 
 {
     'name' : 'Validador de RUC - Peru',
-    'version' : '0.1.1',
+    'version' : '13.0.1.0.0',
     'author' : 'OPeru',
     'category' : 'Generic Modules/Base',
     'summary': 'RUC validator - PERU',
@@ -50,8 +50,10 @@ $ sudo pip3 install beautifulsoup4
     'images': [
         'static/description/banner.png',
     ],
-    'support': 'soporte@operu.pe',
+    'support': 'modulos@operu.pe',
     'installable': True,
     'auto_install': False,
     "sequence": 1,
+
+    'post_init_hook': '_odoope_ruc_validation_init',
 }
