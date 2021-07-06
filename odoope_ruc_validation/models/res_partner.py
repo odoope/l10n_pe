@@ -154,6 +154,12 @@ class ResPartner(models.Model):
 
     def sunat_connection_multi(self, ruc):
         session = requests.Session()
+        if self.env.company.l10n_pe_use_proxy:
+            url_proxy = "%s:%s" % (self.env.company.l10n_pe_proxy_ip, self.env.company.l10n_pe_proxy_port)
+            session.proxies = {
+                "http": url_proxy,
+                "https": url_proxy,
+            }
         url_sunat = "https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsmulruc/jrmS00Alias"
         headers = requests.utils.default_headers()
         headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36' 
