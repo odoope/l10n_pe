@@ -155,7 +155,8 @@ class ResPartner(models.Model):
     def sunat_connection_multi(self, ruc):
         session = requests.Session()
         if self.env.company.l10n_pe_use_proxy:
-            url_proxy = "%s:%s" % (self.env.company.l10n_pe_proxy_ip, self.env.company.l10n_pe_proxy_port)
+            url_proxy = "http://%s:%s" % (self.env.company.l10n_pe_proxy_ip, self.env.company.l10n_pe_proxy_port)
+            print("URL:", url_proxy)
             session.proxies = {
                 "http": url_proxy,
                 "https": url_proxy,
