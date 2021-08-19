@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 14.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-21 21:57+0000\n"
-"PO-Revision-Date: 2021-01-21 21:57+0000\n"
+"POT-Creation-Date: 2021-08-19 15:45+0000\n"
+"PO-Revision-Date: 2021-08-19 15:45+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,16 +16,45 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: odoope_ruc_validation
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_config_settings_view_form
+msgid ""
+"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
+"specific.\" groups=\"base.group_multi_company\"/>"
+msgstr ""
+
+#. module: odoope_ruc_validation
 #: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_partner_form__view_inherit
 msgid ""
 "<span><strong>NO CONNECTION OR THE DATA DOES NOT EXIST, PLEASE REGISTER THE "
 "DATA MANUALLY.</strong></span>"
-msgstr "<span><strong>NO HAY CONEXION O LOS DATOS NO EXISTE, POR FAVOR REGISTRE LOS DATOS MANUALMENTE.<span><strong>"
+msgstr ""
+"<span><strong>NO HAY CONEXION O LOS DATOS NO EXISTE, POR FAVOR REGISTRE LOS "
+"DATOS MANUALMENTE.<span><strong>"
 
 #. module: odoope_ruc_validation
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_partner__alert_warning_vat
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_users__alert_warning_vat
 msgid "Alert warning vat"
+msgstr ""
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_company__l10n_pe_api_dni_connection
+msgid "Api DNI Connection"
+msgstr "Conexión Api DNI"
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_company__l10n_pe_api_ruc_connection
+msgid "Api RUC Connection"
+msgstr "Conexión Api RUC"
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields.selection,name:odoope_ruc_validation.selection__res_company__l10n_pe_api_dni_connection__consul_dni_api
+msgid "CONSULTA DNI API"
+msgstr ""
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields.selection,name:odoope_ruc_validation.selection__res_company__l10n_pe_api_ruc_connection__consul_ruc_api
+msgid "CONSULTA RUC API"
 msgstr ""
 
 #. module: odoope_ruc_validation
@@ -48,12 +77,24 @@ msgstr "Compañías"
 #. module: odoope_ruc_validation
 #: model:ir.model,name:odoope_ruc_validation.model_res_config_settings
 msgid "Config Settings"
-msgstr "Opciones de Configuración"
+msgstr "Opciones de configuración"
 
 #. module: odoope_ruc_validation
 #: model:ir.model,name:odoope_ruc_validation.model_res_partner
 msgid "Contact"
 msgstr "Contacto"
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_partner__country_id
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_users__country_id
+msgid "Country"
+msgstr "País"
+
+#. module: odoope_ruc_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_company__l10n_pe_dni_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_config_settings__l10n_pe_dni_validation
+msgid "DNI Validation"
+msgstr "Validador de DNI"
 
 #. module: odoope_ruc_validation
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_l10n_pe_res_city_district__display_name
@@ -70,21 +111,19 @@ msgid "District"
 msgstr "Distrito"
 
 #. module: odoope_ruc_validation
-#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_company__dni_validation
-#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_config_settings__dni_validation
-#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_config_settings_view_form
-msgid "Dni Validation"
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.view_form_company_inherited
+msgid "Dni validation"
 msgstr "Validador de Dni"
 
 #. module: odoope_ruc_validation
-#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_city__complete_name
-msgid "Full City Name"
-msgstr "Nombre completo"
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_config_settings_view_form
+msgid "Extract your client's data from SUNAT"
+msgstr "Extraiga los datos de su cliente de la SUNAT"
 
 #. module: odoope_ruc_validation
-#: model:ir.model.fields,field_description:odoope_ruc_validation.field_l10n_pe_res_city_district__complete_name
-msgid "Full District Name"
-msgstr "Nombre completo"
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.credit_banner
+msgid "Get Credits"
+msgstr "Obtener Créditos"
 
 #. module: odoope_ruc_validation
 #: model:ir.model.fields.selection,name:odoope_ruc_validation.selection__res_partner__state__habido
@@ -115,16 +154,30 @@ msgid "No Habido"
 msgstr ""
 
 #. module: odoope_ruc_validation
-#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_company__ruc_validation
-#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_config_settings__ruc_validation
-#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_config_settings_view_form
-msgid "Ruc Validation"
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_company__l10n_pe_ruc_validation
+#: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_config_settings__l10n_pe_ruc_validation
+msgid "RUC Validation"
 msgstr "Validador de RUC"
 
 #. module: odoope_ruc_validation
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_config_settings_view_form
+msgid "RUC validation"
+msgstr "Validador de RUC"
+
+#. module: odoope_ruc_validation
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_config_settings_view_form
+msgid "RUC/DNI Validation"
+msgstr "Validador de DNI/RUC"
+
+#. module: odoope_ruc_validation
 #: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.view_form_company_inherited
-msgid "Ruc Validation(PE)"
-msgstr "Validador de RUC(PE)"
+msgid "RUC/DNI Validation(PE)"
+msgstr "Validador de DNI/RUC(PE)"
+
+#. module: odoope_ruc_validation
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.view_form_company_inherited
+msgid "Ruc validation"
+msgstr "Validador de RUC"
 
 #. module: odoope_ruc_validation
 #: model:ir.model.fields,field_description:odoope_ruc_validation.field_res_partner__state
@@ -144,8 +197,23 @@ msgid "The Ruc must be 11 characters long."
 msgstr "El Ruc debe tener 11 caracteres."
 
 #. module: odoope_ruc_validation
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.res_config_settings_view_form
+msgid "Validate the names and surnames of your contacts with DNI"
+msgstr "Valida los nombres y apellidos de tus contactos con DNI"
+
+#. module: odoope_ruc_validation
 #: code:addons/odoope_ruc_validation/models/res_partner.py:0
 #: code:addons/odoope_ruc_validation/models/res_partner.py:0
 #, python-format
 msgid "Warning"
 msgstr ""
+
+#. module: odoope_ruc_validation
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.credit_banner
+msgid "You have"
+msgstr "Te quedan"
+
+#. module: odoope_ruc_validation
+#: model_terms:ir.ui.view,arch_db:odoope_ruc_validation.credit_banner
+msgid "credits left for consultations."
+msgstr "créditos para consultas."

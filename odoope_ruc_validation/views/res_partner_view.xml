@@ -6,6 +6,9 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">                
+                <attribute name="banner_route">/credit_status</attribute>
+            </xpath>
             <xpath expr="//form//sheet" position="before">      
                 <header>
                     <field name="state" widget="statusbar" nolabel="1" statusbar_visible="habido,nhabido" readonly="0"/>
@@ -20,6 +23,17 @@
                     <field name="commercial_name" placeholder="Commercial Name" attrs="{'invisible': [('is_company','=',False)]}" /> 
                 </div>
             </div>
+        </field>
+    </record>
+
+    <record id="res_partner_kanban_view_inherit" model="ir.ui.view">
+        <field name="name">res.partner.kanban.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">                
+                <attribute name="banner_route">/credit_status</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
