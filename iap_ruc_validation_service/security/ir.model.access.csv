@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-acl_validation_backend_user,validation_info,model_validation_info,base.group_user,1,1,1,1
-acl_validation_lines_backend_user,validation_info_lines,model_validation_info_lines,base.group_user,1,1,1,1
