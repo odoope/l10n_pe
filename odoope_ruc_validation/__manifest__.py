@@ -11,13 +11,13 @@
 
 {
     'name' : 'Validador de RUC - Peru',
-    'version' : '14.0.1.0.0',
+    'version' : '15.0.1.0.0',
     'author' : 'OPeru',
     'category' : 'Generic Modules/Base',
     'summary': 'RUC validator - PERU',
     'license': 'LGPL-3',
     'contributors': [
-        'Enrique Huayas <enrique@operu.pe>',
+        'Angel Rodriguez <angel@operu.pe>',
         'Leonidas Pezo <leonidas@operu.pe>',
     ],
     'description' : """
