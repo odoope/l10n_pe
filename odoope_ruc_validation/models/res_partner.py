@@ -77,6 +77,7 @@ class ResPartner(models.Model):
             self.company_type = 'person'
     
     def fetch_ruc_data(self, vat_number):
+        data = {}
         self.ensure_one()
         user_token = self.env['iap.account'].get('validation_ruc')
         company = self.env.company
